@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # TODO:
+#			* add additional documentation
 
 #Variable declarations
 LNP_VER="0.43.03-r03"                                   # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
