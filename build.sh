@@ -35,12 +35,23 @@ GH="git@github.com"                                     # because why not?
 # Begin
 if [ ! -d $DF_VER ]; then
 	mkdir $DF_VER
-]
 fi
 if [ ! -d $DF_VER/$DEST_DIR ]; then
 	mkdir $DF_VER/$DEST_DIR
 fi
 cd $DF_VER
+
+#Get LNP shared components
+if [ ! -d Lazy-Newb-Pack-Linux ]; then
+  git clone -q $GH:carterscottm/Lazy-Newb-Pack-Linux.git
+	cd Lazy-Newb-Pack-Linux
+	git submodule update  -q --init --recursive
+	cd ../
+fi
+#update PyLNP.json with current pack version and revision number (for auto-update notifications)
+find ./Lazy-Newb-Pack-Linux/LNP -name PyLNP.json -exec sed -i "s/\"packVersion\": \"\(.*\)\"/\"packVersion\": \"$LNP_VER\"/g" {} \;
+echo Creating the LNP directory structure
+cp Lazy-Newb-Pack-Linux/* $DEST_DIR/ -r
 
 #Get PyLNP
 if [ ! -f $PYLNP ]; then
@@ -50,13 +61,7 @@ fi
 echo Extracting $PYLNP
 tar -xf $PYLNP -C ./$DEST_DIR/
 
-#Get LNP shared components
-if [ ! -d Lazy-Newb-Pack-Linux ]; then
-	git clone -q $GH:carterscottm/Lazy-Newb-Pack-Linux.git
-	cd Lazy-Newb-Pack-Linux
-	git submodule update  -q --init --recursive
-	cd ../
-fi
+#update PyLNP.json with current pack version and revision number (for auto-update notifications)
 find ./Lazy-Newb-Pack-Linux/LNP -name PyLNP.json -exec sed -i "s/\"packVersion\": \"\(.*\)\"/\"packVersion\": \"$LNP_VER\"/g" {} \;
 echo Creating the LNP directory structure
 cp Lazy-Newb-Pack-Linux/* $DEST_DIR/ -r
@@ -106,7 +111,7 @@ if [ ! -d gfx ]; then
 	git clone -q $GH:DFgraphics/Tergel.git
 	git clone -q $GH:DFgraphics/Wanderlust.git
 
-	# Roll back the graphics packs to a revision known to be compatible with this version of DF
+	# Roll back the graphics packs to a known-compatible commit with this version of DF
 	cd Afro-Graphics
 	git reset --hard fccafc3f5099f645e0e82b2eee46cb2da9f578a9
 	cd ..
@@ -226,7 +231,10 @@ echo Extracting $SOUNDSENSE
 unzip -qq -o $SOUNDSENSE  -d ./$DEST_DIR/LNP/utilities/
 chmod +x ./$DEST_DIR/LNP/utilities/soundsense/soundSense.sh
 dos2unix -q ./$DEST_DIR/LNP/utilities/soundsense/soundSense.sh
+
+# pre-configure SoundSense to point to the right location for the gamelog
 find ./$DEST_DIR/LNP/utilities/soundsense -name configuration.xml -exec sed -i "s/..\/gamelog.txt/..\/..\/..\/df_linux\/gamelog.txt/g" {} \;
+
 #Get DF Announcement Filter
 if [ ! -f DFAnnouncementFilter.zip ]; then
 	echo Downloading DFAnnouncementFilter.zip
@@ -242,10 +250,13 @@ if [ ! -f $LEGENDS_BROWSER ]; then
 fi
 mkdir ./$DEST_DIR/LNP/utilities/legends_browser
 cp $LEGENDS_BROWSER ./$DEST_DIR/LNP/utilities/legends_browser
+
+#Create shell script to launch Legends Browser
 echo '#!/bin/bash' > ./$DEST_DIR/LNP/utilities/legends_browser/LegendsBrowser.sh
 echo 'java -jar' $LEGENDS_BROWSER >> ./$DEST_DIR/LNP/utilities/legends_browser/LegendsBrowser.sh
 chmod +x ./$DEST_DIR/LNP/utilities/legends_browser/LegendsBrowser.sh
 echo 'Legends Browser Exclusions' >> ./$DEST_DIR/LNP/utilities/exclude.txt
+#Exclude the .jar file from showing up on the list of utilities in LNP
 echo '['$LEGENDS_BROWSER']' >> ./$DEST_DIR/LNP/utilities/exclude.txt
 
 #Copy curses_640x300.png to all graphics packs
@@ -254,22 +265,22 @@ echo ./$DEST_DIR/LNP/graphics/*/data/art/ | xargs -n 1 cp ./$DEST_DIR/LNP/baseli
 
 #Set sane defaults for all graphics packs
 echo  Setting sane defaults for all graphics packs and vanilla
-find ./$DEST_DIR -name \d_init.txt -exec sed -i "s/\[AUTOSAVE\:\(.*\)\]/\[AUTOSAVE\:SEASONAL\]/g" {} \;
-find ./$DEST_DIR -name \d_init.txt -exec sed -i "s/\[AUTOSAVE_PAUSE\:NO\]/\[AUTOSAVE_PAUSE\:YES\]/g" {} \;
-find ./$DEST_DIR -name \d_init.txt -exec sed -i "s/\[AUTOBACKUP\:\(.*\)\]/\[AUTOBACKUP\:YES\]/g" {} \;
-find ./$DEST_DIR -name \d_init.txt -exec sed -i "s/\[SHOW_FLOW_AMOUNTS\:NO\]/\[SHOW_FLOW_AMOUNTS\:YES\]/g" {} \;
-find ./$DEST_DIR -name \d_init.txt -exec sed -i "s/\[POPULATION_CAP\:\(.*\)\]/\[POPULATION_CAP\:120\]/g" {} \;
-find ./$DEST_DIR -name \d_init.txt -exec sed -i "s/\[STRICT_POPULATION_CAP\:\(.*\)\]/\[STRICT_POPULATION_CAP\:220\]/g" {} \;
-find ./$DEST_DIR -name \d_init.txt -exec sed -i "s/\[BABY_CHILD_CAP\:\(.*\)\:\(.*\)\]/\[BABY_CHILD_CAP\:10\:20\]/g" {} \;
-find ./$DEST_DIR -name \d_init.txt -exec sed -i "s/\[VISITOR_CAP\:\(.*\)\]/\[VISITOR_CAP\:100\]/g" {} \;
-find ./$DEST_DIR -name \d_init.txt -exec sed -i "s/\[INVASION_SOLDIER_CAP\:\(.*\)\]/\[INVASION_SOLDIER_CAP\:120\]/g" {} \;
-find ./$DEST_DIR -name \d_init.txt -exec sed -i "s/\[INVASION_MONSTER_CAP\:\(.*\)\]/\[INVASION_MONSTER_CAP\:40\]/g" {} \;
-find ./$DEST_DIR -name \init.txt -exec sed -i "s/\[FPS\:NO\]/\[FPS\:YES\]/g" {} \;
-find ./$DEST_DIR -name \init.txt -exec sed -i "s/\[INTRO\:YES\]/\[INTRO\:NO\]/g" {} \;
-find ./$DEST_DIR -name \init.txt -exec sed -i "s/\[SOUND\:YES\]/\[SOUND\:NO\]/g" {} \;
-find ./$DEST_DIR/LNP/graphics -name \init.txt -exec sed -i "s/\[FONT\:\(.*\)\]/\[FONT\:curses_640x300.png\]/g" {} \;
-find ./$DEST_DIR/LNP/graphics -name \init.txt -exec sed -i "s/\[FULLFONT\:\(.*\)\]/\[FULLFONT\:curses_640x300.png\]/g" {} \;
-find ./$DEST_DIR/LNP/graphics -name \init.txt -exec sed -i "s/\[PRINT_MODE\:\(.*\)\]/\[PRINT_MODE\:TWBT\]/g" {} \;
+find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[AUTOSAVE\:\(.*\)\]/\[AUTOSAVE\:SEASONAL\]/g" {} \;
+find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[AUTOSAVE_PAUSE\:NO\]/\[AUTOSAVE_PAUSE\:YES\]/g" {} \;
+find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[AUTOBACKUP\:\(.*\)\]/\[AUTOBACKUP\:YES\]/g" {} \;
+find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[SHOW_FLOW_AMOUNTS\:NO\]/\[SHOW_FLOW_AMOUNTS\:YES\]/g" {} \;
+find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[POPULATION_CAP\:\(.*\)\]/\[POPULATION_CAP\:120\]/g" {} \;
+find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[STRICT_POPULATION_CAP\:\(.*\)\]/\[STRICT_POPULATION_CAP\:220\]/g" {} \;
+find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[BABY_CHILD_CAP\:\(.*\)\:\(.*\)\]/\[BABY_CHILD_CAP\:10\:20\]/g" {} \;
+find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[VISITOR_CAP\:\(.*\)\]/\[VISITOR_CAP\:100\]/g" {} \;
+find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[INVASION_SOLDIER_CAP\:\(.*\)\]/\[INVASION_SOLDIER_CAP\:120\]/g" {} \;
+find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[INVASION_MONSTER_CAP\:\(.*\)\]/\[INVASION_MONSTER_CAP\:40\]/g" {} \;
+find ./$DEST_DIR -name init.txt -exec sed -i "s/\[FPS\:NO\]/\[FPS\:YES\]/g" {} \;
+find ./$DEST_DIR -name init.txt -exec sed -i "s/\[INTRO\:YES\]/\[INTRO\:NO\]/g" {} \;
+find ./$DEST_DIR -name init.txt -exec sed -i "s/\[SOUND\:YES\]/\[SOUND\:NO\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[FONT\:\(.*\)\]/\[FONT\:curses_640x300.png\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[FULLFONT\:\(.*\)\]/\[FULLFONT\:curses_640x300.png\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[PRINT_MODE\:\(.*\)\]/\[PRINT_MODE\:TWBT\]/g" {} \;
 
 #Set Phoebus as the default graphics pack
 echo Setting Phoebus as the default graphics pack
