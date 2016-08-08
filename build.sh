@@ -29,7 +29,7 @@ TWBT="twbt-5.65-linux.zip"                              # file name to download
 
 DEST_DIR="df_$DF_VER"                                   # folder name where everything will be copied to
 
-GH="git@github.com"                                     # because why not?
+GH="https://github.com"                                     # because why not?
 
 
 # Begin
@@ -43,7 +43,7 @@ cd $DF_VER
 
 #Get LNP shared components
 if [ ! -d Lazy-Newb-Pack-Linux ]; then
-  git clone -q $GH:carterscottm/Lazy-Newb-Pack-Linux.git
+  git clone -q $GH/carterscottm/Lazy-Newb-Pack-Linux.git
 	cd Lazy-Newb-Pack-Linux
 	git submodule update  -q --init --recursive
 	cd ../
@@ -96,20 +96,20 @@ if [ ! -d gfx ]; then
 	echo Downloading the graphics packs
 	mkdir gfx
 	cd gfx
-	git clone -q $GH:DFgraphics/Afro-Graphics.git
-	git clone -q $GH:DFgraphics/AutoReiv.git
-	git clone -q $GH:DFgraphics/CLA.git
-	git clone -q $GH:DFgraphics/GemSet.git
-	git clone -q $GH:DFgraphics/IronHand.git
-	git clone -q $GH:DFgraphics/Jolly-Bastion.git
-	git clone -q $GH:DFgraphics/Mayday.git
-	git clone -q $GH:DFgraphics/Obsidian.git
-	git clone -q $GH:DFgraphics/Phoebus.git
-	git clone -q $GH:DFgraphics/Rally-Ho.git
-	git clone -q $GH:DFgraphics/Spacefox.git
-	git clone -q $GH:DFgraphics/Taffer.git
-	git clone -q $GH:DFgraphics/Tergel.git
-	git clone -q $GH:DFgraphics/Wanderlust.git
+	git clone -q $GH/DFgraphics/Afro-Graphics.git
+	git clone -q $GH/DFgraphics/AutoReiv.git
+	git clone -q $GH/DFgraphics/CLA.git
+	git clone -q $GH/DFgraphics/GemSet.git
+	git clone -q $GH/DFgraphics/IronHand.git
+	git clone -q $GH/DFgraphics/Jolly-Bastion.git
+	git clone -q $GH/DFgraphics/Mayday.git
+	git clone -q $GH/DFgraphics/Obsidian.git
+	git clone -q $GH/DFgraphics/Phoebus.git
+	git clone -q $GH/DFgraphics/Rally-Ho.git
+	git clone -q $GH/DFgraphics/Spacefox.git
+	git clone -q $GH/DFgraphics/Taffer.git
+	git clone -q $GH/DFgraphics/Tergel.git
+	git clone -q $GH/DFgraphics/Wanderlust.git
 
 	# Roll back the graphics packs to a known-compatible commit with this version of DF
 	cd Afro-Graphics
@@ -195,7 +195,7 @@ cd ..
 mkdir $DEST_DIR/LNP/utilities/dwarf_therapist
 if [ ! -d Dwarf-Therapist ]; then
 	echo Downloading Dwarf Therapist
-	git clone -q $GH:splintermind/Dwarf-Therapist.git
+	git clone -q $GH/splintermind/Dwarf-Therapist.git
 	echo compiling Dwarf Therapist, please be patient.
 	cd Dwarf-Therapist
 	qmake
@@ -285,6 +285,7 @@ find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[PRINT_MODE\:\(.*\
 #Set Phoebus as the default graphics pack
 echo Setting Phoebus as the default graphics pack
 cp $DEST_DIR/LNP/graphics/Phoebus/* $DEST_DIR/df_linux/ -R
+#Manually create installed_raws.txt
 echo '# List of raws merged by PyLNP:' > $DEST_DIR/df_linux/raw/installed_raws.txt
 echo 'baselines/df_43_03' >> $DEST_DIR/df_linux/raw/installed_raws.txt
 echo 'graphics/Phoebus' >> $DEST_DIR/df_linux/raw/installed_raws.txt
