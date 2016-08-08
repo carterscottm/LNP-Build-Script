@@ -35,9 +35,10 @@ GH="git@github.com"                                     # because why not?
 # Begin
 if [ ! -d $DF_VER ]; then
 	mkdir $DF_VER
-	if [ ! -d $DF_VER/$DEST_DIR ]; then
-		mkdir $DF_VER/$DEST_DIR
-	fi
+]
+fi
+if [ ! -d $DF_VER/$DEST_DIR ]; then
+	mkdir $DF_VER/$DEST_DIR
 fi
 cd $DF_VER
 
