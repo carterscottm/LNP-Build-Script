@@ -258,9 +258,9 @@ echo 'Legends Browser Exclusions' >> ./$DEST_DIR/LNP/utilities/exclude.txt
 #Exclude the .jar file from showing up on the list of utilities in LNP
 echo '['$LEGENDS_BROWSER']' >> ./$DEST_DIR/LNP/utilities/exclude.txt
 
-#Copy curses_640x300.png to all graphics packs
+#Copy  baseline art to tilesets directory
 echo Copy curses_640x300.png to all graphics packs
-cp ./$DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/curses_640x300.png ./$DEST_DIR/LNP/tilesets
+cp ./$DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/* ./$DEST_DIR/LNP/tilesets
 #echo ./$DEST_DIR/LNP/graphics/*/data/art/ | xargs -n 1 cp ./$DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/curses_640x300.png
 
 #Set sane defaults for all graphics packs
