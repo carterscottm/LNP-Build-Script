@@ -22,6 +22,7 @@ LEGENDS_BROWSER_VER="1.0.12"                            # part of the download U
 LEGENDS_BROWSER="legendsbrowser-1.0.12.jar"             # file name to download
 
 PYLNP="PyLNP_0.11-linux-x64.tar.xz"                     # part of the download URL
+
 SOUNDSENSE="soundSense_2016-1_196.zip"                  # file name to download
 
 TWBT_VER="v5.65"                                        # part of the download URL
@@ -36,18 +37,22 @@ GH="https://github.com"                                     # because why not?
 if [ ! -d $DF_VER ]; then
 	mkdir $DF_VER
 fi
-if [ ! -d $DF_VER/$DEST_DIR ]; then
-	mkdir $DF_VER/$DEST_DIR
+if [ -d $DF_VER/$DEST_DIR ]; then
+	echo Removing old $DF_VER/$DEST_DIR directory structure
+	rm $DF_VER/$DEST_DIR -rf
 fi
+mkdir $DF_VER/$DEST_DIR
 cd $DF_VER
 
-#Get LNP shared components
+#Get LNP files and directory structure
 if [ ! -d Lazy-Newb-Pack-Linux ]; then
-  git clone -q $GH/carterscottm/Lazy-Newb-Pack-Linux.git
+	echo Downloading LNP
+	git clone -q $GH/carterscottm/Lazy-Newb-Pack-Linux.git
 	cd Lazy-Newb-Pack-Linux
-	git submodule update  -q --init --recursive
+	git clone -q https://github.com/carterscottm/LNP-shared-core.git ./LNP
 	cd ../
 fi
+
 #update PyLNP.json with current pack version and revision number (for auto-update notifications)
 find ./Lazy-Newb-Pack-Linux/LNP -name PyLNP.json -exec sed -i "s/\"packVersion\": \"\(.*\)\"/\"packVersion\": \"$LNP_VER\"/g" {} \;
 echo Creating the LNP directory structure
@@ -60,12 +65,6 @@ if [ ! -f $PYLNP ]; then
 fi
 echo Extracting $PYLNP
 tar -xf $PYLNP -C ./$DEST_DIR/
-
-#update PyLNP.json with current pack version and revision number (for auto-update notifications)
-find ./Lazy-Newb-Pack-Linux/LNP -name PyLNP.json -exec sed -i "s/\"packVersion\": \"\(.*\)\"/\"packVersion\": \"$LNP_VER\"/g" {} \;
-echo Creating the LNP directory structure
-cp Lazy-Newb-Pack-Linux/* $DEST_DIR/ -r
-
 #Get DF Baselines
 if [ ! -f $DF_BASELINES.zip ]; then
 	echo Downloading DF Baselines
@@ -261,23 +260,24 @@ echo '['$LEGENDS_BROWSER']' >> ./$DEST_DIR/LNP/utilities/exclude.txt
 
 #Copy curses_640x300.png to all graphics packs
 echo Copy curses_640x300.png to all graphics packs
-echo ./$DEST_DIR/LNP/graphics/*/data/art/ | xargs -n 1 cp ./$DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/curses_640x300.png
+cp ./$DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/curses_640x300.png ./$DEST_DIR/LNP/tilesets
+#echo ./$DEST_DIR/LNP/graphics/*/data/art/ | xargs -n 1 cp ./$DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/curses_640x300.png
 
 #Set sane defaults for all graphics packs
 echo  Setting sane defaults for all graphics packs and vanilla
-find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[AUTOSAVE\:\(.*\)\]/\[AUTOSAVE\:SEASONAL\]/g" {} \;
-find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[AUTOSAVE_PAUSE\:NO\]/\[AUTOSAVE_PAUSE\:YES\]/g" {} \;
-find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[AUTOBACKUP\:\(.*\)\]/\[AUTOBACKUP\:YES\]/g" {} \;
-find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[SHOW_FLOW_AMOUNTS\:NO\]/\[SHOW_FLOW_AMOUNTS\:YES\]/g" {} \;
-find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[POPULATION_CAP\:\(.*\)\]/\[POPULATION_CAP\:120\]/g" {} \;
-find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[STRICT_POPULATION_CAP\:\(.*\)\]/\[STRICT_POPULATION_CAP\:220\]/g" {} \;
-find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[BABY_CHILD_CAP\:\(.*\)\:\(.*\)\]/\[BABY_CHILD_CAP\:10\:20\]/g" {} \;
-find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[VISITOR_CAP\:\(.*\)\]/\[VISITOR_CAP\:100\]/g" {} \;
-find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[INVASION_SOLDIER_CAP\:\(.*\)\]/\[INVASION_SOLDIER_CAP\:120\]/g" {} \;
-find ./$DEST_DIR -name d_init.txt -exec sed -i "s/\[INVASION_MONSTER_CAP\:\(.*\)\]/\[INVASION_MONSTER_CAP\:40\]/g" {} \;
-find ./$DEST_DIR -name init.txt -exec sed -i "s/\[FPS\:NO\]/\[FPS\:YES\]/g" {} \;
-find ./$DEST_DIR -name init.txt -exec sed -i "s/\[INTRO\:YES\]/\[INTRO\:NO\]/g" {} \;
-find ./$DEST_DIR -name init.txt -exec sed -i "s/\[SOUND\:YES\]/\[SOUND\:NO\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[AUTOSAVE\:\(.*\)\]/\[AUTOSAVE\:SEASONAL\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[AUTOSAVE_PAUSE\:NO\]/\[AUTOSAVE_PAUSE\:YES\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[AUTOBACKUP\:\(.*\)\]/\[AUTOBACKUP\:YES\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[SHOW_FLOW_AMOUNTS\:NO\]/\[SHOW_FLOW_AMOUNTS\:YES\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[POPULATION_CAP\:\(.*\)\]/\[POPULATION_CAP\:120\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[STRICT_POPULATION_CAP\:\(.*\)\]/\[STRICT_POPULATION_CAP\:220\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[BABY_CHILD_CAP\:\(.*\)\:\(.*\)\]/\[BABY_CHILD_CAP\:10\:20\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[VISITOR_CAP\:\(.*\)\]/\[VISITOR_CAP\:100\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_SOLDIER_CAP\:\(.*\)\]/\[INVASION_SOLDIER_CAP\:120\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_MONSTER_CAP\:\(.*\)\]/\[INVASION_MONSTER_CAP\:40\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[FPS\:NO\]/\[FPS\:YES\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[INTRO\:YES\]/\[INTRO\:NO\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[SOUND\:YES\]/\[SOUND\:NO\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[FONT\:\(.*\)\]/\[FONT\:curses_640x300.png\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[FULLFONT\:\(.*\)\]/\[FULLFONT\:curses_640x300.png\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[PRINT_MODE\:\(.*\)\]/\[PRINT_MODE\:TWBT\]/g" {} \;
@@ -285,10 +285,29 @@ find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[PRINT_MODE\:\(.*\
 #Set Phoebus as the default graphics pack
 echo Setting Phoebus as the default graphics pack
 cp $DEST_DIR/LNP/graphics/Phoebus/* $DEST_DIR/df_linux/ -R
+
 #Manually create installed_raws.txt
 echo '# List of raws merged by PyLNP:' > $DEST_DIR/df_linux/raw/installed_raws.txt
-echo 'baselines/df_43_03' >> $DEST_DIR/df_linux/raw/installed_raws.txt
+echo 'baselines/'$DF_BASELINES_VER >> $DEST_DIR/df_linux/raw/installed_raws.txt
 echo 'graphics/Phoebus' >> $DEST_DIR/df_linux/raw/installed_raws.txt
+
+#Copy Baselines to ASCII folder in LNP/graphics
+mkdir $DEST_DIR/LNP/graphics/ASCII
+mkdir $DEST_DIR/LNP/graphics/ASCII/data
+mkdir $DEST_DIR/LNP/graphics/ASCII/data/art
+mkdir $DEST_DIR/LNP/graphics/ASCII/data/init
+
+cp $DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/* $DEST_DIR/LNP/graphics/ASCII/data/art
+cp $DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/init/colors.txt $DEST_DIR/LNP/graphics/ASCII/data/init
+cp $DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/init/d_init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
+cp $DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/init/init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
+
+echo '{' > $DEST_DIR/LNP/graphics/ASCII/manifest.json
+echo '    "author": "ToadyOne",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+echo '    "tooltip": "Default graphics for DF, exactly as they come.",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+echo '    "content_version": "'$DF_VER'",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+echo '    "title": "ASCII Default"' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+echo '}' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
 
 #Finalize the pack and create the tar.gz file for DFFD
 cd $DEST_DIR
