@@ -259,7 +259,7 @@ echo 'Legends Browser Exclusions' >> ./$DEST_DIR/LNP/utilities/exclude.txt
 echo '['$LEGENDS_BROWSER']' >> ./$DEST_DIR/LNP/utilities/exclude.txt
 
 #Copy  baseline art to tilesets directory
-echo Copy curses_640x300.png to all graphics packs
+echo Copy baseline art to tilesets directory
 cp ./$DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/* ./$DEST_DIR/LNP/tilesets
 #echo ./$DEST_DIR/LNP/graphics/*/data/art/ | xargs -n 1 cp ./$DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/curses_640x300.png
 
