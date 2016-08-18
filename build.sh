@@ -4,7 +4,7 @@
 #			* add additional documentation
 
 #Variable declarations
-LNP_VER="0.43.03-r03"                                   # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.43.03-r02"                                   # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
 ARMOK_VISION_VER="v0.10.1"                              # part of the download URL
 ARMOK_VISION="Armok.Vision.0.10.1.Linux.zip"            # file name to download
@@ -313,6 +313,7 @@ echo '}' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
 cd $DEST_DIR
 find . | grep .git | xargs rm -rf
 find . -type f -name curses*.bmp | xargs rm
+find ./LNP/graphics -type f -name mouse.bmp | xargs rm
 mkdir df_linux/data/save
 echo Creating $LNP_VER.tar.gz
 tar cfz LinuxLNP-$LNP_VER.tar.gz *
