@@ -6,8 +6,8 @@
 #Variable declarations
 LNP_VER="0.43.03-r02"                                   # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
-ARMOK_VISION_VER="v0.10.1"                              # part of the download URL
-ARMOK_VISION="Armok.Vision.0.10.1.Linux.zip"            # file name to download
+ARMOK_VISION_VER="v0.11.0"                              # part of the download URL
+ARMOK_VISION="Armok.Vision.0.11.0.Linux.zip"            # file name to download
 
 DF_VER="0.43.03"                                        # part of the download URL, and used to allow graphics pack compatibility
 DF="df_43_03_linux.tar.bz2"                             # file name to download
@@ -220,6 +220,7 @@ fi
 mkdir ./$DEST_DIR/LNP/utilities/armok_vision
 echo Extracting $ARMOK_VISION
 unzip -qq -o $ARMOK_VISION -d ./$DEST_DIR/LNP/utilities/armok_vision
+chmod +x ./$DEST_DIR/LNP/utilities/armok_vision/Armok\ Vision.*
 
 #Get SoundSense
 if [ ! -f $SOUNDSENSE ]; then
