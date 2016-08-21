@@ -4,7 +4,7 @@
 #			* add additional documentation
 
 #Variable declarations
-LNP_VER="0.43.03-r02"                                   # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.43.03-r03"                                   # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
 ARMOK_VISION_VER="v0.11.0"                              # part of the download URL
 ARMOK_VISION="Armok.Vision.0.11.0.Linux.zip"            # file name to download
@@ -47,16 +47,17 @@ cd $DF_VER
 #Get LNP files and directory structure
 if [ ! -d Lazy-Newb-Pack-Linux ]; then
 	echo Downloading LNP
-	git clone -q $GH/carterscottm/Lazy-Newb-Pack-Linux.git
-	cd Lazy-Newb-Pack-Linux
+	#git clone -q $GH/carterscottm/Lazy-Newb-Pack-Linux.git
+	git clone -q $GH/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux.git
+	cd Lazy-Newb-Pack-Linux/pack
 	git clone -q https://github.com/carterscottm/LNP-shared-core.git ./LNP
-	cd ../
+	cd ../../
 fi
 
 #update PyLNP.json with current pack version and revision number (for auto-update notifications)
-find ./Lazy-Newb-Pack-Linux/LNP -name PyLNP.json -exec sed -i "s/\"packVersion\": \"\(.*\)\"/\"packVersion\": \"$LNP_VER\"/g" {} \;
+find ./Lazy-Newb-Pack-Linux/pack/LNP -name PyLNP.json -exec sed -i "s/\"packVersion\": \"\(.*\)\"/\"packVersion\": \"$LNP_VER\"/g" {} \;
 echo Creating the LNP directory structure
-cp Lazy-Newb-Pack-Linux/* $DEST_DIR/ -r
+cp Lazy-Newb-Pack-Linux/pack/* $DEST_DIR/ -r
 
 #Get PyLNP
 if [ ! -f $PYLNP ]; then
@@ -315,6 +316,7 @@ cd $DEST_DIR
 find . | grep .git | xargs rm -rf
 find . -type f -name curses*.bmp | xargs rm
 find ./LNP/graphics -type f -name mouse.bmp | xargs rm
+touch df_linux/gamelog.txt
 mkdir df_linux/data/save
 echo Creating $LNP_VER.tar.gz
 tar cfz LinuxLNP-$LNP_VER.tar.gz *
