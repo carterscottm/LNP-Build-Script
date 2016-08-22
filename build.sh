@@ -268,6 +268,7 @@ if [ ! -d qfconvert ]; then
 	echo Extracting old pack to retreive qfconvert utility
 	unzip -qq -o 04024r3-x64.zip
 	mv 04024r3-x64/LNP/utilities/qfconvert ./
+	mv qfconvert/community_bluepritns/ qfconvert/community_blueprints
 	rm -rf 04024r3-x64
 fi
 echo Copying QFconvert to LNP/utilities directory
@@ -338,8 +339,8 @@ cd $DEST_DIR
 find . | grep .git | xargs rm -rf
 find . -type f -name curses*.bmp | xargs rm
 find ./LNP/graphics -type f -name mouse.bmp | xargs rm
-find ./LNP -name README.* | xargs rm
-find ./LNP -name read* | xargs rm
+find ./LNP -name README.* -print0| xargs -0 rm
+find ./LNP -name read* -print0 | xargs -0 rm
 touch df_linux/gamelog.txt
 mkdir df_linux/data/save
 echo Creating $LNP_VER.tar.gz
