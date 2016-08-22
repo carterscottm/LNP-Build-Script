@@ -338,6 +338,8 @@ cd $DEST_DIR
 find . | grep .git | xargs rm -rf
 find . -type f -name curses*.bmp | xargs rm
 find ./LNP/graphics -type f -name mouse.bmp | xargs rm
+find ./LNP -name README.* | xargs rm
+find ./LNP -name read* | xargs rm
 touch df_linux/gamelog.txt
 mkdir df_linux/data/save
 echo Creating $LNP_VER.tar.gz
