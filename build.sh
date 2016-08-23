@@ -47,7 +47,6 @@ cd $DF_VER
 #Get LNP files and directory structure
 if [ ! -d Lazy-Newb-Pack-Linux ]; then
 	echo Downloading LNP
-	#git clone -q $GH/carterscottm/Lazy-Newb-Pack-Linux.git
 	git clone -q $GH/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux.git
 fi
 if [ ! -d Lazy-Newb-Pack-Linux/pack/LNP ]; then
