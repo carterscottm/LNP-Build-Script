@@ -342,6 +342,8 @@ find ./LNP -name PyLNP.json -exec sed -i "s/\"dffdID\": \"\(.*\)\"/\"dffdID\": \
 find ./LNP -name PyLNP.json -exec sed -i "s/\"updateMethod\": \"\(.*\)\"/\"updateMethod\": \"dffd\"/g" {} \;
 find ./LNP -name PyLNP.json -exec sed -i 's/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],\n                \["This Packs homepage","http:\/\/www\.bay12forums\.com\/smf\/index\.php\?topic=156011"\],'/g {} \; 
 
+find ./LNP -name README.* -print0| xargs -0 rm
+find ./LNP -name read* -print0 | xargs -0 rm
 touch df_linux/gamelog.txt
 mkdir df_linux/data/save
 echo Creating $LNP_VER.tar.gz
