@@ -46,11 +46,12 @@ cd $DF_VER
 
 #Get LNP files and directory structure
 if [ ! -d Lazy-Newb-Pack-Linux ]; then
-	echo Downloading LNP
+	echo Cloning $GH/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux.git
 	git clone -q $GH/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux.git
 fi
 if [ ! -f Lazy-Newb-Pack-Linux/pack/LNP/PyLNP.json ]; then
-	git clone -q https://github.com/carterscottm/LNP-shared-core.git ./Lazy-Newb-Pack-Linux/pack/LNP
+	echo Cloning $GH/carterscottm/LNP-shared-core.git
+	git clone -q $GH/carterscottm/LNP-shared-core.git ./Lazy-Newb-Pack-Linux/pack/LNP
 fi
 
 echo Creating the LNP directory structure
@@ -331,8 +332,8 @@ echo '}' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
 #Finalize the pack and create the tar.gz file for DFFD
 cd $DEST_DIR
 find . | grep .git | xargs rm -rf
-find . -type f -name curses*.bmp | xargs rm
-find ./LNP/graphics -type f -name mouse.bmp | xargs rm
+find . -type f -name curses*.bmp -print0 | xargs -0 rm
+find ./LNP/graphics -type f -name mouse.bmp -print0 | xargs -0 rm
 find ./LNP -name README.* -print0| xargs -0 rm
 find ./LNP -name read* -print0 | xargs -0 rm
 
@@ -342,8 +343,6 @@ find ./LNP -name PyLNP.json -exec sed -i "s/\"dffdID\": \"\(.*\)\"/\"dffdID\": \
 find ./LNP -name PyLNP.json -exec sed -i "s/\"updateMethod\": \"\(.*\)\"/\"updateMethod\": \"dffd\"/g" {} \;
 find ./LNP -name PyLNP.json -exec sed -i 's/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],\n                \["This Packs homepage","http:\/\/www\.bay12forums\.com\/smf\/index\.php\?topic=156011"\],'/g {} \; 
 
-find ./LNP -name README.* -print0| xargs -0 rm
-find ./LNP -name read* -print0 | xargs -0 rm
 touch df_linux/gamelog.txt
 mkdir df_linux/data/save
 echo Creating $LNP_VER.tar.gz
