@@ -50,7 +50,6 @@ if [ ! -d Lazy-Newb-Pack-Linux ]; then
 	git clone -q $GH/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux.git
 fi
 if [ ! -f Lazy-Newb-Pack-Linux/pack/LNP/PyLNP.json ]; then
-	cd Lazy-Newb-Pack-Linux/pack
 	git clone -q https://github.com/carterscottm/LNP-shared-core.git ./Lazy-Newb-Pack-Linux/pack/LNP
 fi
 
