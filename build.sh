@@ -46,12 +46,12 @@ cd $DF_VER
 
 #Get LNP files and directory structure
 if [ ! -d Lazy-Newb-Pack-Linux ]; then
-	echo Downloading LNP
-	#git clone -q $GH/carterscottm/Lazy-Newb-Pack-Linux.git
+	echo Cloning $GH/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux.git
 	git clone -q $GH/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux.git
 fi
 if [ ! -f Lazy-Newb-Pack-Linux/pack/LNP/PyLNP.json ]; then
-	git clone -q https://github.com/carterscottm/LNP-shared-core.git ./Lazy-Newb-Pack-Linux/pack/LNP
+	echo Cloning $GH/carterscottm/LNP-shared-core.git
+	git clone -q $GH/carterscottm/LNP-shared-core.git ./Lazy-Newb-Pack-Linux/pack/LNP
 fi
 
 echo Creating the LNP directory structure
