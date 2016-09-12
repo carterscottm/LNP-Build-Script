@@ -68,7 +68,7 @@ if [ ! -d $PYLNP ]; then
   #wget -qnc https://bitbucket.org/Pidgeot/python-lnp/downloads/$PYLNP
 	hg clone https://bitbucket.org/Pidgeot/python-lnp
 	cd python-lnp
-	hg checkout 4d75ca3
+	hg checkout 8ad84a2
 	pyinstaller lnp.spec
 	cd ..
 fi
@@ -198,9 +198,6 @@ mkdir $DEST_DIR/LNP/utilities/dwarf_therapist
 if [ ! -d Dwarf-Therapist ]; then
 	echo Downloading Dwarf Therapist
 	git clone -q $GH/splintermind/Dwarf-Therapist.git
-	cd Dwarf-Therapist
-	git reset --hard 6f9379f
-	cd ..
 	echo compiling Dwarf Therapist, please be patient.
 	cd Dwarf-Therapist
 	qmake
