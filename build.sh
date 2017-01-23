@@ -7,8 +7,8 @@
 #Variable declarations
 LNP_VER="0.43.03-r04"                                   # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
-ARMOK_VISION_VER="v0.11.3"                              # part of the download URL
-ARMOK_VISION="Armok.Vision.v0.11.3.Linux.zip"            # file name to download
+ARMOK_VISION_VER="v0.15.0"                              # part of the download URL
+ARMOK_VISION="Armok.Vision.v0.15.0.Linux.zip"           # file name to download
 
 DF_VER="0.43.03"                                        # part of the download URL, and used to allow graphics pack compatibility
 DF="df_43_03_linux.tar.bz2"                             # file name to download
@@ -22,18 +22,18 @@ DFHACK="dfhack-0.43.03-r1-Linux-gcc-4.8.1.tar.bz2"      # file name to download
 LEGENDS_BROWSER_VER="1.0.12"                            # part of the download URL
 LEGENDS_BROWSER="legendsbrowser-1.0.12.jar"             # file name to download
 
-#PYLNP="PyLNP_0.12-linux-x64.tar.xz"                     # part of the download URL
-PYLNP="python-lnp"
+PYLNP="PyLNP_0.12a-linux-x64.tar.xz"                    # part of the download URL
+#PYLNP="python-lnp"
 
 SOUNDCENSE="SoundCenSe.GTK.v1.4.2.Win32.zip"						# file name to download
 SOUNDCENSE_VER="1.4.2"
 
 SOUNDSENSE="soundSense_2016-1_196.zip"                  # file name to download
 
-TWBT_VER="v5.65"                                        # part of the download URL
-TWBT="twbt-5.65-linux.zip"                              # file name to download
+TWBT_VER="v5.70"                                        # part of the download URL
+TWBT="twbt-5.70-linux.zip"                              # file name to download
 
-DEST_DIR="df_$DF_VER"                                   # folder name where everything will be copied to
+DEST_DIR="dist"                                         # folder name where everything will be copied to
 
 GH="https://github.com"                                 # because why not?
 
@@ -63,18 +63,17 @@ echo Creating the LNP directory structure
 cp Lazy-Newb-Pack-Linux/pack/* $DEST_DIR/ -r
 
 #Get PyLNP
-if [ ! -d $PYLNP ]; then
+if [ ! -f $PYLNP ]; then
 	echo Downloading $PYLNP
-  #wget -qnc https://bitbucket.org/Pidgeot/python-lnp/downloads/$PYLNP
-	hg clone https://bitbucket.org/Pidgeot/python-lnp
-	cd python-lnp
-	hg checkout 8ad84a2
-	pyinstaller lnp.spec
-	cd ..
+	wget -qnc https://bitbucket.org/Pidgeot/python-lnp/downloads/$PYLNP
+	#hg clone https://bitbucket.org/Pidgeot/python-lnp
+	#cd python-lnp
+	#hg checkout 8ad84a2
+	#pyinstaller lnp.spec
+	#cd ..
 fi
 echo Extracting $PYLNP
-#tar -xf $PYLNP -C ./$DEST_DIR/
-cp $PYLNP/dist/PyLNP ./$DEST_DIR
+tar -xf $PYLNP -C ./$DEST_DIR/
 
 #Get Dwarf Fortress
 if [ ! -f $DF ]; then
@@ -352,6 +351,8 @@ find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[PRINT_MODE\:\(.*\
 echo Setting Phoebus as the default graphics pack
 cp $DEST_DIR/LNP/graphics/Phoebus/* $DEST_DIR/df_linux/ -R
 cp $DEST_DIR/LNP/graphics/Phoebus/data/init/colors.txt $DEST_DIR/LNP/colors/\ Current\ graphics\ pack.txt
+find ./$DEST_DIR/df_linux/data/init -name init.txt -exec sed -i "s/\[FONT\:\(.*\)\]/\[FONT\:curses_640x300.png\]/g" {} \;
+find ./$DEST_DIR/df_linux/data/init -name init.txt -exec sed -i "s/\[FULLFONT\:\(.*\)\]/\[FULLFONT\:curses_640x300.png\]/g" {} \;
 
 #Manually create installed_raws.txt
 echo '# List of raws merged by PyLNP:' > $DEST_DIR/df_linux/raw/installed_raws.txt
