@@ -101,7 +101,7 @@ fi
 if [ -f  $TWBT ]; then
   echo Extracting $TWBT
   unzip -qq -o $TWBT -d twbt
-  chmod 700 *.png
+  chmod 700 twbt/*.png
   cp twbt/*.png $DEST_DIR/df_linux/data/art
   cp twbt/realcolors.lua $DEST_DIR/df_linux/hack/scripts/
   cp twbt/$DFHACK_VER/* $DEST_DIR/df_linux/hack/plugins/
@@ -114,20 +114,20 @@ fi
 if [ ! -d gfx ]; then
   echo Downloading the graphics packs
   mkdir gfx
-  git clone -q $GH/DFgraphics/Afro-Graphics.git gfx
-  git clone -q $GH/DFgraphics/AutoReiv.git gfx
-  git clone -q $GH/DFgraphics/CLA.git gfx 
-  git clone -q $GH/DFgraphics/GemSet.git gfx
-  git clone -q $GH/DFgraphics/IronHand.git gfx
-  git clone -q $GH/DFgraphics/Jolly-Bastion.git gfx
-  git clone -q $GH/DFgraphics/Mayday.git gfx
-  git clone -q $GH/DFgraphics/Obsidian.git gfx
-  git clone -q $GH/DFgraphics/Phoebus.git gfx
-  git clone -q $GH/DFgraphics/Rally-Ho.git gfx
-  git clone -q $GH/DFgraphics/Spacefox.git gfx
-  git clone -q $GH/DFgraphics/Taffer.git gfx
-  git clone -q $GH/DFgraphics/Tergel.git gfx
-  git clone -q $GH/DFgraphics/Wanderlust.git gfx
+  git clone -q $GH/DFgraphics/Afro-Graphics.git gfx/Afro-Graphics
+  git clone -q $GH/DFgraphics/AutoReiv.git gfx/AutoReiv
+  git clone -q $GH/DFgraphics/CLA.git gfx/CLA 
+  git clone -q $GH/DFgraphics/GemSet.git gfx/GemSet
+  git clone -q $GH/DFgraphics/IronHand.git gfx/IronHand
+  git clone -q $GH/DFgraphics/Jolly-Bastion.git gfx/Jolly-Bastion
+  git clone -q $GH/DFgraphics/Mayday.git gfx/Mayday
+  git clone -q $GH/DFgraphics/Obsidian.git gfx/Obsidian
+  git clone -q $GH/DFgraphics/Phoebus.git gfx/Phoebus
+  git clone -q $GH/DFgraphics/Rally-Ho.git gfx/Rally-Ho
+  git clone -q $GH/DFgraphics/Spacefox.git gfx/Spacefox
+  git clone -q $GH/DFgraphics/Taffer.git gfx/Taffer
+  git clone -q $GH/DFgraphics/Tergel.git gfx/Tergel
+  git clone -q $GH/DFgraphics/Wanderlust.git gfx/Wanderlust
 
   # Roll back the graphics packs to a known-compatible commit with this version of DF
   #cd gfx/Afro-Graphics
