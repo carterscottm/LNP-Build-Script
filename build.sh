@@ -1,13 +1,12 @@
 #!/bin/bash
-
 # TODO:
 #			* add additional documentation
 
 #Variable declarations
-LNP_VER="0.43.05-rc1"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.43.05-rc2"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
-ARMOK_VISION_VER="v0.16.0"                                  # part of the download URL
-ARMOK_VISION="Armok.Vision.v0.16.0.Linux.zip"               # file name to download
+ARMOK_VISION_VER="v0.16.2"                                  # part of the download URL
+ARMOK_VISION="Armok.Vision.v0.16.2.Linux.zip"               # file name to download
 
 DF_VER="0.43.05"                                            # part of the download URL, and used to allow graphics pack compatibility
 DF="df_43_05_linux.tar.bz2"                                 # file name to download
@@ -15,8 +14,8 @@ DF="df_43_05_linux.tar.bz2"                                 # file name to downl
 DF_BASELINES_VER="df_43_05"                                 # part of the file path in LNP directory
 DF_BASELINES="df_43_05_win_s.zip"                           # file name to download
 
-DFHACK_VER="0.43.05-beta1"                                 # part of the download URL
-DFHACK="dfhack-0.43.05-beta1-Linux-64-gcc-4.8.1.tar.bz2"   # file name to download
+DFHACK_VER="0.43.05-r1"                                 # part of the download URL
+DFHACK="dfhack-0.43.05-r1-Linux-64-gcc-4.8.1.tar.bz2"   # file name to download
 
 LEGENDS_BROWSER_VER="1.0.12"                                # part of the download URL
 LEGENDS_BROWSER="legendsbrowser-1.0.12.jar"                 # file name to download
@@ -29,13 +28,14 @@ SOUNDCENSE_VER="1.4.2"
 
 SOUNDSENSE="soundSense_2016-1_196.zip"                      # file name to download
 
-TWBT_VER="v5.77"                                            # part of the download URL
-TWBT="twbt-5.77-linux.zip"                                  # file name to download
+TWBT_VER="v5.84"                                            # part of the download URL
+TWBT="twbt-5.84-linux.zip"                                  # file name to download
 
 DEST_DIR="dist"                                             # folder name where everything will be copied to
 
 GH="https://github.com"                                     # because why not?
 
+dffID="12762"                                               # added for portability
 
 # Begin
 if [ ! -d $DF_VER ]; then
@@ -197,6 +197,7 @@ if [ -f $DF_BASELINES ]; then
 fi
 
 #Get Dwarf Therapist
+cp ~/projects/dwarf_therapist $DEST_DIR/LNP/utilities -r
 #mkdir $DEST_DIR/LNP/utilities/dwarf_therapist
 #if [ ! -d Dwarf-Therapist ]; then
 #	echo Downloading Dwarf Therapist
@@ -340,7 +341,7 @@ fi
 
 #Copy  baseline art to tilesets directory
 echo Copying baseline art to LNP/tilesets directory
-cp ./$DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/* ./$DEST_DIR/LNP/tilesets
+cp ./baselines/$DF_BASELINES_VER/data/art/* ./$DEST_DIR/LNP/tilesets
 #echo ./$DEST_DIR/LNP/graphics/*/data/art/ | xargs -n 1 cp ./$DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/curses_640x300.png
 
 #Set sane defaults for all graphics packs
@@ -379,10 +380,10 @@ mkdir $DEST_DIR/LNP/graphics/ASCII/data
 mkdir $DEST_DIR/LNP/graphics/ASCII/data/art
 mkdir $DEST_DIR/LNP/graphics/ASCII/data/init
 
-cp $DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/* $DEST_DIR/LNP/graphics/ASCII/data/art
-cp $DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/init/colors.txt $DEST_DIR/LNP/graphics/ASCII/data/init
-cp $DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/init/d_init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
-cp $DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/init/init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
+cp ./baselines/$DF_BASELINES_VER/data/art/* $DEST_DIR/LNP/graphics/ASCII/data/art
+cp ./baselines/$DF_BASELINES_VER/data/init/colors.txt $DEST_DIR/LNP/graphics/ASCII/data/init
+cp ./baselines/$DF_BASELINES_VER/data/init/d_init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
+cp ./baselines/$DF_BASELINES_VER/data/init/init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
 
 echo '{' > $DEST_DIR/LNP/graphics/ASCII/manifest.json
 echo '    "author": "ToadyOne",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
@@ -401,7 +402,7 @@ find ./LNP -name read* -print0 | xargs -0 rm
 
 #update PyLNP.json with current pack version and revision number (for auto-update notifications)
 find ./LNP -name PyLNP.json -exec sed -i "s/\"packVersion\": \"\(.*\)\"/\"packVersion\": \"$LNP_VER\"/g" {} \;
-find ./LNP -name PyLNP.json -exec sed -i "s/\"dffdID\": \"\(.*\)\"/\"dffdID\": \"11722\"/g" {} \;
+find ./LNP -name PyLNP.json -exec sed -i "s/\"dffdID\": \"\(.*\)\"/\"dffdID\": \"$dffdID\"/g" {} \;
 find ./LNP -name PyLNP.json -exec sed -i "s/\"updateMethod\": \"\(.*\)\"/\"updateMethod\": \"dffd\"/g" {} \;
 find ./LNP -name PyLNP.json -exec sed -i 's/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],\n                \["This Packs homepage","http:\/\/www\.bay12forums\.com\/smf\/index\.php\?topic=156011"\],'/g {} \; 
 
