@@ -17,8 +17,8 @@ DF_BASELINES="df_43_05_win_s.zip"                           # file name to downl
 DFHACK_VER="0.43.05-r1"                                 # part of the download URL
 DFHACK="dfhack-0.43.05-r1-Linux-64-gcc-4.8.1.tar.bz2"   # file name to download
 
-LEGENDS_BROWSER_VER="1.0.12"                                # part of the download URL
-LEGENDS_BROWSER="legendsbrowser-1.0.12.jar"                 # file name to download
+LEGENDS_BROWSER_VER="1.12.1"                                # part of the download URL
+LEGENDS_BROWSER="legendsbrowser-1.12.1.jar"                 # file name to download
 
 PYLNP="PyLNP_0.12a-linux-x64.tar.xz"                        # part of the download URL
 #PYLNP="python-lnp"
