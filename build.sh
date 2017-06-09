@@ -3,7 +3,7 @@
 #			* add additional documentation
 
 #Variable declarations
-LNP_VER="0.43.05-rc2"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.43.05-r01"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
 ARMOK_VISION_VER="v0.16.2"                                  # part of the download URL
 ARMOK_VISION="Armok.Vision.v0.16.2.Linux.zip"               # file name to download
@@ -35,7 +35,7 @@ DEST_DIR="dist"                                             # folder name where 
 
 GH="https://github.com"                                     # because why not?
 
-dffID="12762"                                               # added for portability
+dffdID="12762"                                               # added for portability
 
 # Begin
 if [ ! -d $DF_VER ]; then
@@ -194,6 +194,7 @@ fi
 
 #Get Dwarf Therapist
 cp ~/projects/dwarf_therapist $DEST_DIR/LNP/utilities -r
+mkdir $DEST_DIR/LNP/utilities/dwarf_therapist/share/log
 #mkdir $DEST_DIR/LNP/utilities/dwarf_therapist
 #if [ ! -d Dwarf-Therapist ]; then
 #	echo Downloading Dwarf Therapist
@@ -362,6 +363,7 @@ fi
 echo Setting Phoebus as the default graphics pack
 cp $DEST_DIR/LNP/graphics/Phoebus/* $DEST_DIR/df_linux/ -R
 cp $DEST_DIR/LNP/graphics/Phoebus/data/init/colors.txt $DEST_DIR/LNP/colors/\ Current\ graphics\ pack.txt
+rm $DEST_DIR/df_linux/manifest.json
 find ./$DEST_DIR/df_linux/data/init -name init.txt -exec sed -i "s/\[FONT\:\(.*\)\]/\[FONT\:curses_640x300.png\]/g" {} \;
 find ./$DEST_DIR/df_linux/data/init -name init.txt -exec sed -i "s/\[FULLFONT\:\(.*\)\]/\[FULLFONT\:curses_640x300.png\]/g" {} \;
 
@@ -395,6 +397,7 @@ find . -type f -name curses*.bmp -print0 | xargs -0 rm
 find ./LNP/graphics -type f -name mouse.bmp -print0 | xargs -0 rm
 find ./LNP -name README.* -print0| xargs -0 rm
 find ./LNP -name read* -print0 | xargs -0 rm
+find ./LNP -name .travis* -print0 | xargs -0 rm
 
 #update PyLNP.json with current pack version and revision number (for auto-update notifications)
 find ./LNP -name PyLNP.json -exec sed -i "s/\"packVersion\": \"\(.*\)\"/\"packVersion\": \"$LNP_VER\"/g" {} \;
@@ -404,8 +407,9 @@ find ./LNP -name PyLNP.json -exec sed -i 's/\["Donate for Dwarf Fortress","http:
 
 touch df_linux/gamelog.txt
 mkdir df_linux/data/save
+mkdir df_linux/sounds/packs -p
 echo Creating $LNP_VER.tar.gz
-tar cfz LinuxLNP-$LNP_VER.tar.gz *
+tar cfz LinuxLNP-$LNP_VER.tar.gz --transform "s,^,LinuxLNP-$LNP_VER/," *
 mv *.tar.gz ../../
 cd ../../
 echo Finished!
