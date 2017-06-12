@@ -3,7 +3,7 @@
 #			* add additional documentation
 
 #Variable declarations
-LNP_VER="0.43.05-r01"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.43.05-r02"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
 ARMOK_VISION_VER="v0.16.2"                                  # part of the download URL
 ARMOK_VISION="Armok.Vision.v0.16.2.Linux.zip"               # file name to download
@@ -17,10 +17,10 @@ DF_BASELINES="df_43_05_win_s.zip"                           # file name to downl
 DFHACK_VER="0.43.05-r1"                                 # part of the download URL
 DFHACK="dfhack-0.43.05-r1-Linux-64-gcc-4.8.1.tar.bz2"   # file name to download
 
-LEGENDS_BROWSER_VER="1.12.1"                                # part of the download URL
-LEGENDS_BROWSER="legendsbrowser-1.12.1.jar"                 # file name to download
+LEGENDS_BROWSER_VER="1.12.2"                                # part of the download URL
+LEGENDS_BROWSER="legendsbrowser-1.12.2.jar"                 # file name to download
 
-PYLNP="PyLNP_0.12a-linux-x64.tar.xz"                        # part of the download URL
+PYLNP="PyLNP_0.12b-linux-x64.tar.xz"                        # part of the download URL
 #PYLNP="python-lnp"
 
 SOUNDCENSE="SoundCenSe.GTK.v1.4.2.Win32.zip"						    # file name to download
