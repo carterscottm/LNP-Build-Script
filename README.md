@@ -3,8 +3,7 @@ Lazy-Newb-Pack-Linux V0.43.05
 
 A small package to get people started with Dwarf Fortress on linux. Please take time to check out the [Official thread](http://www.bay12forums.com/smf/index.php?topic=163211.0). There are a few help documents in the [Wiki](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki) if you should get stuck.
 
-
-#### Linux Download 
+#### Linux Download
 
 [DFFD](http://dffd.bay12games.com/file.php?id=12762)
 
@@ -18,7 +17,7 @@ R02 - PyLNP 0.12b, Legends Browser 0.12.2, rebuilt Dwarf Therapist using Qt 4 (f
 
 R01 - TWBT 5.84, DFHack 0.43.05-r1, Legends Browser 0.12.1
 
-RC1 - DFHack 0.43.05-beta1, TWBT 5.77  
+RC1 - DFHack 0.43.05-beta1, TWBT 5.77
 
 
 
@@ -27,30 +26,33 @@ Included Mods
 -------------
 * [Pidgeot's PyLNP 0.12b Lazy Newb Pack Python interface](http://www.bay12forums.com/smf/index.php?topic=140808.0)
 * Utilities:
-    * [DFhack Linux V0.43.05-r1 (gcc 4.8.1)](http://www.bay12forums.com/smf/index.php?topic=139553.0) Thanks lethosor!
+    * [DFhack Linux V0.43.05-r1 (gcc 4.8.1)](http://www.bay12forums.com/smf/index.php?topic=139553.0)
     * [TWBT 5.84](http://www.bay12forums.com/smf/index.php?topic=138754.0)
     * [DanFritz's fork of Splintermind's Dwarf Therapist v37](https://github.com/DanFritz/Dwarf-Therapist) (compiled with qt4)
-    * [Soundsense r2016-1](http://df.zweistein.cz/soundsense/) (need to run auto update on first use)
-    * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (*Requires Mono, see http://www.mono-project.com/download/#download-lin for install instructions*)
+    * [Soundsense r2016-1](http://df.zweistein.cz/soundsense/)
+    * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (Requires Mono, go [here](http://www.mono-project.com/download/#download-lin) for install instructions)
     * [qfconvert 2.04](http://www.joelpt.net/quickfort/)
     * [DF Announcement Filter 1.01](http://www.bay12forums.com/smf/index.php?topic=130030.0)
     * [Legends Browser 1.12.2] (http://www.bay12forums.com/smf/index.php?topic=155307.0)
-* Tilesets (Now using [fricy's Updated tilesets](https://github.com/fricy/DFgraphics)!)
+    - [Armok Vision 0.16.2](http://www.bay12forums.com/smf/index.php?topic=146473.0)
+* Tilesets (Now using [fricy's Updated tilesets](https://github.com/DFgraphics)!)
     - [12x8] ASCII [Default]
     - [16x16] ASCII
-    - [16x16] [Afro's Graphics Pack 1.33](http://dffd.wimbli.com/file.php?id=9137)
-    - [16x16] [CLA v0.40.14v19](http://www.bay12forums.com/smf/index.php?topic=105376.0)
-    - [15x15] [Duerer v.0.6](http://www.bay12forums.com/smf/index.php?topic=142083.0)
-    - [12x12] [Grim Fortress 1.2](http://www.bay12forums.com/smf/index.php?topic=122421.0)
-    - [16x16] [Ironhand v0.40.0x](http://dffd.wimbli.com/file.php?id=8747)
-    - [12x12] [Jolly Bastion](http://www.bay12forums.com/smf/index.php?topic=104261.0)
-    - [16x16] [MLC ASCII Tileset for TWBT](http://www.bay12forums.com/smf/index.php?topic=128933.0)
-    - [16x16] [Mayday v0.40.0x](http://goblinart.pl/vg-eng/df.php) with [Doren's additions](http://www.bay12forums.com/smf/index.php?topic=141195.0)
-    - [16x16] [Obsidian  graphics pack 40.x unofficial update](http://www.bay12forums.com/smf/index.php?topic=126934.0)
-    - [16x16] [Phoebus v0.40.0x](http://www.bay12forums.com/smf/index.php?topic=137096.0)
-    - [16x20] [Shizzle 1.3](http://dffd.wimbli.com/file.php?id=7205)
-    - [20x20] [Taffer XVI](http://www.bay12forums.com/smf/index.php?topic=107924.0)
-    - [24x24] [Vherid v7](http://www.bay12forums.com/smf/index.php?topic=89856.0)
+    - [16x16] [Afro](https://github.com/DFgraphics/Afro-Graphics)
+    - [20x20] [AutoReiv](https://github.com/DFgraphics/AutoReiv)
+    - [18x18] [CLA](https://github.com/DFgraphics/CLA)
+    - [24x24] [GemSet](https://github.com/DFgraphics/GemSet)
+    - [16x16] [Ironhand](https://github.com/DFgraphics/Ironhand)
+    - [12x12] [Jolly Bastion](https://github.com/DFgraphics/Jolly-Bastion)
+    - [16x16] [Mayday](https://github.com/DFgraphics/Mayday)
+    - [16x16] [Obsidian](https://github.com/DFgraphics/Obsidian)
+    - [16x16] [Phoebus](https://github.com/DFgraphics/Phoebus)
+    - [16x20] [Rally Ho](https://github.com/DFgraphics/Rally-Ho)
+    - [16x16] [Spacefox](https://github.com/DFgraphics/Spacefox)
+    - [20x20] [Taffer](https://github.com/DFgraphics/Taffer)
+    - [16x16] [Tergel](https://github.com/DFgraphics/Tergel)
+    - [16x16] [Wanderlust](https://github.com/DFgraphics/Wanderlust)
+
 
  also includes
  * [Captian Duck's DF2014 Embark Profile V3](http://www.reddit.com/r/dwarffortress/comments/2bzrqg/dfvidtuts2014_embark_profile_beta_testing/)
@@ -109,7 +111,7 @@ Release notes for 0.40.23 (December 21, 2014):
 I've sorted out the "camp forever" errorlog message many of you have probably seen. Once dwarf/adventure mode began, there was a misflagging that caused various armies to lose their way. It doesn't directly affect invaders camping between marches, but armies lost to the bug (on their way home, for instance, or attacking villages) wouldn't be available for invasions later. This doesn't affect refugee groups that have nowhere to go... they still hang out and sleep all day.
 
 
-Major bug fixes 
+Major bug fixes
 
     * Multi-item jobs like artifact moods, forging breastplates and smelting pig iron should work now
 
@@ -122,10 +124,10 @@ Other bug fixes/tweaks
 Release notes for 0.40.22 (December 19, 2014):
 -------------
 
-This fixes some large and small problems with yesterday's release. Save corruption was quite possible, so upgrading is important! You can still bring your old saves from 0.40.03+ into this new version. 
+This fixes some large and small problems with yesterday's release. Save corruption was quite possible, so upgrading is important! You can still bring your old saves from 0.40.03+ into this new version.
 
 
-Major bug fixes 
+Major bug fixes
 
     * Made hauling jobs that chain to other hauling jobs respect job postings, instead of causing crashes and other horror
     * Fixed stair/ramp removal
@@ -138,7 +140,7 @@ Other bug fixes/tweaks
   ******************************************************
 
 Release notes for 0.40.21 (December 19, 2014):
--------------  
+-------------
 
 Here is the job priorities release. It should work fine with old saves, though existing hauling jobs may need to work themselves out for a bit. Further job prioritization work can be done when we get through the framework for start scenarios, since we'll better understand how dwarves fit into the fortress at that time. 
 
