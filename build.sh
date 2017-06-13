@@ -324,7 +324,7 @@ if [ ! -d qfconvert ]; then
     echo Downloading old pack to retreive qfconvert utility
     wget http://dffd.bay12games.com/download.php?id=8936\&f=04024r3-x64.zip -O 04024r3-x64.zip
   fi
-  if [ -f 04023r3-x64.zip ]; then
+  if [ -f 04024r3-x64.zip ]; then
     echo Extracting old pack to retreive qfconvert utility
     unzip -qq -o 04024r3-x64.zip
     mv 04024r3-x64/LNP/utilities/qfconvert ./
