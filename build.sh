@@ -250,13 +250,24 @@ fi
 mkdir ./$DEST_DIR/LNP/utilities/legends_browser
 cp $LEGENDS_BROWSER ./$DEST_DIR/LNP/utilities/legends_browser
 
-#Create shell script to launch Legends Browser
-echo '#!/bin/bash' > ./$DEST_DIR/LNP/utilities/legends_browser/LegendsBrowser.sh
-echo 'java -jar' $LEGENDS_BROWSER >> ./$DEST_DIR/LNP/utilities/legends_browser/LegendsBrowser.sh
-chmod +x ./$DEST_DIR/LNP/utilities/legends_browser/LegendsBrowser.sh
-echo 'Legends Browser Exclusions' >> ./$DEST_DIR/LNP/utilities/exclude.txt
-#Exclude the .jar file from showing up on the list of utilities in LNP
-echo '['$LEGENDS_BROWSER']' >> ./$DEST_DIR/LNP/utilities/exclude.txt
+fi
+
+#Get Old Pack (for qfconvert only)
+if [ ! -d qfconvert ]; then
+  if [ ! -f 04024r3-x64.zip ]; then
+    echo Downloading old pack to retreive qfconvert utility
+    wget http://dffd.bay12games.com/download.php?id=8936\&f=04024r3-x64.zip -O 04024r3-x64.zip
+  fi
+  if [ -f 04024r3-x64.zip ]; then
+    echo Extracting old pack to retreive qfconvert utility
+    unzip -qq -o 04024r3-x64.zip
+    mv 04024r3-x64/LNP/utilities/qfconvert ./
+    mv qfconvert/community_bluepritns/ qfconvert/community_blueprints
+    rm -rf 04024r3-x64
+  fi
+fi
+echo Copying QFconvert to LNP/utilities directory
+cp qfconvert ./$DEST_DIR/LNP/utilities -r
 
 #Copy  baseline art to tilesets directory
 echo Copy curses_640x300.png to all graphics packs
