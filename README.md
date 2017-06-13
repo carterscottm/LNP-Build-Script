@@ -10,11 +10,11 @@ A small package to get people started with Dwarf Fortress on linux. Please take 
 
 #### Older Linux Downloads
 
-#### Package Version Notes
+#### Component Upgrade Notes
 
 Update: June 12, 2017
 
-R02 - Updated Pidgeot's PyLNP to 0.12b, updated Legends Browser to 0.12.2, rebuilt Dwarf Therapist using Qt 4 (for wider compatability)
+R02 - PyLNP 0.12b, Legends Browser 0.12.2, rebuilt Dwarf Therapist using Qt 4 (for wider compatability)
 
 R01 - TWBT 5.84, DFHack 0.43.05-r1, Legends Browser 0.12.1
 
@@ -25,17 +25,16 @@ RC1 - DFHack 0.43.05-beta1, TWBT 5.77
 
 Included Mods
 -------------
-* [Pidgeot's PyLNP 0.9.5a Lazy Newb Pack Python interface](http://www.bay12forums.com/smf/index.php?topic=140808.0)
+* [Pidgeot's PyLNP 0.12b Lazy Newb Pack Python interface](http://www.bay12forums.com/smf/index.php?topic=140808.0)
 * Utilities:
     * [DFhack Linux V0.43.05-r1 (gcc 4.8.1)](http://www.bay12forums.com/smf/index.php?topic=139553.0) Thanks lethosor!
-        * [StoneSense](https://github.com/DFHack/stonesense)
-        * [TWBT 5.84](http://www.bay12forums.com/smf/index.php?topic=138754.0)
-        * [splintermind's Dwarf Therapist v37](https://github.com/splintermind/Dwarf-Therapist/tree/DF2014) (compiled with qt4)
-    * [Soundsense r2014-1](http://df.zweistein.cz/soundsense/) (need to run auto update on first use)
+    * [TWBT 5.84](http://www.bay12forums.com/smf/index.php?topic=138754.0)
+    * [DanFritz's fork of Splintermind's Dwarf Therapist v37](https://github.com/DanFritz/Dwarf-Therapist) (compiled with qt4)
+    * [Soundsense r2016-1](http://df.zweistein.cz/soundsense/) (need to run auto update on first use)
+    * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (*Requires Mono, see http://www.mono-project.com/download/#download-lin for install instructions*)
     * [qfconvert 2.04](http://www.joelpt.net/quickfort/)
-    * [chromafort 2010-04-25](http://www.bay12forums.com/smf/index.php?topic=55025.0)
     * [DF Announcement Filter 1.01](http://www.bay12forums.com/smf/index.php?topic=130030.0)
-    * [World Viewer for DF 40.0x](http://www.bay12forums.com/smf/index.php?topic=128932.0) (works with wine)
+    * [Legends Browser 1.12.2] (http://www.bay12forums.com/smf/index.php?topic=155307.0)
 * Tilesets (Now using [fricy's Updated tilesets](https://github.com/fricy/DFgraphics)!)
     - [12x8] ASCII [Default]
     - [16x16] ASCII
