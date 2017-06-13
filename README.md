@@ -31,7 +31,7 @@ Included Mods
     * [TWBT 5.84](http://www.bay12forums.com/smf/index.php?topic=138754.0)
     * [DanFritz's fork of Splintermind's Dwarf Therapist v37](https://github.com/DanFritz/Dwarf-Therapist) (compiled with qt4)
     * [Soundsense r2016-1](http://df.zweistein.cz/soundsense/) (need to run auto update on first use)
-    * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (*Requires Mono, see http://www.mono-project.com/download/#download-lin for install instructions*)
+    * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (*Requires Mono, go [here](http://www.mono-project.com/download/#download-lin) for install instructions*)
     * [qfconvert 2.04](http://www.joelpt.net/quickfort/)
     * [DF Announcement Filter 1.01](http://www.bay12forums.com/smf/index.php?topic=130030.0)
     * [Legends Browser 1.12.2] (http://www.bay12forums.com/smf/index.php?topic=155307.0)
