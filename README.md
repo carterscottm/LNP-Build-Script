@@ -9,6 +9,16 @@ The Linux LNP Can be downloaded at the below location:
 
 - __[Dwarf Fortress File Depot](http://dffd.bay12games.com/file.php?id=12762)__
 
+
+
+__To Run:__ Navigate to the extrancted directory and run ``` ./startlnp```
+
+##### LNP IMPORT TIPS
+When first launching a new version of the LNP, you'll be asked if you want to import files from a previous installation. If you select yes, open the previous version's df_linux folder in the file chooser dialog, then click ok. Selecting the LNP folder or the root of the pack will cause the import to fail. The import process will grab your DF saves, SoundSense and/or SoundCense sounds, gamelog, and dfhack history from the previous version.
+
+
+
+
 ### Component Updates (remove this section?)
 
 * __R02__ - PyLNP 0.12b, Legends Browser 0.12.2, rebuilt Dwarf Therapist using Qt 4 (for wider compatability)
@@ -50,20 +60,75 @@ The Linux LNP Can be downloaded at the below location:
      * [16x16] [Tergel](https://github.com/DFgraphics/Tergel)
      * [16x16] [Wanderlust](https://github.com/DFgraphics/Wanderlust)
 
+
+##   Dependencies
+
+   Install required packages
+
+ For Debian / Ubuntu
+```
+sudo apt-get install default-jre libsdl1.2debian:i386 libsdl-image1.2:i386 libsdl-ttf2.0-0:i386 libglu1-mesa:i386 libgtk2.0-0:i386 libopenal1:i386 libjpeg62:i386 wget coreutils tar unzip unrar make g++ gcc patch xterm sed python bzip2 qtchooser qtbase5-dev qtbase5-dev-tools qtscript5-dev qt5-qmake libqt5script5 libqt5scripttools5 libqxt-core0 libqxt-gui0
+```
+
+ For Fedora (21)
+```
+yum install SDL.i686 SDL_image.i686 SDL_ttf.i686 mesa-libGLU.i686 gtk2.i686 zlib.i686 openal-soft.i686 xterm python qt qt-x11 bzip2 xorg-x11-fonts-Type1
+```
+
+  System Requirements
+-------------
+
+* SDL 1.2, 32-bit
+* LibGLU 1, 32-bit
+* LibGTK 2.0, 32-bit
+* OpenAL 1.2, 32-bit
+* LibJPEG 6.2, 32-bit
+* Git
+* Mercurial (hg)
+* Qt5 Development Libraries including qmake
+* Python 2.x (for Quickfort)
+* The following fairly standard Linux utilities:
+  - wget
+  - sha1sum
+  - sed
+  - tar
+  - unzip
+  - unrar
+  - make
+  - g++
+  - gcc
+  - xterm
+
+ Usage
+=====
+
+```
+Usage: ./startlnp
+```
+
+
+Tested On
+=========
+* Debian Stretch - With deps listed above installed..
+
+
+Common Issues
+=============
+See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Common-Errors).
+
+
+
+
 ******************************************************
 ## Linux LNP Changelog
 ### Release notes for 0.43.05-r1 (June 8, 2017):
 
-To Run: Simply execute the included startlnp script.  This is used to ensure Dwarf Therapist can talk to Dwarf Fortress. 
 
-##### LNP IMPORT TIPS
-When first launching a new version of the LNP, you'll be asked if you want to import files from a previous installation. If you select yes, open the previous version's df_linux folder in the file chooser dialog, then click ok. Selecting the LNP folder or the root of the pack will cause the import to fail. The import process will grab your DF saves, SoundSense and/or SoundCense sounds, gamelog, and dfhack history from the previous version.
 
 ##### Major changes over previous revision:
 * Updated DFHack to 0.43.05-r1.
 * Updated TWBT to 5.84.
 * Updated Legends Browser to 1.12.1.
-
 
 ##### Minor changes over previous revision:
 * Added extra color schemes from wiki
@@ -81,12 +146,12 @@ When first launching a new version of the LNP, you'll be asked if you want to im
 * DFHack 0.43.05-r1
 * Dwarf Therapist 37.0.0 (Hello71's fork built with Qt5.7.1)
 * TWBT 5.84
-* Soundsense (you'll need to download the sound files yourself from within the application)
-* SoundCenSe (A c# audio engine for Dwarf Fortress based on Zweistein's SoundSense)  (*Requires Mono*)
+* Soundsense
+* SoundCenSe
 * Armok Vision 0.16.2
-* Legends Browser 1.12.1 (*Requires Java 8*)
+* Legends Browser 1.12.1
 
-******************************************************
+
 ## Dwarf Fortress Changelog
 
 ### Release notes for 0.43.05 (July 5, 2016):
@@ -219,85 +284,29 @@ Next up we'll be doing more bug fix releases to make sure we have a vaguely pres
 * Refreshed material list when deleting uniform item
 * XML export now has the exact site rectangle
 
-##   Dependencies
-
-   Install required packages
-
- For Debian / Ubuntu
-```
-sudo apt-get install default-jre libsdl1.2debian:i386 libsdl-image1.2:i386 libsdl-ttf2.0-0:i386 libglu1-mesa:i386 libgtk2.0-0:i386 libopenal1:i386 libjpeg62:i386 git mercurial wget coreutils tar unzip unrar make g++ gcc patch xterm sed python bzip2 qtchooser qtbase5-dev qtbase5-dev-tools qtscript5-dev qt5-qmake libqt5script5 libqt5scripttools5 libqxt-core0 libqxt-gui0
-```
-
- For Fedora (21)
-```
-yum install SDL.i686 SDL_image.i686 SDL_ttf.i686 mesa-libGLU.i686 gtk2.i686 zlib.i686 openal-soft.i686 xterm python qt qt-x11 bzip2 xorg-x11-fonts-Type1
-```
-
-  System Requirements
--------------
-
-* A Java runtime environment for the LNP GUI.
-* SDL 1.2, 32-bit
-* LibGLU 1, 32-bit
-* LibGTK 2.0, 32-bit
-* OpenAL 1.2, 32-bit
-* LibJPEG 6.2, 32-bit
-* Git
-* Mercurial (hg)
-* Qt5 Development Libraries including qmake
-* Python 2.x (for Quickfort)
-* The following fairly standard Linux utilities:
-  - wget
-  - sha1sum
-  - sed
-  - tar
-  - unzip
-  - unrar
-  - make
-  - g++
-  - gcc
-  - xterm
-
- Usage
-=====
-
-```
-Usage: ./startlnp
-```
-
-
-Tested On
-=========
-* Ubuntu 14.04 "Trusty Tahr" - With deps listed above installed..
-* Fedora 21/64bit - With deps listed above installed.
-
-Common Issues
-=============
-See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Common-Errors).
-
 Credits & Special Thanks
 =============
 
  * [@andrewd18](https://github.com/andrewd18/) Andrew Dorney made the awesome linux LNP installer script
  * [@amfournda](https://github.com/amfournda/) Created a great gentoo fix script included in the pack
- * [@beaubouchard](https://github.com/BeauBouchard) Previous maintainer this package
+ * [@beaubouchard](https://github.com/BeauBouchard) Previous maintainer of this package
  * [@Captain Duck](https://www.youtube.com/playlist?list=PL0sBhCMFBvPlF7wG7OH-NFQKMeCQiS8aM) Just all around great guy, watch his Dwarf Fortress Tutorial series and subscribe!
+ * [@DanFritz](https://github.com/DanFritz/) His fork of Dwarf Therapist was used to compile DT with qt4 
  * [@Daveralph](https://github.com/daveralph1234/LazyNewbPack/) continued working on LNP after Dricus 
  * [@Dricus](https://github.com/Dricus)   Dirk Groot is the creator of the cross platform LNP port
  * [@Dwimenor](https://github.com/Dwimenor/) Created a workaround for LNP, as well as providing linux support
  * [@fricy](https://github.com/fricy/) Maintains the MacNewbie pack Reborn as well as supporting essential gaphic repo
+ * [@Hello71](https://github.com/Hello71) Hello71's fork of Dwarf Therapist was used in previous versions of the pack 
+ * [@Japa](http://www.bay12forums.com/smf/index.php?topic=146473.0) Creator/maintainer of Armok Vision
  * [@joelpt](http://www.joelpt.net/quickfort/) Joel Thornton Created Quickfort 2.x
  * [@lethosor](https://github.com/lethosor) Works on DFhack, DFwiki, and maintainer of the LNP
  * [@LucasUP](https://github.com/LucasUP/) Lucas Paquette made the original windows LNP
  * [@miffedmap](https://github.com/miffedmap) Actively perfecting cross distro compatibility
  * [@mifki](https://github.com/mifki) Text Will Be Text dfmultiscroll and webfort
- * [@splintermind](https://github.com/splintermind/) Josh, part time wizard works dilligently on Dwarf Therapist
- * [@DanFritz](https://github.com/DanFritz/) His fork of Dwarf Therapist was used to compile DT with qt4
- * [@Hello71](https://github.com/Hello71) Hello71's fork of Dwarf Therapist was used in previous versions of the pack
  * [@PeridexisErrant](http://www.bay12forums.com/smf/index.php?topic=126076.0) Maintains the Windows Package
- * [@Pidgeot](https://bitbucket.org/Pidgeot/python-lnp/) Michael is a Founding developer of PyLNP
+ * [@Pidgeot](https://bitbucket.org/Pidgeot/python-lnp/) Michael is a Founding developer of PyLNP 
+ * [@splintermind](https://github.com/splintermind/) Josh, part time wizard works dilligently on Dwarf Therapist
  * [@Zweistein](http://zweistein.cz/) Created Soundsense, enriching the game with awesome sound packages!
-
 
 
 If I forgot people, please let me know and I'll include them in the list.
