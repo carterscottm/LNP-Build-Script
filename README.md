@@ -3,31 +3,27 @@
 
 A small package to get people started with Dwarf Fortress on linux. Please take time to check out the [Official thread](http://www.bay12forums.com/smf/index.php?topic=163211.0). There are a few help documents in the [Wiki](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki) if you should get stuck.
 
-#### Download Location
+## Download Location
 
 The Linux LNP Can be downloaded at the below location:
 
-- __[Dwarf Fortress File Depot](http://dffd.bay12games.com/file.php?id=12762)__
+**[Dwarf Fortress File Depot](http://dffd.bay12games.com/file.php?id=12762)**
 
+ 
+## Usage Instructions
 
+Navigate to the extranted directory and run 
+```
+$ ./startlnp
+```
 
-__To Run:__ Navigate to the extrancted directory and run ``` ./startlnp```
+##### Terminal Configuration
+When first launching a new version of the LNP, you'l be asked to select the terminal emulator used to launch Dwarf Fortress.  PyLNP will automatically detect several of the more popular terminal emulators, or you can specify a custom command.  Incorrectly configuring the terminal will result in Dwarf Fortress not launching properly.
 
-##### LNP IMPORT TIPS
+If you run into troubles with this, consult the PyLNP documentation **[HERE](https://bitbucket.org/Pidgeot/python-lnp/overview#rst-header-platform-specific-notes)**
+
+##### LNP Import Tips
 When first launching a new version of the LNP, you'll be asked if you want to import files from a previous installation. If you select yes, open the previous version's df_linux folder in the file chooser dialog, then click ok. Selecting the LNP folder or the root of the pack will cause the import to fail. The import process will grab your DF saves, SoundSense and/or SoundCense sounds, gamelog, and dfhack history from the previous version.
-
-
-
-
-### Component Updates (remove this section?)
-
-* __R02__ - PyLNP 0.12b, Legends Browser 0.12.2, rebuilt Dwarf Therapist using Qt 4 (for wider compatability)
-
-* __R01__ - TWBT 5.84, DFHack 0.43.05-r1, Legends Browser 0.12.1 (June 08, 2017)
-
-* __RC1__ - DFHack 0.43.05-beta1, TWBT 5.77 (March 13, 2017)
-
-
 
 
 ## Included Mods
@@ -36,9 +32,9 @@ When first launching a new version of the LNP, you'll be asked if you want to im
  * Utilities:
      * [DFHack Linux V0.43.05-r1 (gcc 4.8.1)](http://www.bay12forums.com/smf/index.php?topic=139553.0)
      * [TWBT 5.84](http://www.bay12forums.com/smf/index.php?topic=138754.0)
-     * [Dwarf Therapist v37 (DanFritz's fork)](https://github.com/DanFritz/Dwarf-Therapist) (**compiled with qt4**)
+     * [Dwarf Therapist v37 (DanFritz's fork)](https://github.com/DanFritz/Dwarf-Therapist) (**compiled with qt4.8.7**)
      * [Soundsense r2016-1](http://df.zweistein.cz/soundsense/)
-     * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (**Requires Mono, go [here](http://www.mono-project.com/download/#download-lin) for install instructions**)
+     * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (**Requires Mono, go [HERE](http://www.mono-project.com/download/#download-lin) for install instructions**)
      * [qfconvert 2.04](http://www.joelpt.net/quickfort/)
      * [DF Announcement Filter 1.01](http://www.bay12forums.com/smf/index.php?topic=130030.0)
      * [Legends Browser 1.12.2] (http://www.bay12forums.com/smf/index.php?topic=155307.0)
@@ -63,19 +59,19 @@ When first launching a new version of the LNP, you'll be asked if you want to im
 
 ##   Dependencies
 
-   Install required packages
+Install required packages
 
- For Debian / Ubuntu
+For Debian / Ubuntu
 ```
-sudo apt-get install default-jre libsdl1.2debian:i386 libsdl-image1.2:i386 libsdl-ttf2.0-0:i386 libglu1-mesa:i386 libgtk2.0-0:i386 libopenal1:i386 libjpeg62:i386 wget coreutils tar unzip unrar make g++ gcc patch xterm sed python bzip2 qtchooser qtbase5-dev qtbase5-dev-tools qtscript5-dev qt5-qmake libqt5script5 libqt5scripttools5 libqxt-core0 libqxt-gui0
+sudo apt-get install default-jre libsdl1.2debian:i386 libsdl-image1.2:i386 libsdl-ttf2.0-0:i386 libglu1-mesa:i386 libgtk2.0-0:i386 libopenal1:i386 libjpeg62-turbo:i386 wget coreutils tar xterm sed python bzip2 qtchooser libqt4-script libqt4-scripttools libqt5script5 libqt5scripttools5 libqxt-core0 libqxt-gui0
 ```
 
- For Fedora (21)
+For Fedora (21)
 ```
 yum install SDL.i686 SDL_image.i686 SDL_ttf.i686 mesa-libGLU.i686 gtk2.i686 zlib.i686 openal-soft.i686 xterm python qt qt-x11 bzip2 xorg-x11-fonts-Type1
 ```
 
-  System Requirements
+System Requirements (REDUNDANT?)
 -------------
 
 * SDL 1.2, 32-bit
@@ -83,8 +79,6 @@ yum install SDL.i686 SDL_image.i686 SDL_ttf.i686 mesa-libGLU.i686 gtk2.i686 zlib
 * LibGTK 2.0, 32-bit
 * OpenAL 1.2, 32-bit
 * LibJPEG 6.2, 32-bit
-* Git
-* Mercurial (hg)
 * Qt5 Development Libraries including qmake
 * Python 2.x (for Quickfort)
 * The following fairly standard Linux utilities:
@@ -92,20 +86,7 @@ yum install SDL.i686 SDL_image.i686 SDL_ttf.i686 mesa-libGLU.i686 gtk2.i686 zlib
   - sha1sum
   - sed
   - tar
-  - unzip
-  - unrar
-  - make
-  - g++
-  - gcc
   - xterm
-
- Usage
-=====
-
-```
-Usage: ./startlnp
-```
-
 
 Tested On
 =========
@@ -121,6 +102,31 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 
 ******************************************************
 ## Linux LNP Changelog
+
+### Release notes for 0.43.05-r2 (June 8, 2017):
+
+
+
+##### Major changes over previous revision:
+* Compiled Dwarf Therapist with Qt4 for better compatability
+* Updated Legends Browser to 1.12.2.
+* Updated PyLNP to 0.12b
+
+##### Minor changes over previous revision:
+* Began building README.md (this file) to assist in using the pack and improve record keeping of the maintainer(s)
+
+##### Utilities included:
+* PyLNP 0.12b
+* DF 0.43.05
+* DFHack 0.43.05-r1
+* Dwarf Therapist 37.0.0 (DanFritz's fork built with Qt 4.8.7)
+* TWBT 5.84
+* Soundsense r2016-1
+* SoundCenSe GTK 1.4.2
+* Armok Vision 0.16.2
+* Legends Browser 1.12.2
+
+
 ### Release notes for 0.43.05-r1 (June 8, 2017):
 
 
@@ -133,7 +139,7 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 ##### Minor changes over previous revision:
 * Added extra color schemes from wiki
 * Removed Western Rust color scheme (incomplete scheme, caused issues with PyLNP)
-* Added export LD_LIBRARY_PATH="" to the beginning of distro_fixes script for improved compatibility
+* Added ```export LD_LIBRARY_PATH=""``` to the beginning of distro_fixes script for improved compatibility
 * Tweaked DT launcher script to work better with LNP directory structure
 * Included outdated (but still very useful) DT Manual
 * Fixed gui/manager-quantity keybind
@@ -144,13 +150,14 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 * PyLNP 0.12a
 * DF 0.43.05
 * DFHack 0.43.05-r1
-* Dwarf Therapist 37.0.0 (Hello71's fork built with Qt5.7.1)
+* Dwarf Therapist 37.0.0 (Hello71's fork built with Qt 5.7.1)
 * TWBT 5.84
-* Soundsense
-* SoundCenSe
+* Soundsense r2016-1
+* SoundCenSe GTK 1.4.2
 * Armok Vision 0.16.2
 * Legends Browser 1.12.1
 
+*** 
 
 ## Dwarf Fortress Changelog
 
