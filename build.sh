@@ -330,11 +330,10 @@ if [ ! -d qfconvert ]; then
     mv 04024r3-x64/LNP/utilities/qfconvert ./
     mv qfconvert/community_bluepritns/ qfconvert/community_blueprints
     rm -rf 04024r3-x64
-    echo Copying QFconvert to LNP/utilities directory
-    cp qfconvert ./$DEST_DIR/LNP/utilities -r
-    rm -rf 04024r3-x64
   fi
 fi
+echo Copying QFconvert to LNP/utilities directory
+cp qfconvert ./$DEST_DIR/LNP/utilities -r
 
 #Copy  baseline art to tilesets directory
 echo Copying baseline art to LNP/tilesets directory
