@@ -1,18 +1,14 @@
 # Lazy-Newb-Pack-Linux v0.43.05 x64
-
-
 A small package to get people started with Dwarf Fortress on linux. Please take time to check out the [Official thread](http://www.bay12forums.com/smf/index.php?topic=163211.0). There are a few help documents in the [Wiki](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki) if you should get stuck.
 
 ## Download Location
-
 The Linux LNP Can be downloaded at the below location:
 
 **[Dwarf Fortress File Depot](http://dffd.bay12games.com/file.php?id=12762)**
 
  
 ## Usage Instructions
-
-Navigate to the extranted directory and run 
+Navigate to the extracted directory and run 
 ```
 $ ./startlnp
 ```
@@ -27,7 +23,6 @@ When first launching a new version of the LNP, you'll be asked if you want to im
 
 
 ## Included Mods
-
 * [Pidgeot's PyLNP 0.12b Lazy Newb Pack Python interface](http://www.bay12forums.com/smf/index.php?topic=140808.0)
  * Utilities:
      * [DFHack Linux V0.43.05-r1 (gcc 4.8.1)](http://www.bay12forums.com/smf/index.php?topic=139553.0)
@@ -37,7 +32,7 @@ When first launching a new version of the LNP, you'll be asked if you want to im
      * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (**Requires Mono, go [HERE](http://www.mono-project.com/download/#download-lin) for install instructions**)
      * [qfconvert 2.04](http://www.joelpt.net/quickfort/)
      * [DF Announcement Filter 1.01](http://www.bay12forums.com/smf/index.php?topic=130030.0)
-     * [Legends Browser 1.12.2] (http://www.bay12forums.com/smf/index.php?topic=155307.0)
+     * [Legends Browser 1.12.2](http://www.bay12forums.com/smf/index.php?topic=155307.0) (**Requires Java 8**)
      * [Armok Vision 0.16.2](http://www.bay12forums.com/smf/index.php?topic=146473.0)
  * Graphics (Now using [fricy's Updated tilesets](http://www.bay12forums.com/smf/index.php?topic=155882)!)
      * [16x16] ASCII
@@ -58,7 +53,6 @@ When first launching a new version of the LNP, you'll be asked if you want to im
 
 
 ##   Dependencies
-
 Install required packages
 
 For Debian / Ubuntu
@@ -71,42 +65,17 @@ For Fedora (21)
 yum install SDL.i686 SDL_image.i686 SDL_ttf.i686 mesa-libGLU.i686 gtk2.i686 zlib.i686 openal-soft.i686 xterm python qt qt-x11 bzip2 xorg-x11-fonts-Type1
 ```
 
-System Requirements (REDUNDANT?)
--------------
-
-* SDL 1.2, 32-bit
-* LibGLU 1, 32-bit
-* LibGTK 2.0, 32-bit
-* OpenAL 1.2, 32-bit
-* LibJPEG 6.2, 32-bit
-* Qt5 Development Libraries including qmake
-* Python 2.x (for Quickfort)
-* The following fairly standard Linux utilities:
-  - wget
-  - sha1sum
-  - sed
-  - tar
-  - xterm
-
 Tested On
 =========
 * Debian Stretch - With deps listed above installed..
-
 
 Common Issues
 =============
 See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Common-Errors).
 
-
-
-
 ******************************************************
 ## Linux LNP Changelog
-
 ### Release notes for 0.43.05-r2 (June 8, 2017):
-
-
-
 ##### Major changes over previous revision:
 * Compiled Dwarf Therapist with Qt4 for better compatability
 * Updated Legends Browser to 1.12.2.
@@ -128,9 +97,6 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 
 
 ### Release notes for 0.43.05-r1 (June 8, 2017):
-
-
-
 ##### Major changes over previous revision:
 * Updated DFHack to 0.43.05-r1.
 * Updated TWBT to 5.84.
@@ -158,11 +124,8 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 * Legends Browser 1.12.1
 
 *** 
-
 ## Dwarf Fortress Changelog
-
 ### Release notes for 0.43.05 (July 5, 2016):
-
 Here are the first official 64-bit releases!  This would not be possible without help from our community -- you can view the exciting and sometimes late-night discussion over in the 0.43.04 release thread if you want to see how the cake was baked.  This release should also make worlds generated with the same seed more consistent, and it has a few other minor fixes we managed to sneak in.
 
 ##### New stuff
@@ -180,7 +143,6 @@ Here are the first official 64-bit releases!  This would not be possible without
 ******************************************************
 
 ### Release notes for 0.43.04 (June 20, 2016):
-
 Here's another bug-fix release.  Assuming no issues crop up immediately, we'll now dive into 64-bit land for next time!
 
 ##### Major bug fixes
@@ -208,7 +170,6 @@ Here's another bug-fix release.  Assuming no issues crop up immediately, we'll n
 ******************************************************
 
 ### Release notes for 0.43.03 (May 22, 2016):
-
 Here are some more bug fixes.
 
 ##### Major bug fixes
@@ -241,7 +202,6 @@ Here are some more bug fixes.
 ******************************************************
 
 ### Release notes for 0.43.02 (May 11, 2016):
-
 Smoothed out some rough areas in the adventure part of the release.  We'll be continuing on with bug fix releases.
 
 ##### Major bug fixes
@@ -258,7 +218,6 @@ Smoothed out some rough areas in the adventure part of the release.  We'll be co
 ******************************************************
 
 ### Release notes for 0.43.01 (May 9, 2016):
-
 A new version number!  With the work order additions and adventurer-created sites, this one ended up with more new stuff and fewer bug fixes than expected, and my version calculator just tipped over at 0.43.  You can use the new 'b' site building option in adventure mode to create a site (outside the bounds of other sites).  For dwarf mode work orders, you can set conditions and details from the manager.  You can also create orders tied to specific shops from their workshop profiles.
 
 A miscellaneous note: in order to retire at the adventurer sites you create, you'll need to name the site, create a main hall zone, and claim the hall during conversation (or while shouting to yourself).
