@@ -324,17 +324,16 @@ if [ ! -d qfconvert ]; then
     echo Downloading old pack to retreive qfconvert utility
     wget http://dffd.bay12games.com/download.php?id=8936\&f=04024r3-x64.zip -O 04024r3-x64.zip
   fi
-  if [ -f 04023r3-x64.zip ]; then
+  if [ -f 04024r3-x64.zip ]; then
     echo Extracting old pack to retreive qfconvert utility
     unzip -qq -o 04024r3-x64.zip
     mv 04024r3-x64/LNP/utilities/qfconvert ./
     mv qfconvert/community_bluepritns/ qfconvert/community_blueprints
     rm -rf 04024r3-x64
-    echo Copying QFconvert to LNP/utilities directory
-    cp qfconvert ./$DEST_DIR/LNP/utilities -r
-    rm -rf 04024r3-x64
   fi
 fi
+echo Copying QFconvert to LNP/utilities directory
+cp qfconvert ./$DEST_DIR/LNP/utilities -r
 
 #Copy  baseline art to tilesets directory
 echo Copying baseline art to LNP/tilesets directory
