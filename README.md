@@ -63,12 +63,10 @@ For Fedora (21)
 yum install SDL.i686 SDL_image.i686 SDL_ttf.i686 mesa-libGLU.i686 gtk2.i686 zlib.i686 openal-soft.i686 xterm python qt qt-x11 bzip2 xorg-x11-fonts-Type1
 ```
 
-Tested On
-=========
+## Tested On
 * Debian Stretch - With deps listed above installed.
 
-Common Issues
-=============
+## Common Issues
 See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Common-Errors).
 
 ******************************************************
@@ -248,9 +246,7 @@ Next up we'll be doing more bug fix releases to make sure we have a vaguely pres
 * Refreshed material list when deleting uniform item
 * XML export now has the exact site rectangle
 
-Credits & Special Thanks
-========================
-
+## Credits & Special Thanks
  * [@andrewd18](https://github.com/andrewd18/) Andrew Dorney made the awesome linux LNP installer script
  * [@amfournda](https://github.com/amfournda/) Created a great gentoo fix script included in the pack
  * [@beaubouchard](https://github.com/BeauBouchard) Previous maintainer of this package
