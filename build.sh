@@ -14,8 +14,8 @@ DF="df_43_05_linux.tar.bz2"                                 # file name to downl
 DF_BASELINES_VER="df_43_05"                                 # part of the file path in LNP directory
 DF_BASELINES="df_43_05_win_s.zip"                           # file name to download
 
-DFHACK_VER="0.43.05-r1"                                 # part of the download URL
-DFHACK="dfhack-0.43.05-r1-Linux-64-gcc-4.8.1.tar.bz2"   # file name to download
+DFHACK_VER="0.43.05-r1"                                     # part of the download URL
+DFHACK="dfhack-0.43.05-r1-Linux-64-gcc-4.8.1.tar.bz2"       # file name to download
 
 LEGENDS_BROWSER_VER="1.12.2"                                # part of the download URL
 LEGENDS_BROWSER="legendsbrowser-1.12.2.jar"                 # file name to download
@@ -35,7 +35,9 @@ DEST_DIR="dist"                                             # folder name where 
 
 GH="https://github.com"                                     # because why not?
 
-dffdID="12762"                                               # added for portability
+dffdID="12762"                                              # added for portability
+
+PACK_HOMEPAGE="\"http:\/\/www\.bay12forums\.com\/smf\/index\.php\?topic=163211\""   # used for inserting the link into PyLNP.json via sed
 
 # Begin
 if [ ! -d $DF_VER ]; then
@@ -402,11 +404,12 @@ find ./LNP -name .travis* -print0 | xargs -0 rm
 find ./LNP -name PyLNP.json -exec sed -i "s/\"packVersion\": \"\(.*\)\"/\"packVersion\": \"$LNP_VER\"/g" {} \;
 find ./LNP -name PyLNP.json -exec sed -i "s/\"dffdID\": \"\(.*\)\"/\"dffdID\": \"$dffdID\"/g" {} \;
 find ./LNP -name PyLNP.json -exec sed -i "s/\"updateMethod\": \"\(.*\)\"/\"updateMethod\": \"dffd\"/g" {} \;
-find ./LNP -name PyLNP.json -exec sed -i 's/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],\n                \["This Packs homepage","http:\/\/www\.bay12forums\.com\/smf\/index\.php\?topic=156011"\],'/g {} \; 
+find ./LNP -name PyLNP.json -exec sed -i 's/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],\n        \["This Packs homepage",'$PACK_HOMEPAGE'\],'/g {} \; 
 
 touch df_linux/gamelog.txt
 mkdir df_linux/data/save
 mkdir df_linux/sounds/packs -p
+cp ../../README.md ./
 echo Creating $LNP_VER.tar.gz
 tar cfz LinuxLNP-$LNP_VER.tar.gz --transform "s,^,LinuxLNP-$LNP_VER/," *
 mv *.tar.gz ../../
