@@ -65,7 +65,7 @@ yum install SDL.i686 SDL_image.i686 SDL_ttf.i686 mesa-libGLU.i686 gtk2.i686 zlib
 
 Tested On
 =========
-* Debian Stretch - With deps listed above installed..
+* Debian Stretch - With deps listed above installed.
 
 Common Issues
 =============
