@@ -5,9 +5,9 @@ A small package to get people started with Dwarf Fortress on linux. Please take 
 The Linux LNP Can be downloaded at the below location:
 
 **[Dwarf Fortress File Depot](http://dffd.bay12games.com/file.php?id=12762)**
- 
+
 ## Usage Instructions
-Navigate to the extracted directory and run 
+Navigate to the extracted directory and run
 ```
 $ ./startlnp
 ```
@@ -108,7 +108,7 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 * Included outdated (but still very useful) DT Manual
 * Fixed gui/manager-quantity keybind
 * Replaced obsolete references of autolabor with labormanager
-* Other general cleanup/housekeeping 
+* Other general cleanup/housekeeping
 
 ##### Utilities included:
 * PyLNP 0.12a
@@ -121,7 +121,7 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 * Armok Vision 0.16.2
 * Legends Browser 1.12.1
 
-*** 
+***
 ## Dwarf Fortress Changelog
 ### Release notes for 0.43.05 (July 5, 2016):
 Here are the first official 64-bit releases!  This would not be possible without help from our community -- you can view the exciting and sometimes late-night discussion over in the 0.43.04 release thread if you want to see how the cake was baked.  This release should also make worlds generated with the same seed more consistent, and it has a few other minor fixes we managed to sneak in.
@@ -138,7 +138,7 @@ Here are the first official 64-bit releases!  This would not be possible without
 * Made gorlaks able to open doors, stopped desizing of their heads
 * Fixed some mem leaks
 
-******************************************************
+***
 
 ### Release notes for 0.43.04 (June 20, 2016):
 Here's another bug-fix release.  Assuming no issues crop up immediately, we'll now dive into 64-bit land for next time!
@@ -165,7 +165,7 @@ Here's another bug-fix release.  Assuming no issues crop up immediately, we'll n
 * Fixed ghost initial positioning problem
 * Made macros save correctly even if the macro directory is deleted
 
-******************************************************
+***
 
 ### Release notes for 0.43.03 (May 22, 2016):
 Here are some more bug fixes.
@@ -197,7 +197,7 @@ Here are some more bug fixes.
 * Reported site of adventurer masterpieces correctly
 * Stopped manually-set low frame rate cap from being stuck
 
-******************************************************
+***
 
 ### Release notes for 0.43.02 (May 11, 2016):
 Smoothed out some rough areas in the adventure part of the release.  We'll be continuing on with bug fix releases.
@@ -213,7 +213,7 @@ Smoothed out some rough areas in the adventure part of the release.  We'll be co
 * Stopped felling of trees in the arena, so you wouldn't be teleported to a weird hidden region map
 * Indicated child/baby state of prisoners during look etc.
 
-******************************************************
+***
 
 ### Release notes for 0.43.01 (May 9, 2016):
 A new version number!  With the work order additions and adventurer-created sites, this one ended up with more new stuff and fewer bug fixes than expected, and my version calculator just tipped over at 0.43.  You can use the new 'b' site building option in adventure mode to create a site (outside the bounds of other sites).  For dwarf mode work orders, you can set conditions and details from the manager.  You can also create orders tied to specific shops from their workshop profiles.
@@ -249,26 +249,27 @@ Next up we'll be doing more bug fix releases to make sure we have a vaguely pres
 * XML export now has the exact site rectangle
 
 Credits & Special Thanks
-=============
+========================
 
  * [@andrewd18](https://github.com/andrewd18/) Andrew Dorney made the awesome linux LNP installer script
  * [@amfournda](https://github.com/amfournda/) Created a great gentoo fix script included in the pack
  * [@beaubouchard](https://github.com/BeauBouchard) Previous maintainer of this package
  * [@Captain Duck](https://www.youtube.com/playlist?list=PL0sBhCMFBvPlF7wG7OH-NFQKMeCQiS8aM) Just all around great guy, watch his Dwarf Fortress Tutorial series and subscribe!
- * [@DanFritz](https://github.com/DanFritz/) His fork of Dwarf Therapist was used to compile DT with qt4 
- * [@Daveralph](https://github.com/daveralph1234/LazyNewbPack/) continued working on LNP after Dricus 
+ * [@CarterScottM](https://www.github.com/CarterScottM) Current maintainer of the Linux Pack
+ * [@DanFritz](https://github.com/DanFritz/) His fork of Dwarf Therapist was used to compile DT with qt4
+ * [@Daveralph](https://github.com/daveralph1234/LazyNewbPack/) continued working on LNP after Dricus
  * [@Dricus](https://github.com/Dricus)   Dirk Groot is the creator of the cross platform LNP port
  * [@Dwimenor](https://github.com/Dwimenor/) Created a workaround for LNP, as well as providing linux support
  * [@fricy](https://github.com/fricy/) Maintains the MacNewbie pack Reborn as well as supporting essential gaphic repo
- * [@Hello71](https://github.com/Hello71) Hello71's fork of Dwarf Therapist was used in previous versions of the pack 
+ * [@Hello71](https://github.com/Hello71) Hello71's fork of Dwarf Therapist was used in previous versions of the pack
  * [@Japa](http://www.bay12forums.com/smf/index.php?topic=146473.0) Creator/maintainer of Armok Vision
  * [@joelpt](http://www.joelpt.net/quickfort/) Joel Thornton Created Quickfort 2.x
  * [@lethosor](https://github.com/lethosor) Works on DFhack, DFwiki, and maintainer of the LNP
- * [@LucasUP](https://github.com/LucasUP/) Lucas Paquette made the original windows LNP
+ * [@LucasUP](https://github.com/LucasUP/) Lucas Paquette made the original Windows LNP
  * [@miffedmap](https://github.com/miffedmap) Actively perfecting cross distro compatibility
  * [@mifki](https://github.com/mifki) Text Will Be Text dfmultiscroll and webfort
- * [@PeridexisErrant](http://www.bay12forums.com/smf/index.php?topic=126076.0) Maintains the Windows Package
- * [@Pidgeot](https://bitbucket.org/Pidgeot/python-lnp/) Michael is a Founding developer of PyLNP 
+ * [@PeridexisErrant](http://www.bay12forums.com/smf/index.php?topic=126076.0) Maintains the Windows Pack
+ * [@Pidgeot](https://bitbucket.org/Pidgeot/python-lnp/) Michael is a Founding developer of PyLNP
  * [@splintermind](https://github.com/splintermind/) Josh, part time wizard works dilligently on Dwarf Therapist
  * [@Zweistein](http://zweistein.cz/) Created Soundsense, enriching the game with awesome sound packages!
 
