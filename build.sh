@@ -118,7 +118,7 @@ if [ ! -d gfx ]; then
   mkdir gfx
   git clone -q $GH/DFgraphics/Afro-Graphics.git gfx/Afro-Graphics
   git clone -q $GH/DFgraphics/AutoReiv.git gfx/AutoReiv
-  git clone -q $GH/DFgraphics/CLA.git gfx/CLA 
+  git clone -q $GH/DFgraphics/CLA.git gfx/CLA
   git clone -q $GH/DFgraphics/GemSet.git gfx/GemSet
   git clone -q $GH/DFgraphics/IronHand.git gfx/IronHand
   git clone -q $GH/DFgraphics/Jolly-Bastion.git gfx/Jolly-Bastion
@@ -404,7 +404,7 @@ find ./LNP -name .travis* -print0 | xargs -0 rm
 find ./LNP -name PyLNP.json -exec sed -i "s/\"packVersion\": \"\(.*\)\"/\"packVersion\": \"$LNP_VER\"/g" {} \;
 find ./LNP -name PyLNP.json -exec sed -i "s/\"dffdID\": \"\(.*\)\"/\"dffdID\": \"$dffdID\"/g" {} \;
 find ./LNP -name PyLNP.json -exec sed -i "s/\"updateMethod\": \"\(.*\)\"/\"updateMethod\": \"dffd\"/g" {} \;
-find ./LNP -name PyLNP.json -exec sed -i 's/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],\n        \["This Packs homepage",'$PACK_HOMEPAGE'\],'/g {} \; 
+find ./LNP -name PyLNP.json -exec sed -i 's/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],\n        \["This Packs homepage",'$PACK_HOMEPAGE'\],'/g {} \;
 
 touch df_linux/gamelog.txt
 mkdir df_linux/data/save
