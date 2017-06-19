@@ -357,6 +357,7 @@ find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_MONSTE
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[FPS\:NO\]/\[FPS\:YES\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[INTRO\:YES\]/\[INTRO\:NO\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[SOUND\:YES\]/\[SOUND\:NO\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[MACRO_MS\:\(.*\)\]/\[MACRO_MS\:0\]/g" {} \;
 if [ -f ./$DEST_DIR/df_linux/hack/plugins/twbt.plug.so ]; then
   find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[PRINT_MODE\:\(.*\)\]/\[PRINT_MODE\:TWBT\]/g" {} \;
 fi
