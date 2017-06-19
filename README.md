@@ -69,16 +69,18 @@ yum install SDL.i686 SDL_image.i686 SDL_ttf.i686 mesa-libGLU.i686 gtk2.i686 zlib
 ## Common Issues
 See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Common-Errors).
 
-******************************************************
+***
 ## Linux LNP Changelog
-### Release notes for 0.43.05-r2 (June 8, 2017):
+### Release notes for 0.43.05-r2 (??? 2017):
 ##### Major changes over previous revision:
+
 * Compiled Dwarf Therapist with Qt4 for better compatability
 * Updated Legends Browser to 1.12.2.
 * Updated PyLNP to 0.12b
 
 ##### Minor changes over previous revision:
 * Began building README.md (this file) to assist in using the pack and improve record keeping of the maintainer(s)
+* Reverted Phoebus font back to default setting of Jecobus_10x16
 
 ##### Utilities included:
 * PyLNP 0.12b
@@ -91,7 +93,7 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 * Armok Vision 0.16.2
 * Legends Browser 1.12.2
 
-
+***
 ### Release notes for 0.43.05-r1 (June 8, 2017):
 ##### Major changes over previous revision:
 * Updated DFHack to 0.43.05-r1.

@@ -394,6 +394,7 @@ cd $DEST_DIR
 find . | grep .git | xargs rm -rf
 find . -type f -name curses*.bmp -print0 | xargs -0 rm
 find ./LNP/graphics -type f -name mouse.bmp -print0 | xargs -0 rm
+find ./LNP/graphics -type f -name onLoad.init -print0 | xargs -0 rm
 find ./LNP -name README.* -print0| xargs -0 rm
 find ./LNP -name read* -print0 | xargs -0 rm
 find ./LNP -name .travis* -print0 | xargs -0 rm
