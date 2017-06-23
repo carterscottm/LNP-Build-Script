@@ -3,7 +3,7 @@
 #			* add additional documentation
 
 #Variable declarations
-LNP_VER="0.43.05-r02"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.43.05-r03"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
 ARMOK_VISION_VER="v0.16.2"                                  # part of the download URL
 ARMOK_VISION="Armok.Vision.v0.16.2.Linux.zip"               # file name to download
