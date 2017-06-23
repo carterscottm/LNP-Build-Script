@@ -287,7 +287,7 @@ fi
 if [ -f DFAnnouncementFilter.zip ]; then
   echo Copying DF Announcement Filter to LNP/utilities directory
   unzip -qq -o DFAnnouncementFilter.zip -d ./$DEST_DIR/LNP/utilities/df_announcement_filter
-  #Create manifest.json for Legends Browser
+  #Create manifest.json for Announcement Filter
   echo "{" > ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
   echo "    \"author\": \"TheGazelle\"," >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
   echo "    \"content_version\": \"1.01\"," >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
@@ -312,8 +312,17 @@ if [ -f $LEGENDS_BROWSER ]; then
   echo "    \"content_version\": \"$LEGENDS_BROWSER_VER\"," >> ./$DEST_DIR/LNP/utilities/legends_browser/manifest.json
   echo "    \"title\": \"Legends Browser\"," >> ./$DEST_DIR/LNP/utilities/legends_browser/manifest.json
   echo "    \"tooltip\": \"Legends Browser is a multi-platform, open source, java-based legends viewer for dwarf fortress\"," >> ./$DEST_DIR/LNP/utilities/legends_browser/manifest.json
-  echo "    \"linux_exe\": \"$LEGENDS_BROWSER\"" >> ./$DEST_DIR/LNP/utilities/legends_browser/manifest.json
+  echo "    \"linux_exe\": \"legendsbrowser.sh\"" >> ./$DEST_DIR/LNP/utilities/legends_browser/manifest.json
   echo "}" >> ./$DEST_DIR/LNP/utilities/legends_browser/manifest.json
+
+  #Create launch script for Legends Browser (some distros won't launch .jar files directly)
+  echo "#!/bin/bash" > ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
+	echo "CWD=`dirname $(realpath $0)`" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
+	echo "JAVA=\`which java\`" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
+	echo "\$JAVA -jar $LEGENDS_BROWSER" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
+	echo "exit 0" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
+  chmod +x ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
+
   #Exclude the .jar file from showing up on the list of utilities in LNP
   echo 'Legends Browser Exclusions' >> ./$DEST_DIR/LNP/utilities/exclude.txt
   echo '['$LEGENDS_BROWSER']' >> ./$DEST_DIR/LNP/utilities/exclude.txt
@@ -405,6 +414,8 @@ find ./LNP -name PyLNP.json -exec sed -i "s/\"packVersion\": \"\(.*\)\"/\"packVe
 find ./LNP -name PyLNP.json -exec sed -i "s/\"dffdID\": \"\(.*\)\"/\"dffdID\": \"$dffdID\"/g" {} \;
 find ./LNP -name PyLNP.json -exec sed -i "s/\"updateMethod\": \"\(.*\)\"/\"updateMethod\": \"dffd\"/g" {} \;
 find ./LNP -name PyLNP.json -exec sed -i 's/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],\n        \["This Packs homepage",'$PACK_HOMEPAGE'\],'/g {} \;
+find ./LNP -type f -print0 | xargs -0 dos2unix -q
+find ./df_linux/data/init -type f -print0 | xargs -0 dos2unix -q
 
 touch df_linux/gamelog.txt
 mkdir df_linux/data/save

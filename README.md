@@ -55,12 +55,12 @@ Install required packages
 
 For Debian / Ubuntu
 ```
-sudo apt-get install default-jre libsdl1.2debian:i386 libsdl-image1.2:i386 libsdl-ttf2.0-0:i386 libglu1-mesa:i386 libgtk2.0-0:i386 libopenal1:i386 libjpeg62-turbo:i386 wget coreutils tar xterm sed python bzip2 qtchooser libqt4-script libqt4-scripttools libqt5script5 libqt5scripttools5 libqxt-core0 libqxt-gui0
+sudo apt-get install default-jre libsdl1.2debian libsdl-image1.2 libsdl-ttf2.0-0 libglu1-mesa libgtk2.0-0 libopenal1 libjpeg62 wget coreutils tar xterm sed python bzip2 qtchooser libqt4-script libqt4-scripttools libqt5script5 libqt5scripttools5 libqxt-core0 libqxt-gui0
 ```
 
-For Fedora (21)
+For Fedora (25)
 ```
-yum install SDL.i686 SDL_image.i686 SDL_ttf.i686 mesa-libGLU.i686 gtk2.i686 zlib.i686 openal-soft.i686 xterm python qt qt-x11 bzip2 xorg-x11-fonts-Type1
+yum install SDL SDL_image SDL_ttf mesa-libGLU gtk2 zlib openal-soft xterm python qt qt-x11 bzip2 xorg-x11-fonts-Type1
 ```
 
 ## Tested On
@@ -71,16 +71,20 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 
 ***
 ## Linux LNP Changelog
-### Release notes for 0.43.05-r2 (??? 2017):
+### Release notes for 0.43.05-r2 (June 23, 2017):
 ##### Major changes over previous revision:
 
 * Compiled Dwarf Therapist with Qt4 for better compatability
-* Updated Legends Browser to 1.12.2.
+* Updated Legends Browser to 1.12.2
 * Updated PyLNP to 0.12b
 
 ##### Minor changes over previous revision:
 * Began building README.md (this file) to assist in using the pack and improve record keeping of the maintainer(s)
 * Reverted Phoebus font back to default setting of Jecobus_10x16
+* Removed problematic onLoad.init from graphics packs (known to cause issues, see report **[HERE](http://www.bay12forums.com/smf/index.php?topic=126076.msg7486347#msg7486347)**)
+* Changed macro key delay from from 15 ms to 0 ms to speed up macros (As PeridexisErrant pointed out with the Windows LNP)
+* Fixed Dwarf Therapist script to better detect its location
+* Changed Legends Browser to call a script rather than the .jar file directly.  Some distros (Fedora at least) don't allow the launching of .jar files directly
 
 ##### Utilities included:
 * PyLNP 0.12b
