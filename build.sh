@@ -196,7 +196,6 @@ fi
 
 #Get Dwarf Therapist
 cp ~/projects/dwarf_therapist $DEST_DIR/LNP/utilities -r
-mkdir $DEST_DIR/LNP/utilities/dwarf_therapist/share/log
 #mkdir $DEST_DIR/LNP/utilities/dwarf_therapist
 #if [ ! -d Dwarf-Therapist ]; then
 #	echo Downloading Dwarf Therapist

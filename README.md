@@ -79,7 +79,7 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 * Updated PyLNP to 0.12b
 
 ##### Minor changes over previous revision:
-* Began building README.md (this file) to assist in using the pack and improve record keeping of the maintainer(s)
+* Began distributing with a README file for version history, release notes, troubleshooting tips, etc
 * Reverted Phoebus font back to default setting of Jecobus_10x16
 * Removed problematic onLoad.init from graphics packs (known to cause issues, see report **[HERE](http://www.bay12forums.com/smf/index.php?topic=126076.msg7486347#msg7486347)**)
 * Changed macro key delay from from 15 ms to 0 ms to speed up macros (As PeridexisErrant pointed out with the Windows LNP)
