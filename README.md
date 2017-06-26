@@ -253,12 +253,13 @@ Next up we'll be doing more bug fix releases to make sure we have a vaguely pres
 * XML export now has the exact site rectangle
 
 ## Credits & Special Thanks
+ * [@algorithman](https://github.com/Algorithman/SoundCenSe/releases) Writer and maintainer of SoundCenSe GTK, the C#/GTK port of @Zweistein's SoundSense utility
  * [@andrewd18](https://github.com/andrewd18/) Andrew Dorney made the awesome linux LNP installer script
  * [@amfournda](https://github.com/amfournda/) Created a great gentoo fix script included in the pack
  * [@beaubouchard](https://github.com/BeauBouchard) Previous maintainer of this package
  * [@Captain Duck](https://www.youtube.com/playlist?list=PL0sBhCMFBvPlF7wG7OH-NFQKMeCQiS8aM) Just all around great guy, watch his Dwarf Fortress Tutorial series and subscribe!
  * [@CarterScottM](https://www.github.com/CarterScottM) Current maintainer of the Linux Pack
- * [@DanFritz](https://github.com/DanFritz/) His fork of Dwarf Therapist was used to compile DT with qt4
+ * [@DanFritz](https://github.com/DanFritz/) His fork of Dwarf Therapist was used to compile DT with QT4
  * [@Daveralph](https://github.com/daveralph1234/LazyNewbPack/) continued working on LNP after Dricus
  * [@Dricus](https://github.com/Dricus)   Dirk Groot is the creator of the cross platform LNP port
  * [@Dwimenor](https://github.com/Dwimenor/) Created a workaround for LNP, as well as providing linux support
@@ -266,7 +267,7 @@ Next up we'll be doing more bug fix releases to make sure we have a vaguely pres
  * [@Hello71](https://github.com/Hello71) Hello71's fork of Dwarf Therapist was used in previous versions of the pack
  * [@Japa](http://www.bay12forums.com/smf/index.php?topic=146473.0) Creator/maintainer of Armok Vision
  * [@joelpt](http://www.joelpt.net/quickfort/) Joel Thornton Created Quickfort 2.x
- * [@lethosor](https://github.com/lethosor) Works on DFhack, DFwiki, and maintainer of the LNP
+ * [@lethosor](https://github.com/lethosor) Works on DFhack, DFwiki, and many other Dwarf Fortress related projects
  * [@LucasUP](https://github.com/LucasUP/) Lucas Paquette made the original Windows LNP
  * [@miffedmap](https://github.com/miffedmap) Actively perfecting cross distro compatibility
  * [@mifki](https://github.com/mifki) Text Will Be Text dfmultiscroll and webfort
