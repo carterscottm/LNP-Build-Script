@@ -28,8 +28,8 @@ When first launching a new version of the LNP, you'll be asked if you want to im
      * [Dwarf Therapist v37 (DanFritz's fork)](https://github.com/DanFritz/Dwarf-Therapist) (**compiled with qt4.8.7**)
      * [Soundsense r2016-1](http://df.zweistein.cz/soundsense/)
      * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (**Requires Mono, go [HERE](http://www.mono-project.com/download/#download-lin) for install instructions**)
-     * [qfconvert 2.04](http://www.joelpt.net/quickfort/)
-     * [DF Announcement Filter 1.01](http://www.bay12forums.com/smf/index.php?topic=130030.0)
+     * [qfconvert 2.04](http://www.joelpt.net/quickfort/) (**See ./LNP/about/qfconvert.md for usage instructions**)
+     * [DF Announcement Filter 1.01](http://www.bay12forums.com/smf/index.php?topic=130030.0) (**Requires Java**)
      * [Legends Browser 1.12.2](http://www.bay12forums.com/smf/index.php?topic=155307.0) (**Requires Java 8**)
      * [Armok Vision 0.16.2](http://www.bay12forums.com/smf/index.php?topic=146473.0)
  * Graphics (Now using [fricy's Updated tilesets](http://www.bay12forums.com/smf/index.php?topic=155882)!)
@@ -71,7 +71,14 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 
 ***
 ## Linux LNP Changelog
-### Release notes for 0.43.05-r2 (June 23, 2017):
+### Release notes for 0.43.05-r03 (???, 2017)
+##### Major changes over previous revision:
+
+##### Minor changes over previous revision:
+* Fixed duplicate axes in some embark profiles
+* Began placing README and/or help files for various utilities in ./LNP/about folder 
+
+### Release notes for 0.43.05-r02 (June 23, 2017):
 ##### Major changes over previous revision:
 
 * Compiled Dwarf Therapist with Qt4 for better compatability
@@ -98,7 +105,7 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 * Legends Browser 1.12.2
 
 ***
-### Release notes for 0.43.05-r1 (June 8, 2017):
+### Release notes for 0.43.05-r01 (June 8, 2017):
 ##### Major changes over previous revision:
 * Updated DFHack to 0.43.05-r1.
 * Updated TWBT to 5.84.
@@ -269,6 +276,7 @@ Next up we'll be doing more bug fix releases to make sure we have a vaguely pres
  * [@joelpt](http://www.joelpt.net/quickfort/) Joel Thornton Created Quickfort 2.x
  * [@lethosor](https://github.com/lethosor) Works on DFhack, DFwiki, and many other Dwarf Fortress related projects
  * [@LucasUP](https://github.com/LucasUP/) Lucas Paquette made the original Windows LNP
+ * [@Mechanixm](https://www.reddit.com/r/MechGuides/) for writing an incredible set of guides for stockpiles, pressure plates and levers, among other things
  * [@miffedmap](https://github.com/miffedmap) Actively perfecting cross distro compatibility
  * [@mifki](https://github.com/mifki) Text Will Be Text dfmultiscroll and webfort
  * [@PeridexisErrant](http://www.bay12forums.com/smf/index.php?topic=126076.0) Maintains the Windows Pack
