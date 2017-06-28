@@ -3,7 +3,7 @@
 #			* add additional documentation
 
 # Variable declarations ########################################################
-LNP_VER="0.43.05-r03"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.43.05-r04"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
 ARMOK_VISION_VER="v0.16.2"                                  # part of the download URL
 ARMOK_VISION="Armok.Vision.v0.16.2.Linux.zip"               # file name to download
@@ -376,6 +376,9 @@ find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[BABY_CHILD_CAP\
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[VISITOR_CAP\:\(.*\)\]/\[VISITOR_CAP\:100\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_SOLDIER_CAP\:\(.*\)\]/\[INVASION_SOLDIER_CAP\:120\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_MONSTER_CAP\:\(.*\)\]/\[INVASION_MONSTER_CAP\:40\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[EMBARK_RECTANGLE\:\(.*\)\]/\[EMBARK_RECTANGLE\:3\:3\]/g" {} \;
+
+
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[FPS\:NO\]/\[FPS\:YES\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[INTRO\:YES\]/\[INTRO\:NO\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[SOUND\:YES\]/\[SOUND\:NO\]/g" {} \;
@@ -421,10 +424,9 @@ find ./LNP/graphics -type f -name onLoad.init -delete
 find ./LNP -type f -name README.* -delete
 find ./LNP -type f -name readme.* -delete
 find ./LNP -type f -name .travis* -delete
-
 find ./LNP -type f -print0 | xargs -0 dos2unix -q
 find ./df_linux/data/init -type f -print0 | xargs -0 dos2unix -q
-
+rm ./LNP/travis -rf
 
 # update PyLNP.json with current pack info #####################################
 find ./LNP -name PyLNP.json -exec sed -i "s/\"packVersion\": \"\(.*\)\"/\"packVersion\": \"$LNP_VER\"/g" {} \;

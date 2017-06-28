@@ -71,13 +71,46 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 
 ***
 ## Linux LNP Changelog
-### Release notes for 0.43.05-r03 (???, 2017)
+### Release notes for 0.43.05-r04 (???, 2017)
+##### Major changes over previous revision:
+*
+##### Minor changes over previous revision:
+* Refreshed embark profiles.  Not sure how it happened, but there were minor discrepancies between the embark profiles in PeridexisErrant's LNP and my own.  This is no longer the case.
+* Fixed EMBARK_RECTANGLE typo in d_init.txt
+
+##### Utilities included:
+* PyLNP 0.12b
+* DF 0.43.05
+* DFHack 0.43.05-r1
+* Dwarf Therapist 37.0.0 (DanFritz's fork built with Qt 4.8.7)
+* TWBT 5.84
+* Soundsense r2016-1
+* SoundCenSe GTK 1.4.2
+* Armok Vision 0.16.2
+* Legends Browser 1.12.2
+
+***
+### Release notes for 0.43.05-r03 (June 27, 2017)
 ##### Major changes over previous revision:
 
 ##### Minor changes over previous revision:
 * Fixed duplicate axes in some embark profiles
-* Began placing README and/or help files for various utilities in ./LNP/about folder 
+* Began placing README and/or help files for various utilities in ./LNP/about folder
+* Fixed PyLNP auto-import path for sounds
+* Reset EMBARK_RECTANGLE from 4:4 to 3:3
 
+##### Utilities included:
+* PyLNP 0.12b
+* DF 0.43.05
+* DFHack 0.43.05-r1
+* Dwarf Therapist 37.0.0 (DanFritz's fork built with Qt 4.8.7)
+* TWBT 5.84
+* Soundsense r2016-1
+* SoundCenSe GTK 1.4.2
+* Armok Vision 0.16.2
+* Legends Browser 1.12.2
+
+***
 ### Release notes for 0.43.05-r02 (June 23, 2017):
 ##### Major changes over previous revision:
 
