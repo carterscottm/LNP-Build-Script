@@ -362,7 +362,24 @@ mv ./$DEST_DIR/LNP/utilities/qfconvert/README.md ./$DEST_DIR/LNP/about/QFconvert
 # Copy  baseline art to tilesets directory #####################################
 echo Copying baseline art to LNP/tilesets directory
 cp ./baselines/$DF_BASELINES_VER/data/art/* ./$DEST_DIR/LNP/tilesets
-#echo ./$DEST_DIR/LNP/graphics/*/data/art/ | xargs -n 1 cp ./$DEST_DIR/LNP/baselines/$DF_BASELINES_VER/data/art/curses_640x300.png
+
+# Copy Baselines to ASCII folder in LNP/graphics ###############################
+mkdir $DEST_DIR/LNP/graphics/ASCII
+mkdir $DEST_DIR/LNP/graphics/ASCII/data
+mkdir $DEST_DIR/LNP/graphics/ASCII/data/art
+mkdir $DEST_DIR/LNP/graphics/ASCII/data/init
+
+cp ./baselines/$DF_BASELINES_VER/data/art/* $DEST_DIR/LNP/graphics/ASCII/data/art
+cp ./baselines/$DF_BASELINES_VER/data/init/colors.txt $DEST_DIR/LNP/graphics/ASCII/data/init
+cp ./baselines/$DF_BASELINES_VER/data/init/d_init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
+cp ./baselines/$DF_BASELINES_VER/data/init/init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
+
+echo '{' > $DEST_DIR/LNP/graphics/ASCII/manifest.json
+echo '    "author": "ToadyOne",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+echo '    "tooltip": "Default graphics for DF, exactly as they come.",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+echo '    "content_version": "'$DF_VER'",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+echo '    "title": "ASCII Default"' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+echo '}' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
 
 # Set sane defaults for all graphics packs #####################################
 echo  Setting sane defaults for all graphics packs and vanilla
@@ -376,6 +393,7 @@ find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[BABY_CHILD_CAP\
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[VISITOR_CAP\:\(.*\)\]/\[VISITOR_CAP\:100\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_SOLDIER_CAP\:\(.*\)\]/\[INVASION_SOLDIER_CAP\:120\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_MONSTER_CAP\:\(.*\)\]/\[INVASION_MONSTER_CAP\:40\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[ENGRAVINGS_START_OBSCURED\:NO\]/\[ENGRAVINGS_START_OBSCURED\:YES]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[EMBARK_RECTANGLE\:\(.*\)\]/\[EMBARK_RECTANGLE\:3\:3\]/g" {} \;
 
 
@@ -398,22 +416,22 @@ echo 'baselines/'$DF_BASELINES_VER >> $DEST_DIR/df_linux/raw/installed_raws.txt
 echo 'graphics/Phoebus' >> $DEST_DIR/df_linux/raw/installed_raws.txt
 
 # Copy Baselines to ASCII folder in LNP/graphics ###############################
-mkdir $DEST_DIR/LNP/graphics/ASCII
-mkdir $DEST_DIR/LNP/graphics/ASCII/data
-mkdir $DEST_DIR/LNP/graphics/ASCII/data/art
-mkdir $DEST_DIR/LNP/graphics/ASCII/data/init
+#mkdir $DEST_DIR/LNP/graphics/ASCII
+#mkdir $DEST_DIR/LNP/graphics/ASCII/data
+#mkdir $DEST_DIR/LNP/graphics/ASCII/data/art
+#mkdir $DEST_DIR/LNP/graphics/ASCII/data/init
 
-cp ./baselines/$DF_BASELINES_VER/data/art/* $DEST_DIR/LNP/graphics/ASCII/data/art
-cp ./baselines/$DF_BASELINES_VER/data/init/colors.txt $DEST_DIR/LNP/graphics/ASCII/data/init
-cp ./baselines/$DF_BASELINES_VER/data/init/d_init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
-cp ./baselines/$DF_BASELINES_VER/data/init/init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
+#cp ./baselines/$DF_BASELINES_VER/data/art/* $DEST_DIR/LNP/graphics/ASCII/data/art
+#cp ./baselines/$DF_BASELINES_VER/data/init/colors.txt $DEST_DIR/LNP/graphics/ASCII/data/init
+#cp ./baselines/$DF_BASELINES_VER/data/init/d_init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
+#cp ./baselines/$DF_BASELINES_VER/data/init/init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
 
-echo '{' > $DEST_DIR/LNP/graphics/ASCII/manifest.json
-echo '    "author": "ToadyOne",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-echo '    "tooltip": "Default graphics for DF, exactly as they come.",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-echo '    "content_version": "'$DF_VER'",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-echo '    "title": "ASCII Default"' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-echo '}' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+#echo '{' > $DEST_DIR/LNP/graphics/ASCII/manifest.json
+#echo '    "author": "ToadyOne",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+#echo '    "tooltip": "Default graphics for DF, exactly as they come.",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+#echo '    "content_version": "'$DF_VER'",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+#echo '    "title": "ASCII Default"' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
+#echo '}' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
 
 # Cleanup git files and other misc. cleanup ####################################
 cd $DEST_DIR
