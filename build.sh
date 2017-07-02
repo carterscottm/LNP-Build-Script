@@ -1,4 +1,5 @@
 #!/bin/bash
+> * Legends Browser 1.12.2
 # TODO:
 #			* add additional documentation
 
@@ -33,7 +34,7 @@ TWBT="twbt-5.84-linux.zip"                                  # file name to downl
 
 DEST_DIR="dist"                                             # folder name where everything will be copied to
 
-GH="git@github.com:"                                     # because why not?
+GH="https://github.com"                                     # because why not?
 
 dffdID="12762"                                              # added for portability
 
@@ -199,37 +200,39 @@ if [ -f $DF_BASELINES ]; then
 fi
 
 # Get Dwarf Therapist ##########################################################
-cp ~/projects/dwarf_therapist $DEST_DIR/LNP/utilities -r
-mv ./$DEST_DIR/LNP/utilities/dwarf_therapist/doc/Dwarf\ Therapist.pdf ./$DEST_DIR/LNP/about/
-rm ./$DEST_DIR/LNP/utilities/dwarf_therapist/doc -rf
-#mkdir $DEST_DIR/LNP/utilities/dwarf_therapist
-#if [ ! -d Dwarf-Therapist ]; then
-#	echo Downloading Dwarf Therapist
-#	git clone -q $GH/splintermind/Dwarf-Therapist.git
-#	echo compiling Dwarf Therapist, please be patient.
-#	cd Dwarf-Therapist
-#	qmake
-#  make > /dev/null 2>&1
-#	cd ..
-#fi
-#echo Copying Dwarf Therapist to LNP/utilities directory
-#cd Dwarf-Therapist
-#cp release/DwarfTherapist ../$DEST_DIR/LNP/utilities/dwarf_therapist
-#cp share ../$DEST_DIR/LNP/utilities/dwarf_therapist -r
-#cp hammer.* ../$DEST_DIR/LNP/utilities/dwarf_therapist
-#cp LICENSE.txt ../$DEST_DIR/LNP/utilities/dwarf_therapist
-#cp README.rst ../$DEST_DIR/LNP/utilities/dwarf_therapist
-#cp CHANGELOG.txt ../$DEST_DIR/LNP/utilities/dwarf_therapist
-#cp dist/dwarftherapist ../$DEST_DIR/LNP/utilities/dwarf_therapist
-#cd ..
-#Create manifest.json for Dwarf Therapist
-#echo "{" > ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-#echo "    \"author\": \"splintermind\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-#echo "    \"content_version\": \"37.0.0\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-#echo "    \"title\": \"Dwarf Therapist\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-#echo "    \"tooltip\": \"Makes managing your dwarves' jobs and psychology easy! (NB - DFHack \\\"autolabor\\\" must be disabled).\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-#echo "    \"linux_exe\": \"DwarfTherapist\"" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-#echo "}" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+mkdir $DEST_DIR/LNP/utilities/dwarf_therapist
+if [ ! -d ./Dwarf-Therapist ]; then
+  echo Downloading Dwarf Therapist
+  git clone $GH/carterscottm/Dwarf-Therapist.git
+  echo compiling Dwarf Therapist, please be patient.
+  cd Dwarf-Therapist
+  qmake -qt=4 > /dev/null 2>&1
+  make -j$(nproc) > /dev/null 2>&1
+  mkdir share/dwarftherapist/log -p
+  touch share/dwarftherapist/log/run.log
+  chmod 777 share/dwarftherapist/log
+  chmod 777 share/dwarftherapist/log/run.log
+  rm share/memory_layouts/osx -rf
+  rm share/memory_layouts/windows -rf
+  mv share/memory_layouts share/dwarftherapist/memory_layouts
+  cd ..
+fi
+echo Copying Dwarf Therapist to LNP/utilities directory
+cp Dwarf-Therapist/release/DwarfTherapist ./$DEST_DIR/LNP/utilities/dwarf_therapist
+cp Dwarf-Therapist/share ./$DEST_DIR/LNP/utilities/dwarf_therapist -r
+cp Dwarf-Therapist/LICENSE.txt ./$DEST_DIR/LNP/utilities/dwarf_therapist
+cp Dwarf-Therapist/README.rst ./$DEST_DIR/LNP/utilities/dwarf_therapist
+cp Dwarf-Therapist/dist/dwarftherapist ./$DEST_DIR/LNP/utilities/dwarf_therapist
+cp Dwarf-Therapist/doc/Dwarf\ Therapist.pdf ./$DEST_DIR/LNP/about
+
+# Create manifest.json for Dwarf Therapist
+echo "{" > ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+echo "    \"author\": \"splintermind\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+echo "    \"content_version\": \"37.0.0\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+echo "    \"title\": \"Dwarf Therapist\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+echo "    \"tooltip\": \"Makes managing your dwarves' jobs and psychology easy! (NB - DFHack \\\"labormanager\\\" must be disabled).\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+echo "    \"linux_exe\": \"dwarftherapist\"" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+echo "}" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
 
 # Get Armok Vision #############################################################
 if [ ! -f $ARMOK_VISION ]; then
@@ -395,8 +398,6 @@ find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_SOLDIE
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_MONSTER_CAP\:\(.*\)\]/\[INVASION_MONSTER_CAP\:40\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[ENGRAVINGS_START_OBSCURED\:NO\]/\[ENGRAVINGS_START_OBSCURED\:YES]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[EMBARK_RECTANGLE\:\(.*\)\]/\[EMBARK_RECTANGLE\:3\:3\]/g" {} \;
-
-
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[FPS\:NO\]/\[FPS\:YES\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[INTRO\:YES\]/\[INTRO\:NO\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[SOUND\:YES\]/\[SOUND\:NO\]/g" {} \;
