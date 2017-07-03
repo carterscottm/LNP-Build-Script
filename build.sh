@@ -438,6 +438,11 @@ find ./LNP -name PyLNP.json -exec sed -i "s/\"dffdID\": \"\(.*\)\"/\"dffdID\": \
 find ./LNP -name PyLNP.json -exec sed -i "s/\"updateMethod\": \"\(.*\)\"/\"updateMethod\": \"dffd\"/g" {} \;
 find ./LNP -name PyLNP.json -exec sed -i 's/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],\n        \["This Packs homepage",'$PACK_HOMEPAGE'\],'/g {} \;
 
+# Create PyLNP.user to enable update check at every launch
+echo "{" > PyLNP.user
+echo "  \"updateDays\": 0" >> PyLNP.user
+echo "}" >> PyLNP.user
+
 # Create empty (but necessary) files/folders and create tarball ###############
 touch df_linux/gamelog.txt
 mkdir df_linux/data/save

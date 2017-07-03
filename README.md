@@ -75,6 +75,7 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 
 ##### Minor changes over previous revision:
 * Fixed wrapper scripts for Legends Browser and DF Announcement Filter
+* Turned on PyLNP update check at launch
 
 ##### Utilities included:
 * PyLNP 0.12b
