@@ -1,5 +1,4 @@
 #!/bin/bash
-> * Legends Browser 1.12.2
 # TODO:
 #			* add additional documentation
 
@@ -57,8 +56,8 @@ if [ ! -d Lazy-Newb-Pack-Linux ]; then
   git clone -q $GH/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux.git
 fi
 if [ ! -f Lazy-Newb-Pack-Linux/pack/LNP/PyLNP.json ]; then
-  echo Cloning $GH/carterscottm/LNP-shared-core.git
-  git clone -q -b pre-merge $GH/carterscottm/LNP-shared-core.git ./Lazy-Newb-Pack-Linux/pack/LNP
+  echo Cloning $GH/Lazy-Newb-Pack/LNP-shared-core.git
+  git clone -q $GH/Lazy-Newb-Pack/LNP-shared-core.git ./Lazy-Newb-Pack-Linux/pack/LNP
 fi
 
 echo Creating the LNP directory structure
@@ -202,9 +201,9 @@ fi
 # Get Dwarf Therapist ##########################################################
 mkdir $DEST_DIR/LNP/utilities/dwarf_therapist
 if [ ! -d ./Dwarf-Therapist ]; then
-  echo Downloading Dwarf Therapist
-  git clone $GH/carterscottm/Dwarf-Therapist.git
-  echo compiling Dwarf Therapist, please be patient.
+  echo Cloning $GH/carterscottm/Dwarf-Therapist.git
+  git clone -q $GH/carterscottm/Dwarf-Therapist.git
+  echo Compiling Dwarf Therapist, please be patient.
   cd Dwarf-Therapist
   qmake -qt=4 > /dev/null 2>&1
   make -j$(nproc) > /dev/null 2>&1
@@ -348,7 +347,7 @@ fi
 if [ ! -d qfconvert ]; then
   if [ ! -f 04024r3-x64.zip ]; then
     echo Downloading old pack to retreive qfconvert utility
-    wget http://dffd.bay12games.com/download.php?id=8936\&f=04024r3-x64.zip -O 04024r3-x64.zip
+    wget -qnc http://dffd.bay12games.com/download.php?id=8936\&f=04024r3-x64.zip -O 04024r3-x64.zip
   fi
   if [ -f 04024r3-x64.zip ]; then
     echo Extracting old pack to retreive qfconvert utility
@@ -416,24 +415,6 @@ echo '# List of raws merged by PyLNP:' > $DEST_DIR/df_linux/raw/installed_raws.t
 echo 'baselines/'$DF_BASELINES_VER >> $DEST_DIR/df_linux/raw/installed_raws.txt
 echo 'graphics/Phoebus' >> $DEST_DIR/df_linux/raw/installed_raws.txt
 
-# Copy Baselines to ASCII folder in LNP/graphics ###############################
-#mkdir $DEST_DIR/LNP/graphics/ASCII
-#mkdir $DEST_DIR/LNP/graphics/ASCII/data
-#mkdir $DEST_DIR/LNP/graphics/ASCII/data/art
-#mkdir $DEST_DIR/LNP/graphics/ASCII/data/init
-
-#cp ./baselines/$DF_BASELINES_VER/data/art/* $DEST_DIR/LNP/graphics/ASCII/data/art
-#cp ./baselines/$DF_BASELINES_VER/data/init/colors.txt $DEST_DIR/LNP/graphics/ASCII/data/init
-#cp ./baselines/$DF_BASELINES_VER/data/init/d_init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
-#cp ./baselines/$DF_BASELINES_VER/data/init/init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
-
-#echo '{' > $DEST_DIR/LNP/graphics/ASCII/manifest.json
-#echo '    "author": "ToadyOne",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-#echo '    "tooltip": "Default graphics for DF, exactly as they come.",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-#echo '    "content_version": "'$DF_VER'",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-#echo '    "title": "ASCII Default"' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-#echo '}' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-
 # Cleanup git files and other misc. cleanup ####################################
 cd $DEST_DIR
 find . | grep .git | xargs rm -rf
@@ -463,5 +444,3 @@ tar cfz LinuxLNP-$LNP_VER.tar.gz --transform "s,^,LinuxLNP-$LNP_VER/," *
 mv *.tar.gz ../../
 cd ../../
 echo Finished!
-
-
