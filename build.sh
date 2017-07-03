@@ -438,9 +438,11 @@ find ./LNP -name PyLNP.json -exec sed -i 's/\["Donate for Dwarf Fortress","http:
 touch df_linux/gamelog.txt
 mkdir df_linux/data/save
 mkdir df_linux/sounds/packs -p
+mkdir LinuxLNP-$LNP_VER
 cp ../../README.md ./
+mv * LinuxLNP-$LNP_VER > /dev/null 2>&1
 echo Creating $LNP_VER.tar.gz
-tar cfz LinuxLNP-$LNP_VER.tar.gz --transform "s,^,LinuxLNP-$LNP_VER/," *
+tar cfz LinuxLNP-$LNP_VER.tar.gz *
 mv *.tar.gz ../../
 cd ../../
 echo Finished!
