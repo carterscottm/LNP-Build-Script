@@ -3,7 +3,7 @@
 #			* add additional documentation
 
 # Variable declarations ########################################################
-LNP_VER="0.43.05-r04"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.43.05-r05"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
 ARMOK_VISION_VER="v0.16.2"                                  # part of the download URL
 ARMOK_VISION="Armok.Vision.v0.16.2.Linux.zip"               # file name to download
@@ -304,9 +304,17 @@ if [ -f DFAnnouncementFilter.zip ]; then
   echo "    \"content_version\": \"1.01\"," >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
   echo "    \"title\": \"DF Announcement Filter\"," >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
   echo "    \"tooltip\": \"This utility gives you a live feed of announcements without having to pause the game to check the announcement page\"," >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
-  echo "    \"linux_exe\": \"DFAnnouncementFilter.jar\"" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
+  echo "    \"linux_exe\": \"df_announcement_filter.sh\"" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
   echo "}" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
 fi
+
+#Create launch script for DF Announcement Filter (some distros won't launch .jar files directly)
+  echo "#!/bin/bash" > ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
+  echo "CWD=\`dirname \$(realpath \$0)\`" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
+  echo "JAVA=\`which java\`" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
+  echo "\$JAVA -jar \$CWD/DFAnnouncementFilter.jar" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
+  echo "exit 0" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
+  chmod +x ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
 
 # Get Legends Browser ##########################################################
 if [ ! -f $LEGENDS_BROWSER ]; then
@@ -331,15 +339,11 @@ if [ -f $LEGENDS_BROWSER ]; then
 
   #Create launch script for Legends Browser (some distros won't launch .jar files directly)
   echo "#!/bin/bash" > ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
-  echo "CWD=`dirname $(realpath $0)`" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
+  echo "CWD=\`dirname \$(realpath \$0)\`" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
   echo "JAVA=\`which java\`" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
-  echo "\$JAVA -jar $LEGENDS_BROWSER" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
+  echo "\$JAVA -jar \$CWD/$LEGENDS_BROWSER" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
   echo "exit 0" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
   chmod +x ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
-
-  #Exclude the .jar file from showing up on the list of utilities in LNP
-  echo 'Legends Browser Exclusions' >> ./$DEST_DIR/LNP/utilities/exclude.txt
-  echo '['$LEGENDS_BROWSER']' >> ./$DEST_DIR/LNP/utilities/exclude.txt
 
 fi
 

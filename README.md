@@ -71,6 +71,23 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 
 ***
 ## Linux LNP Changelog
+### Release notes for 0.43.05-r05 (???, 2017)
+
+##### Minor changes over previous revision:
+* Fixed wrapper scripts for Legends Browser and DF Announcement Filter
+
+##### Utilities included:
+* PyLNP 0.12b
+* DF 0.43.05
+* DFHack 0.43.05-r1
+* Dwarf Therapist 37.0.0 (DanFritz's fork built with Qt 4.8.7)
+* TWBT 5.84
+* Soundsense r2016-1
+* SoundCenSe GTK 1.4.2
+* Armok Vision 0.16.2
+* Legends Browser 1.12.2
+
+***
 ### Release notes for 0.43.05-r04 (July 3, 2017)
 ##### Major changes over previous revision:
 * Fixed missing DFHack libs due to improper .tar creation
