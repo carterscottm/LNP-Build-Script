@@ -71,10 +71,11 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 
 ***
 ## Linux LNP Changelog
-### Release notes for 0.43.05-r05 (???, 2017)
+### Release notes for 0.43.05-r05 (July 3, 2017)
 
 ##### Minor changes over previous revision:
 * Fixed wrapper scripts for Legends Browser and DF Announcement Filter
+* Turned on PyLNP update check at launch
 
 ##### Utilities included:
 * PyLNP 0.12b
