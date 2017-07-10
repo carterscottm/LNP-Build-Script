@@ -71,6 +71,27 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 
 ***
 ## Linux LNP Changelog
+### Release notes for 0.43.05-r06
+##### Major changes over previous revision:
+* Updated Armok Vision to v0.17.0
+
+##### Minor changes over previous revision:
+* Temporarily including baseline files (PyLNP baseline downloader bugged for the moment)
+* Replaced deprecated `realpath` with `readlink -f` in a the wrapper scripts for DF Announcement filter, Dwarf Therapist, and Legends Browser
+* Removed error-causing comma from PyLNP.user (Thanks [@Tymewalk](https://www.reddit.com/user/Tymewalk))
+
+##### Utilities included:
+* PyLNP 0.12b
+* DF 0.43.05
+* DFHack 0.43.05-r1
+* Dwarf Therapist 37.0.0 (DanFritz's fork built with Qt 4.8.7)
+* TWBT 5.84
+* Soundsense r2016-1
+* SoundCenSe GTK 1.4.2
+* Armok Vision 0.17.0
+* Legends Browser 1.12.2
+
+***
 ### Release notes for 0.43.05-r05 (July 3, 2017)
 
 ##### Minor changes over previous revision:

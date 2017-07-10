@@ -3,10 +3,10 @@
 #			* add additional documentation
 
 # Variable declarations ########################################################
-LNP_VER="0.43.05-r05"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.43.05-r06"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
-ARMOK_VISION_VER="v0.16.2"                                  # part of the download URL
-ARMOK_VISION="Armok.Vision.v0.16.2.Linux.zip"               # file name to download
+ARMOK_VISION_VER="v0.17.0"                                  # part of the download URL
+ARMOK_VISION="Armok.Vision.v0.17.0.Linux.zip"               # file name to download
 
 DF_VER="0.43.05"                                            # part of the download URL, and used to allow graphics pack compatibility
 DF="df_43_05_linux.tar.bz2"                                 # file name to download
@@ -21,7 +21,6 @@ LEGENDS_BROWSER_VER="1.12.2"                                # part of the downlo
 LEGENDS_BROWSER="legendsbrowser-1.12.2.jar"                 # file name to download
 
 PYLNP="PyLNP_0.12b-linux-x64.tar.xz"                        # part of the download URL
-#PYLNP="python-lnp"
 
 SOUNDCENSE="SoundCenSe.GTK.v1.4.2.Win32.zip"						    # file name to download
 SOUNDCENSE_VER="1.4.2"
@@ -74,7 +73,7 @@ if [ ! -f $PYLNP ]; then
 fi
 if [ $PYLNP ]; then
   echo Extracting $PYLNP
-  tar -xf $PYLNP -C ./$DEST_DIR/
+  tar xf $PYLNP -C ./$DEST_DIR/
 fi
 
 # Get Dwarf Fortress ###########################################################
@@ -135,7 +134,8 @@ if [ ! -d gfx ]; then
   git clone -q $GH/DFgraphics/Tergel.git gfx/Tergel
   git clone -q $GH/DFgraphics/Wanderlust.git gfx/Wanderlust
 
-  # Roll back the graphics packs to a known-compatible commit with this version of DF
+# Roll back the graphics packs to an earlier commit ############################
+# Only uncomment this when building for an older version of DF #################
   #cd gfx/Afro-Graphics
   #git reset --hard fccafc3f5099f645e0e82b2eee46cb2da9f578a9
   #cd ..
@@ -197,6 +197,9 @@ if [ -f $DF_BASELINES ]; then
   fi
   unzip -qq -o $DF_BASELINES -d ./baselines/$DF_BASELINES_VER
 fi
+mkdir $DEST_DIR/LNP/baselines/$DF_BASELINES_VER
+cp $DEST_DIR/df_linux/data $DEST_DIR/LNP/baselines/$DF_BASELINES_VER -r
+cp $DEST_DIR/df_linux/raw $DEST_DIR/LNP/baselines/$DF_BASELINES_VER -r
 
 # Get Dwarf Therapist ##########################################################
 mkdir $DEST_DIR/LNP/utilities/dwarf_therapist
@@ -213,17 +216,15 @@ if [ ! -d ./Dwarf-Therapist ]; then
   chmod 777 share/dwarftherapist/log/run.log
   rm share/memory_layouts/osx -rf
   rm share/memory_layouts/windows -rf
-  mv share/memory_layouts share/dwarftherapist/memory_layouts
+  mv share/memory_layouts/ share/dwarftherapist
   cd ..
 fi
 echo Copying Dwarf Therapist to LNP/utilities directory
 cp Dwarf-Therapist/release/DwarfTherapist ./$DEST_DIR/LNP/utilities/dwarf_therapist
 cp Dwarf-Therapist/share ./$DEST_DIR/LNP/utilities/dwarf_therapist -r
 cp Dwarf-Therapist/LICENSE.txt ./$DEST_DIR/LNP/utilities/dwarf_therapist
-cp Dwarf-Therapist/README.rst ./$DEST_DIR/LNP/utilities/dwarf_therapist
-cp Dwarf-Therapist/dist/dwarftherapist ./$DEST_DIR/LNP/utilities/dwarf_therapist
+cp Dwarf-Therapist/dist/dwarftherapist ./$DEST_DIR/LNP/utilities/dwarf_therapist/
 cp Dwarf-Therapist/doc/Dwarf\ Therapist.pdf ./$DEST_DIR/LNP/about
-
 # Create manifest.json for Dwarf Therapist
 echo "{" > ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
 echo "    \"author\": \"splintermind\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
@@ -242,8 +243,9 @@ if [ -f $ARMOK_VISION ]; then
   mkdir ./$DEST_DIR/LNP/utilities/armok_vision
   echo Copying $ARMOK_VISION to LNP/utilities directory
   unzip -qq -o $ARMOK_VISION -d ./$DEST_DIR/LNP/utilities/armok_vision
-  chmod +x ./$DEST_DIR/LNP/utilities/armok_vision/Armok\ Vision.*
+  chmod +x ./$DEST_DIR/LNP/utilities/armok_vision/Armok\ Vision\ Linux.*
   mv ././$DEST_DIR/LNP/utilities/armok_vision/Readme.txt  ./$DEST_DIR/LNP/about/Armok_Vision.txt
+	find ./$DEST_DIR/LNP/utilities/armok_vision/ -name manifest.json -exec sed -i "s/Armok Vision.x86_64/Armok Vision Linux.x86_64/g" {} \;
 fi
 
 # Get SoundCenSe ###############################################################
@@ -310,9 +312,9 @@ fi
 
 #Create launch script for DF Announcement Filter (some distros won't launch .jar files directly)
   echo "#!/bin/bash" > ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
-  echo "CWD=\`dirname \$(realpath \$0)\`" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
+  echo "CWD=\`dirname \"\$(readlink -f \"\$0\")\"\`" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
   echo "JAVA=\`which java\`" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
-  echo "\$JAVA -jar \$CWD/DFAnnouncementFilter.jar" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
+  echo "\$JAVA -jar \"\$CWD/DFAnnouncementFilter.jar\"" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
   echo "exit 0" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
   chmod +x ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
 
@@ -339,9 +341,9 @@ if [ -f $LEGENDS_BROWSER ]; then
 
   #Create launch script for Legends Browser (some distros won't launch .jar files directly)
   echo "#!/bin/bash" > ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
-  echo "CWD=\`dirname \$(realpath \$0)\`" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
+  echo "CWD=\`dirname \"\$(readlink -f \"\$0\")\"\`" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
   echo "JAVA=\`which java\`" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
-  echo "\$JAVA -jar \$CWD/$LEGENDS_BROWSER" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
+  echo "\$JAVA -jar \"\$CWD/$LEGENDS_BROWSER\"" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
   echo "exit 0" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
   chmod +x ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
 
