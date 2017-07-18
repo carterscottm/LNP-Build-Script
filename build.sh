@@ -15,10 +15,10 @@ DF_BASELINES_VER="df_43_05"                                 # part of the file p
 DF_BASELINES="df_43_05_win_s.zip"                           # file name to download
 
 DFHACK_VER="0.43.05-r1"                                     # part of the download URL
-DFHACK="dfhack-0.43.05-r1-Linux-64-gcc-4.8.1.tar.bz2"       # file name to download
+DFHACK="dfhack-0.43.05-r1-Linux-64-gcc-4.8.1.tar.bz2"
 
-LEGENDS_BROWSER_VER="1.12.2"                                # part of the download URL
-LEGENDS_BROWSER="legendsbrowser-1.12.2.jar"                 # file name to download
+LEGENDS_BROWSER_VER="1.13"                                # part of the download URL
+LEGENDS_BROWSER="legendsbrowser-1.13.jar"                 # file name to download
 
 PYLNP="PyLNP_0.12b-linux-x64.tar.xz"                        # part of the download URL
 
@@ -202,37 +202,13 @@ cp $DEST_DIR/df_linux/data $DEST_DIR/LNP/baselines/$DF_BASELINES_VER -r
 cp $DEST_DIR/df_linux/raw $DEST_DIR/LNP/baselines/$DF_BASELINES_VER -r
 
 # Get Dwarf Therapist ##########################################################
-mkdir $DEST_DIR/LNP/utilities/dwarf_therapist
-if [ ! -d ./Dwarf-Therapist ]; then
-  echo Cloning $GH/carterscottm/Dwarf-Therapist.git
-  git clone -q $GH/carterscottm/Dwarf-Therapist.git
-  echo Compiling Dwarf Therapist, please be patient.
-  cd Dwarf-Therapist
-  qmake -qt=4 > /dev/null 2>&1
-  make -j$(nproc) > /dev/null 2>&1
-  mkdir share/dwarftherapist/log -p
-  touch share/dwarftherapist/log/run.log
-  chmod 777 share/dwarftherapist/log
-  chmod 777 share/dwarftherapist/log/run.log
-  rm share/memory_layouts/osx -rf
-  rm share/memory_layouts/windows -rf
-  mv share/memory_layouts/ share/dwarftherapist
-  cd ..
+if [ ! -d ./dwarf_therapist ]; then
+  echo Downloading pre-compiled Dwarf Therapist
+  wget -qnc https://www.dropbox.com/s/jv2nsyozlj5dkft/dt.tar.gz
+	tar zxf dt.tar.gz
 fi
 echo Copying Dwarf Therapist to LNP/utilities directory
-cp Dwarf-Therapist/release/DwarfTherapist ./$DEST_DIR/LNP/utilities/dwarf_therapist
-cp Dwarf-Therapist/share ./$DEST_DIR/LNP/utilities/dwarf_therapist -r
-cp Dwarf-Therapist/LICENSE.txt ./$DEST_DIR/LNP/utilities/dwarf_therapist
-cp Dwarf-Therapist/dist/dwarftherapist ./$DEST_DIR/LNP/utilities/dwarf_therapist/
-cp Dwarf-Therapist/doc/Dwarf\ Therapist.pdf ./$DEST_DIR/LNP/about
-# Create manifest.json for Dwarf Therapist
-echo "{" > ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-echo "    \"author\": \"splintermind\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-echo "    \"content_version\": \"37.0.0\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-echo "    \"title\": \"Dwarf Therapist\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-echo "    \"tooltip\": \"Makes managing your dwarves' jobs and psychology easy! (NB - DFHack \\\"labormanager\\\" must be disabled).\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-echo "    \"linux_exe\": \"dwarftherapist\"" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-echo "}" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+cp dwarf_therapist/ ./$DEST_DIR/LNP/utilities/ -r
 
 # Get Armok Vision #############################################################
 if [ ! -f $ARMOK_VISION ]; then
@@ -245,7 +221,7 @@ if [ -f $ARMOK_VISION ]; then
   unzip -qq -o $ARMOK_VISION -d ./$DEST_DIR/LNP/utilities/armok_vision
   chmod +x ./$DEST_DIR/LNP/utilities/armok_vision/Armok\ Vision\ Linux.*
   mv ././$DEST_DIR/LNP/utilities/armok_vision/Readme.txt  ./$DEST_DIR/LNP/about/Armok_Vision.txt
-	find ./$DEST_DIR/LNP/utilities/armok_vision/ -name manifest.json -exec sed -i "s/Armok Vision.x86_64/Armok Vision Linux.x86_64/g" {} \;
+  find ./$DEST_DIR/LNP/utilities/armok_vision/ -name manifest.json -exec sed -i "s/Armok Vision.x86_64/Armok Vision Linux.x86_64/g" {} \;
 fi
 
 # Get SoundCenSe ###############################################################
@@ -398,7 +374,7 @@ find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[SHOW_FLOW_AMOUN
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[POPULATION_CAP\:\(.*\)\]/\[POPULATION_CAP\:120\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[STRICT_POPULATION_CAP\:\(.*\)\]/\[STRICT_POPULATION_CAP\:220\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[BABY_CHILD_CAP\:\(.*\)\:\(.*\)\]/\[BABY_CHILD_CAP\:10\:20\]/g" {} \;
-find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[VISITOR_CAP\:\(.*\)\]/\[VISITOR_CAP\:100\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[VISITOR_CAP\:\(.*\)\]/\[VISITOR_CAP\:50\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_SOLDIER_CAP\:\(.*\)\]/\[INVASION_SOLDIER_CAP\:120\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_MONSTER_CAP\:\(.*\)\]/\[INVASION_MONSTER_CAP\:40\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[ENGRAVINGS_START_OBSCURED\:NO\]/\[ENGRAVINGS_START_OBSCURED\:YES]/g" {} \;
