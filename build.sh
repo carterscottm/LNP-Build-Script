@@ -14,11 +14,11 @@ DF="df_43_05_linux.tar.bz2"                                 # file name to downl
 DF_BASELINES_VER="df_43_05"                                 # part of the file path in LNP directory
 DF_BASELINES="df_43_05_win_s.zip"                           # file name to download
 
-DFHACK_VER="0.43.05-r1"                                     # part of the download URL
-DFHACK="dfhack-0.43.05-r1-Linux-64-gcc-4.8.1.tar.bz2"
+DFHACK_VER="0.43.05-r2"                                     # part of the download URL
+DFHACK="dfhack-0.43.05-r2-Linux-64-gcc-4.8.tar.bz2"
 
-LEGENDS_BROWSER_VER="1.13"                                # part of the download URL
-LEGENDS_BROWSER="legendsbrowser-1.13.jar"                 # file name to download
+LEGENDS_BROWSER_VER="1.13"                                  # part of the download URL
+LEGENDS_BROWSER="legendsbrowser-1.13.jar"                   # file name to download
 
 PYLNP="PyLNP_0.12b-linux-x64.tar.xz"                        # part of the download URL
 
@@ -27,8 +27,8 @@ SOUNDCENSE_VER="1.4.2"
 
 SOUNDSENSE="soundSense_2016-1_196.zip"                      # file name to download
 
-TWBT_VER="v5.84"                                            # part of the download URL
-TWBT="twbt-5.84-linux.zip"                                  # file name to download
+TWBT_VER="v5.85"                                            # part of the download URL
+TWBT="twbt-5.85-linux.zip"                                  # file name to download
 
 DEST_DIR="dist"                                             # folder name where everything will be copied to
 
@@ -205,10 +205,11 @@ cp $DEST_DIR/df_linux/raw $DEST_DIR/LNP/baselines/$DF_BASELINES_VER -r
 if [ ! -d ./dwarf_therapist ]; then
   echo Downloading pre-compiled Dwarf Therapist
   wget -qnc https://www.dropbox.com/s/jv2nsyozlj5dkft/dt.tar.gz
-	tar zxf dt.tar.gz
+  tar zxf dt.tar.gz
 fi
 echo Copying Dwarf Therapist to LNP/utilities directory
 cp dwarf_therapist/ ./$DEST_DIR/LNP/utilities/ -r
+mv ./$DEST_DIR/LNP/utilities/dwarf_therapist/Dwarf\ Therapist.pdf ./$DEST_DIR/LNP/about
 
 # Get Armok Vision #############################################################
 if [ ! -f $ARMOK_VISION ]; then

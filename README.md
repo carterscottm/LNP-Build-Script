@@ -1,6 +1,8 @@
 # Lazy-Newb-Pack-Linux v0.43.05 x64
 A small package to get people started with Dwarf Fortress on linux. Please take time to check out the [Official thread](http://www.bay12forums.com/smf/index.php?topic=163211.0). There are a few help documents in the [Wiki](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki) if you should get stuck.
 
+If you like the work I've put into assembling this pack, please feel free to head over to my ** [Patreon](https://www.patreon.com/enay) ** page and buy me a coffee.  Or a beer.  Or a sammich.  I'm really not picky.
+
 ## Download Location
 The Linux LNP Can be downloaded at the below location:
 
@@ -23,8 +25,8 @@ When first launching a new version of the LNP, you'll be asked if you want to im
 ## Included Mods
 * [Pidgeot's PyLNP 0.12b Lazy Newb Pack Python interface](http://www.bay12forums.com/smf/index.php?topic=140808.0)
  * Utilities:
-     * [DFHack Linux V0.43.05-r1 (gcc 4.8.1)](http://www.bay12forums.com/smf/index.php?topic=139553.0)
-     * [TWBT 5.84](http://www.bay12forums.com/smf/index.php?topic=138754.0)
+     * [DFHack Lin2x V0.43.05-r2 (gcc 4.8)](http://www.bay12forums.com/smf/index.php?topic=139553.0)
+     * [TWBT 5.85](http://www.bay12forums.com/smf/index.php?topic=138754.0)
      * [Dwarf Therapist v37 (Hello71's fork)](https://github.com/Hello71/Dwarf-Therapist) (**compiled with qt5.5.1**)
      * [Soundsense r2016-1](http://df.zweistein.cz/soundsense/)
      * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (**Requires Mono, go [HERE](http://www.mono-project.com/download/#download-lin) for install instructions**)
@@ -71,27 +73,35 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 
 ***
 ## Linux LNP Changelog
-### Release notes for 0.43.05-r06
+### Release notes for 0.43.05-r07
+
+##### Major changes over previous revision:
+##### Minor changes over previous revision:
+* Added the stocksettings folder to PyLNP importer directives so your custom stockpile settings can carry over from one revision to the next
+
+### Release notes for 0.43.05-r06 (July 20, 2017)
 
 A bug was found (Thanks [Bulwersator](http://www.bay12forums.com/smf/index.php?topic=163211.msg7507158#msg7507158)!) with the version of Dwarf Therapist I was distributing with the LNP that caused it to crash when a squad is present.  I replaced it with Hello71's fork built with Qt5.5.1.
 
 ##### Major changes over previous revision:
+* Updated DFHack to v043.05-r2
 * Updated Armok Vision to v0.17.0
 * Updated Legends Browser to v1.13
+* Updated TWBT to v5.85
 
 ##### Minor changes over previous revision:
 * Reduced default visitor cap from 100 down to 50 to reduce possible FPS death
 * Temporarily including baseline files (PyLNP baseline downloader bugged for the moment)
 * Replaced deprecated `realpath` with `readlink -f` in a the wrapper scripts for DF Announcement filter, Dwarf Therapist, and Legends Browser
-* Removed error-causing comma from PyLNP.user (Thanks [@Tymewalk](https://www.reddit.com/user/Tymewalk))
-* Replaced Dan Fritz's fork of Dwarf Therapist with Hello71's fork
-
+* Removed error-causing comma from PyLNP.user (Thanks [@Tymewalk](http://www.bay12forums.com/smf/index.php?topic=163211.msg7503284#msg7503284))
+* Replaced Dan Fritz's fork of Dwarf Therapist with Hello71's fork due to a crash when reading dwarves while a military is in place (Thanks [@Bulwersator](http://www.bay12forums.com/smf/index.php?topic=163211.msg7507158#msg7507158)
+)
 ##### Utilities included:
 * PyLNP 0.12b
 * DF 0.43.05
-* DFHack 0.43.05-r1
+* DFHack 0.43.05-r2
 * Dwarf Therapist 37.0.0 (Hello71's fork built with Qt 5.5.1)
-* TWBT 5.84
+* TWBT 5.85
 * Soundsense r2016-1
 * SoundCenSe GTK 1.4.2
 * Armok Vision 0.17.0
