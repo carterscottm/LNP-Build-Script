@@ -3,10 +3,10 @@
 #			* add additional documentation
 
 # Variable declarations ########################################################
-LNP_VER="0.43.05-r04"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.43.05-r07"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
-ARMOK_VISION_VER="v0.16.2"                                  # part of the download URL
-ARMOK_VISION="Armok.Vision.v0.16.2.Linux.zip"               # file name to download
+ARMOK_VISION_VER="v0.18.0"                                  # part of the download URL
+ARMOK_VISION="Armok.Vision.v0.18.0.Linux.zip"               # file name to download
 
 DF_VER="0.43.05"                                            # part of the download URL, and used to allow graphics pack compatibility
 DF="df_43_05_linux.tar.bz2"                                 # file name to download
@@ -14,26 +14,26 @@ DF="df_43_05_linux.tar.bz2"                                 # file name to downl
 DF_BASELINES_VER="df_43_05"                                 # part of the file path in LNP directory
 DF_BASELINES="df_43_05_win_s.zip"                           # file name to download
 
-DFHACK_VER="0.43.05-r1"                                     # part of the download URL
-DFHACK="dfhack-0.43.05-r1-Linux-64-gcc-4.8.1.tar.bz2"       # file name to download
+DFHACK_VER="0.43.05-r2"                                     # part of the download URL
+DFHACK="dfhack-0.43.05-r2-Linux-64-gcc-5.4.0.tar.bz2"       # file name to download
 
-LEGENDS_BROWSER_VER="1.12.2"                                # part of the download URL
-LEGENDS_BROWSER="legendsbrowser-1.12.2.jar"                 # file name to download
+LEGENDS_BROWSER_VER="1.13"                                  # part of the download URL
+LEGENDS_BROWSER="legendsbrowser-1.13.jar"                   # file name to download
 
 PYLNP="PyLNP_0.12b-linux-x64.tar.xz"                        # part of the download URL
 #PYLNP="python-lnp"
 
-SOUNDCENSE="SoundCenSe.GTK.v1.4.2.Win32.zip"						    # file name to download
+SOUNDCENSE="SoundCenSe.GTK.v1.4.2.Win32.zip"                # file name to download
 SOUNDCENSE_VER="1.4.2"
 
 SOUNDSENSE="soundSense_2016-1_196.zip"                      # file name to download
 
-TWBT_VER="v5.84"                                            # part of the download URL
-TWBT="twbt-5.84-linux.zip"                                  # file name to download
+TWBT_VER="v6.21"                                            # part of the download URL
+TWBT="twbt-6.21-linux.zip"                                  # file name to download
 
 DEST_DIR="dist"                                             # folder name where everything will be copied to
 
-GH="git@github.com:"                                     # because why not?
+GH="https://github.com"                                             # because why not?
 
 dffdID="12762"                                              # added for portability
 
@@ -91,7 +91,7 @@ fi
 # Get DFHack ###################################################################
 if [ ! -f $DFHACK ]; then
   echo Downloading $DFHACK
-  wget -qnc $GH/DFHack/dfhack/releases/download/$DFHACK_VER/$DFHACK
+  wget $GH/DFHack/dfhack/releases/download/$DFHACK_VER/$DFHACK
 fi
 if [ -f $DFHACK ]; then
   echo Extracting $DFHACK
@@ -120,21 +120,22 @@ fi
 if [ ! -d gfx ]; then
   echo Downloading the graphics packs
   mkdir gfx
-  git clone -q $GH/DFgraphics/Afro-Graphics.git gfx/Afro-Graphics
-  git clone -q $GH/DFgraphics/AutoReiv.git gfx/AutoReiv
-  git clone -q $GH/DFgraphics/CLA.git gfx/CLA
-  git clone -q $GH/DFgraphics/GemSet.git gfx/GemSet
-  git clone -q $GH/DFgraphics/IronHand.git gfx/IronHand
-  git clone -q $GH/DFgraphics/Jolly-Bastion.git gfx/Jolly-Bastion
-  git clone -q $GH/DFgraphics/Mayday.git gfx/Mayday
-  git clone -q $GH/DFgraphics/Obsidian.git gfx/Obsidian
-  git clone -q $GH/DFgraphics/Phoebus.git gfx/Phoebus
-  git clone -q $GH/DFgraphics/Rally-Ho.git gfx/Rally-Ho
-  git clone -q $GH/DFgraphics/Spacefox.git gfx/Spacefox
-  git clone -q $GH/DFgraphics/Taffer.git gfx/Taffer
-  git clone -q $GH/DFgraphics/Tergel.git gfx/Tergel
-  git clone -q $GH/DFgraphics/Wanderlust.git gfx/Wanderlust
-
+  cd gfx
+  git clone -q $GH/DFgraphics/Afro-Graphics.git
+  git clone -q $GH/DFgraphics/AutoReiv.git
+  git clone -q $GH/DFgraphics/CLA.git
+  git clone -q $GH/DFgraphics/GemSet.git
+  git clone -q $GH/DFgraphics/IronHand.git
+  git clone -q $GH/DFgraphics/Jolly-Bastion.git
+  git clone -q $GH/DFgraphics/Mayday.git
+  git clone -q $GH/DFgraphics/Obsidian.git
+  git clone -q $GH/DFgraphics/Phoebus.git
+  git clone -q $GH/DFgraphics/Rally-Ho.git
+  git clone -q $GH/DFgraphics/Spacefox.git
+  git clone -q $GH/DFgraphics/Taffer.git
+  git clone -q $GH/DFgraphics/Tergel.git
+  git clone -q $GH/DFgraphics/Wanderlust.git
+  cd ..
   # Roll back the graphics packs to a known-compatible commit with this version of DF
   #cd gfx/Afro-Graphics
   #git reset --hard fccafc3f5099f645e0e82b2eee46cb2da9f578a9
@@ -240,7 +241,8 @@ if [ -f $ARMOK_VISION ]; then
   mkdir ./$DEST_DIR/LNP/utilities/armok_vision
   echo Copying $ARMOK_VISION to LNP/utilities directory
   unzip -qq -o $ARMOK_VISION -d ./$DEST_DIR/LNP/utilities/armok_vision
-  chmod +x ./$DEST_DIR/LNP/utilities/armok_vision/Armok\ Vision.*
+  chmod +x ./$DEST_DIR/LNP/utilities/armok_vision/Armok\ Vision\ Linux*
+  sed -i 's/Armok Vision.x86_64/Armok Vision Linux.x86_64/g' ./$DEST_DIR/LNP/utilities/armok_vision/manifest.json
   mv ././$DEST_DIR/LNP/utilities/armok_vision/Readme.txt  ./$DEST_DIR/LNP/about/Armok_Vision.txt
 fi
 
@@ -338,7 +340,6 @@ if [ -f $LEGENDS_BROWSER ]; then
   #Exclude the .jar file from showing up on the list of utilities in LNP
   echo 'Legends Browser Exclusions' >> ./$DEST_DIR/LNP/utilities/exclude.txt
   echo '['$LEGENDS_BROWSER']' >> ./$DEST_DIR/LNP/utilities/exclude.txt
-
 fi
 
 # Get Old Pack (for qfconvert only) ############################################

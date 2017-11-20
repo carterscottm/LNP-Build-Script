@@ -23,15 +23,15 @@ When first launching a new version of the LNP, you'll be asked if you want to im
 ## Included Mods
 * [Pidgeot's PyLNP 0.12b Lazy Newb Pack Python interface](http://www.bay12forums.com/smf/index.php?topic=140808.0)
  * Utilities:
-     * [DFHack Linux V0.43.05-r1 (gcc 4.8.1)](http://www.bay12forums.com/smf/index.php?topic=139553.0)
-     * [TWBT 5.84](http://www.bay12forums.com/smf/index.php?topic=138754.0)
-     * [Dwarf Therapist v37 (DanFritz's fork)](https://github.com/DanFritz/Dwarf-Therapist) (**compiled with qt4.8.7**)
+     * [DFHack Linux V0.43.05-r2 (gcc 5.4.0)](http://www.bay12forums.com/smf/index.php?topic=139553.0)
+     * [TWBT 6.21](http://www.bay12forums.com/smf/index.php?topic=138754.0)
+     * [Dwarf Therapist v38](https://github.com/Dwarf-Therapist/Dwarf-Therapist) (**compiled with qt5.5.1**)
      * [Soundsense r2016-1](http://df.zweistein.cz/soundsense/)
      * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (**Requires Mono, go [HERE](http://www.mono-project.com/download/#download-lin) for install instructions**)
      * [qfconvert 2.04](http://www.joelpt.net/quickfort/) (**See ./LNP/about/qfconvert.md for usage instructions**)
      * [DF Announcement Filter 1.01](http://www.bay12forums.com/smf/index.php?topic=130030.0) (**Requires Java**)
-     * [Legends Browser 1.12.2](http://www.bay12forums.com/smf/index.php?topic=155307.0) (**Requires Java 8**)
-     * [Armok Vision 0.16.2](http://www.bay12forums.com/smf/index.php?topic=146473.0)
+     * [Legends Browser 1.13](http://www.bay12forums.com/smf/index.php?topic=155307.0) (**Requires Java 8**)
+     * [Armok Vision 0.18.0](http://www.bay12forums.com/smf/index.php?topic=146473.0)
  * Graphics (Now using [fricy's Updated tilesets](http://www.bay12forums.com/smf/index.php?topic=155882)!)
      * [16x16] ASCII
      * [16x16] [Afro](https://github.com/DFgraphics/Afro-Graphics)
@@ -71,9 +71,14 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 
 ***
 ## Linux LNP Changelog
-### Release notes for 0.43.05-r04 (???, 2017)
+### Release notes for 0.43.05-r07 (Nov 21, 2017)
 ##### Major changes over previous revision:
-*
+* Updated DFHack to 0.43.05-r2
+* Updated Armok Vision to 0.18.0
+* Updated Dwarf Therapist to 38.1.0
+* Updated Legends Browser to 1.13
+* Updated TWBT to 6.21
+
 ##### Minor changes over previous revision:
 * Refreshed embark profiles.  Not sure how it happened, but there were minor discrepancies between the embark profiles in PeridexisErrant's LNP and my own.  This is no longer the case.
 * Fixed EMBARK_RECTANGLE typo in d_init.txt
@@ -81,13 +86,13 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 ##### Utilities included:
 * PyLNP 0.12b
 * DF 0.43.05
-* DFHack 0.43.05-r1
-* Dwarf Therapist 37.0.0 (DanFritz's fork built with Qt 4.8.7)
-* TWBT 5.84
+* DFHack 0.43.05-r2
+* Dwarf Therapist 38.1.0 (Qt 5.5.1)
+* TWBT 6.21
 * Soundsense r2016-1
 * SoundCenSe GTK 1.4.2
-* Armok Vision 0.16.2
-* Legends Browser 1.12.2
+* Armok Vision 0.18.0
+* Legends Browser 1.13
 
 ***
 ### Release notes for 0.43.05-r03 (June 27, 2017)
