@@ -1,6 +1,8 @@
 # Lazy-Newb-Pack-Linux v0.43.05 x64
 A small package to get people started with Dwarf Fortress on linux. Please take time to check out the [Official thread](http://www.bay12forums.com/smf/index.php?topic=163211.0). There are a few help documents in the [Wiki](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki) if you should get stuck.
 
+If you like the work I've put into assembling this pack, please feel free to head over to my ** [Patreon](https://www.patreon.com/enay) ** page and buy me a coffee.  Or a beer.  Or a sammich.  I'm really not picky.
+
 ## Download Location
 The Linux LNP Can be downloaded at the below location:
 
@@ -72,6 +74,9 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 ***
 ## Linux LNP Changelog
 ### Release notes for 0.43.05-r07 (Nov 21, 2017)
+Updating the pack in hopes that the new DF will drop this week!
+Other than updates to a few of the utilities, I have configured the LNP importer to be grab custom stock settings from previous versions.
+
 ##### Major changes over previous revision:
 * Updated DFHack to 0.43.05-r2
 * Updated Armok Vision to 0.18.0
@@ -79,9 +84,61 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 * Updated Legends Browser to 1.13
 * Updated TWBT to 6.21
 
+### Release notes for 0.43.05-r06 (July 20, 2017)
+
+A bug was found (Thanks [Bulwersator](http://www.bay12forums.com/smf/index.php?topic=163211.msg7507158#msg7507158)!) with the version of Dwarf Therapist I was distributing with the LNP that caused it to crash when a squad is present.  I replaced it with Hello71's fork built with Qt5.5.1.
+
+##### Major changes over previous revision:
+* Updated DFHack to v043.05-r2
+* Updated Armok Vision to v0.17.0
+* Updated Legends Browser to v1.13
+* Updated TWBT to v5.85
+
+##### Minor changes over previous revision:
+* Reduced default visitor cap from 100 down to 50 to reduce possible FPS death
+* Temporarily including baseline files (PyLNP baseline downloader bugged for the moment)
+* Replaced deprecated `realpath` with `readlink -f` in a the wrapper scripts for DF Announcement filter, Dwarf Therapist, and Legends Browser
+* Removed error-causing comma from PyLNP.user (Thanks [@Tymewalk](http://www.bay12forums.com/smf/index.php?topic=163211.msg7503284#msg7503284))
+* Replaced Dan Fritz's fork of Dwarf Therapist with Hello71's fork due to a crash when reading dwarves while a military is in place (Thanks [@Bulwersator](http://www.bay12forums.com/smf/index.php?topic=163211.msg7507158#msg7507158)
+)
+##### Utilities included:
+* PyLNP 0.12b
+* DF 0.43.05
+* DFHack 0.43.05-r2
+* Dwarf Therapist 37.0.0 (Hello71's fork built with Qt 5.5.1)
+* TWBT 5.85
+* Soundsense r2016-1
+* SoundCenSe GTK 1.4.2
+* Armok Vision 0.17.0
+* Legends Browser 1.13
+
+***
+### Release notes for 0.43.05-r05 (July 3, 2017)
+
+##### Minor changes over previous revision:
+* Fixed wrapper scripts for Legends Browser and DF Announcement Filter
+* Turned on PyLNP update check at launch
+
+##### Utilities included:
+* PyLNP 0.12b
+* DF 0.43.05
+* DFHack 0.43.05-r1
+* Dwarf Therapist 37.0.0 (DanFritz's fork built with Qt 4.8.7)
+* TWBT 5.84
+* Soundsense r2016-1
+* SoundCenSe GTK 1.4.2
+* Armok Vision 0.16.2
+* Legends Browser 1.12.2
+
+***
+### Release notes for 0.43.05-r04 (July 3, 2017)
+##### Major changes over previous revision:
+* Fixed missing DFHack libs due to improper .tar creation
+
 ##### Minor changes over previous revision:
 * Refreshed embark profiles.  Not sure how it happened, but there were minor discrepancies between the embark profiles in PeridexisErrant's LNP and my own.  This is no longer the case.
 * Fixed EMBARK_RECTANGLE typo in d_init.txt
+* Fixed dwarftherapist script causing potential issues with finding the memory layouts
 
 ##### Utilities included:
 * PyLNP 0.12b
@@ -304,12 +361,12 @@ Next up we'll be doing more bug fix releases to make sure we have a vaguely pres
  * [@beaubouchard](https://github.com/BeauBouchard) Previous maintainer of this package
  * [@Captain Duck](https://www.youtube.com/playlist?list=PL0sBhCMFBvPlF7wG7OH-NFQKMeCQiS8aM) Just all around great guy, watch his Dwarf Fortress Tutorial series and subscribe!
  * [@CarterScottM](https://www.github.com/CarterScottM) Current maintainer of the Linux Pack
- * [@DanFritz](https://github.com/DanFritz/) His fork of Dwarf Therapist was used to compile DT with QT4
+ * [@DanFritz](https://github.com/DanFritz/) His fork of Dwarf Therapist was used to compile DT with Qt4
  * [@Daveralph](https://github.com/daveralph1234/LazyNewbPack/) continued working on LNP after Dricus
  * [@Dricus](https://github.com/Dricus)   Dirk Groot is the creator of the cross platform LNP port
  * [@Dwimenor](https://github.com/Dwimenor/) Created a workaround for LNP, as well as providing linux support
  * [@fricy](https://github.com/fricy/) Maintains the MacNewbie pack Reborn as well as supporting essential gaphic repo
- * [@Hello71](https://github.com/Hello71) Hello71's fork of Dwarf Therapist was used in previous versions of the pack
+ * [@Hello71](https://github.com/Hello71) Hello71's fork of Dwarf Therapist was used to compile DT with Qt5
  * [@Japa](http://www.bay12forums.com/smf/index.php?topic=146473.0) Creator/maintainer of Armok Vision
  * [@joelpt](http://www.joelpt.net/quickfort/) Joel Thornton Created Quickfort 2.x
  * [@lethosor](https://github.com/lethosor) Works on DFhack, DFwiki, and many other Dwarf Fortress related projects

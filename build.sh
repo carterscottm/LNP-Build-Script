@@ -15,13 +15,12 @@ DF_BASELINES_VER="df_43_05"                                 # part of the file p
 DF_BASELINES="df_43_05_win_s.zip"                           # file name to download
 
 DFHACK_VER="0.43.05-r2"                                     # part of the download URL
-DFHACK="dfhack-0.43.05-r2-Linux-64-gcc-5.4.0.tar.bz2"       # file name to download
+DFHACK="dfhack-0.43.05-r2-Linux-64-gcc-4.8.tar.bz2"       # file name to download
 
 LEGENDS_BROWSER_VER="1.13"                                  # part of the download URL
 LEGENDS_BROWSER="legendsbrowser-1.13.jar"                   # file name to download
 
 PYLNP="PyLNP_0.12b-linux-x64.tar.xz"                        # part of the download URL
-#PYLNP="python-lnp"
 
 SOUNDCENSE="SoundCenSe.GTK.v1.4.2.Win32.zip"                # file name to download
 SOUNDCENSE_VER="1.4.2"
@@ -56,8 +55,8 @@ if [ ! -d Lazy-Newb-Pack-Linux ]; then
   git clone -q $GH/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux.git
 fi
 if [ ! -f Lazy-Newb-Pack-Linux/pack/LNP/PyLNP.json ]; then
-  echo Cloning $GH/carterscottm/LNP-shared-core.git
-  git clone -q -b pre-merge $GH/carterscottm/LNP-shared-core.git ./Lazy-Newb-Pack-Linux/pack/LNP
+  echo Cloning $GH/Lazy-Newb-Pack/LNP-shared-core.git
+  git clone -q $GH/Lazy-Newb-Pack/LNP-shared-core.git ./Lazy-Newb-Pack-Linux/pack/LNP
 fi
 
 echo Creating the LNP directory structure
@@ -74,7 +73,7 @@ if [ ! -f $PYLNP ]; then
 fi
 if [ $PYLNP ]; then
   echo Extracting $PYLNP
-  tar -xf $PYLNP -C ./$DEST_DIR/
+  tar xf $PYLNP -C ./$DEST_DIR/
 fi
 
 # Get Dwarf Fortress ###########################################################
@@ -91,7 +90,7 @@ fi
 # Get DFHack ###################################################################
 if [ ! -f $DFHACK ]; then
   echo Downloading $DFHACK
-  wget $GH/DFHack/dfhack/releases/download/$DFHACK_VER/$DFHACK
+  wget -qnc $GH/DFHack/dfhack/releases/download/$DFHACK_VER/$DFHACK
 fi
 if [ -f $DFHACK ]; then
   echo Extracting $DFHACK
@@ -198,39 +197,19 @@ if [ -f $DF_BASELINES ]; then
   fi
   unzip -qq -o $DF_BASELINES -d ./baselines/$DF_BASELINES_VER
 fi
+mkdir $DEST_DIR/LNP/baselines/$DF_BASELINES_VER
+cp $DEST_DIR/df_linux/data $DEST_DIR/LNP/baselines/$DF_BASELINES_VER -r
+cp $DEST_DIR/df_linux/raw $DEST_DIR/LNP/baselines/$DF_BASELINES_VER -r
 
 # Get Dwarf Therapist ##########################################################
-cp ~/projects/dwarf_therapist $DEST_DIR/LNP/utilities -r
-mv ./$DEST_DIR/LNP/utilities/dwarf_therapist/doc/Dwarf\ Therapist.pdf ./$DEST_DIR/LNP/about/
-rm ./$DEST_DIR/LNP/utilities/dwarf_therapist/doc -rf
-#mkdir $DEST_DIR/LNP/utilities/dwarf_therapist
-#if [ ! -d Dwarf-Therapist ]; then
-#	echo Downloading Dwarf Therapist
-#	git clone -q $GH/splintermind/Dwarf-Therapist.git
-#	echo compiling Dwarf Therapist, please be patient.
-#	cd Dwarf-Therapist
-#	qmake
-#  make > /dev/null 2>&1
-#	cd ..
-#fi
-#echo Copying Dwarf Therapist to LNP/utilities directory
-#cd Dwarf-Therapist
-#cp release/DwarfTherapist ../$DEST_DIR/LNP/utilities/dwarf_therapist
-#cp share ../$DEST_DIR/LNP/utilities/dwarf_therapist -r
-#cp hammer.* ../$DEST_DIR/LNP/utilities/dwarf_therapist
-#cp LICENSE.txt ../$DEST_DIR/LNP/utilities/dwarf_therapist
-#cp README.rst ../$DEST_DIR/LNP/utilities/dwarf_therapist
-#cp CHANGELOG.txt ../$DEST_DIR/LNP/utilities/dwarf_therapist
-#cp dist/dwarftherapist ../$DEST_DIR/LNP/utilities/dwarf_therapist
-#cd ..
-#Create manifest.json for Dwarf Therapist
-#echo "{" > ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-#echo "    \"author\": \"splintermind\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-#echo "    \"content_version\": \"37.0.0\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-#echo "    \"title\": \"Dwarf Therapist\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-#echo "    \"tooltip\": \"Makes managing your dwarves' jobs and psychology easy! (NB - DFHack \\\"autolabor\\\" must be disabled).\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-#echo "    \"linux_exe\": \"DwarfTherapist\"" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-#echo "}" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+if [ ! -d ./dwarf_therapist ]; then
+  echo Downloading pre-compiled Dwarf Therapist
+  wget -qnc https://www.dropbox.com/s/jv2nsyozlj5dkft/dt.tar.gz
+  tar zxf dt.tar.gz
+fi
+echo Copying Dwarf Therapist to LNP/utilities directory
+cp dwarf_therapist/ ./$DEST_DIR/LNP/utilities/ -r
+mv ./$DEST_DIR/LNP/utilities/dwarf_therapist/Dwarf\ Therapist.pdf ./$DEST_DIR/LNP/about
 
 # Get Armok Vision #############################################################
 if [ ! -f $ARMOK_VISION ]; then
@@ -244,6 +223,7 @@ if [ -f $ARMOK_VISION ]; then
   chmod +x ./$DEST_DIR/LNP/utilities/armok_vision/Armok\ Vision\ Linux*
   sed -i 's/Armok Vision.x86_64/Armok Vision Linux.x86_64/g' ./$DEST_DIR/LNP/utilities/armok_vision/manifest.json
   mv ././$DEST_DIR/LNP/utilities/armok_vision/Readme.txt  ./$DEST_DIR/LNP/about/Armok_Vision.txt
+  find ./$DEST_DIR/LNP/utilities/armok_vision/ -name manifest.json -exec sed -i "s/Armok Vision.x86_64/Armok Vision Linux.x86_64/g" {} \;
 fi
 
 # Get SoundCenSe ###############################################################
@@ -298,14 +278,23 @@ if [ -f DFAnnouncementFilter.zip ]; then
   echo Copying DF Announcement Filter to LNP/utilities directory
   unzip -qq -o DFAnnouncementFilter.zip -d ./$DEST_DIR/LNP/utilities/df_announcement_filter
   mv ./$DEST_DIR/LNP/utilities/df_announcement_filter/README.txt ./$DEST_DIR/LNP/about/DF_Announcement_Filter.txt
+
   #Create manifest.json for Announcement Filter
   echo "{" > ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
   echo "    \"author\": \"TheGazelle\"," >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
   echo "    \"content_version\": \"1.01\"," >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
   echo "    \"title\": \"DF Announcement Filter\"," >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
   echo "    \"tooltip\": \"This utility gives you a live feed of announcements without having to pause the game to check the announcement page\"," >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
-  echo "    \"linux_exe\": \"DFAnnouncementFilter.jar\"" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
+  echo "    \"linux_exe\": \"df_announcement_filter.sh\"" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
   echo "}" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
+
+  #Create launch script for DF Announcement Filter (some distros won't launch .jar files directly)
+  echo "#!/bin/bash" > ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
+  echo "CWD=\`dirname \"\$(readlink -f \"\$0\")\"\`" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
+  echo "JAVA=\`which java\`" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
+  echo "\$JAVA -jar \"\$CWD/DFAnnouncementFilter.jar\"" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
+  echo "exit 0" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
+  chmod +x ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
 fi
 
 # Get Legends Browser ##########################################################
@@ -331,9 +320,9 @@ if [ -f $LEGENDS_BROWSER ]; then
 
   #Create launch script for Legends Browser (some distros won't launch .jar files directly)
   echo "#!/bin/bash" > ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
-  echo "CWD=`dirname $(realpath $0)`" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
+  echo "CWD=\`dirname \"\$(readlink -f \"\$0\")\"\`" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
   echo "JAVA=\`which java\`" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
-  echo "\$JAVA -jar $LEGENDS_BROWSER" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
+  echo "\$JAVA -jar \"\$CWD/$LEGENDS_BROWSER\"" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
   echo "exit 0" >> ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
   chmod +x ./$DEST_DIR/LNP/utilities/legends_browser/legendsbrowser.sh
 
@@ -346,7 +335,7 @@ fi
 if [ ! -d qfconvert ]; then
   if [ ! -f 04024r3-x64.zip ]; then
     echo Downloading old pack to retreive qfconvert utility
-    wget http://dffd.bay12games.com/download.php?id=8936\&f=04024r3-x64.zip -O 04024r3-x64.zip
+    wget -qnc http://dffd.bay12games.com/download.php?id=8936\&f=04024r3-x64.zip -O 04024r3-x64.zip
   fi
   if [ -f 04024r3-x64.zip ]; then
     echo Extracting old pack to retreive qfconvert utility
@@ -391,13 +380,11 @@ find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[SHOW_FLOW_AMOUN
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[POPULATION_CAP\:\(.*\)\]/\[POPULATION_CAP\:120\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[STRICT_POPULATION_CAP\:\(.*\)\]/\[STRICT_POPULATION_CAP\:220\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[BABY_CHILD_CAP\:\(.*\)\:\(.*\)\]/\[BABY_CHILD_CAP\:10\:20\]/g" {} \;
-find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[VISITOR_CAP\:\(.*\)\]/\[VISITOR_CAP\:100\]/g" {} \;
+find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[VISITOR_CAP\:\(.*\)\]/\[VISITOR_CAP\:50\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_SOLDIER_CAP\:\(.*\)\]/\[INVASION_SOLDIER_CAP\:120\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[INVASION_MONSTER_CAP\:\(.*\)\]/\[INVASION_MONSTER_CAP\:40\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[ENGRAVINGS_START_OBSCURED\:NO\]/\[ENGRAVINGS_START_OBSCURED\:YES]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name d_init.txt -exec sed -i "s/\[EMBARK_RECTANGLE\:\(.*\)\]/\[EMBARK_RECTANGLE\:3\:3\]/g" {} \;
-
-
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[FPS\:NO\]/\[FPS\:YES\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[INTRO\:YES\]/\[INTRO\:NO\]/g" {} \;
 find ./$DEST_DIR/LNP/graphics -name init.txt -exec sed -i "s/\[SOUND\:YES\]/\[SOUND\:NO\]/g" {} \;
@@ -415,24 +402,6 @@ rm $DEST_DIR/df_linux/manifest.json
 echo '# List of raws merged by PyLNP:' > $DEST_DIR/df_linux/raw/installed_raws.txt
 echo 'baselines/'$DF_BASELINES_VER >> $DEST_DIR/df_linux/raw/installed_raws.txt
 echo 'graphics/Phoebus' >> $DEST_DIR/df_linux/raw/installed_raws.txt
-
-# Copy Baselines to ASCII folder in LNP/graphics ###############################
-#mkdir $DEST_DIR/LNP/graphics/ASCII
-#mkdir $DEST_DIR/LNP/graphics/ASCII/data
-#mkdir $DEST_DIR/LNP/graphics/ASCII/data/art
-#mkdir $DEST_DIR/LNP/graphics/ASCII/data/init
-
-#cp ./baselines/$DF_BASELINES_VER/data/art/* $DEST_DIR/LNP/graphics/ASCII/data/art
-#cp ./baselines/$DF_BASELINES_VER/data/init/colors.txt $DEST_DIR/LNP/graphics/ASCII/data/init
-#cp ./baselines/$DF_BASELINES_VER/data/init/d_init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
-#cp ./baselines/$DF_BASELINES_VER/data/init/init.txt $DEST_DIR/LNP/graphics/ASCII/data/init
-
-#echo '{' > $DEST_DIR/LNP/graphics/ASCII/manifest.json
-#echo '    "author": "ToadyOne",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-#echo '    "tooltip": "Default graphics for DF, exactly as they come.",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-#echo '    "content_version": "'$DF_VER'",' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-#echo '    "title": "ASCII Default"' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
-#echo '}' >> $DEST_DIR/LNP/graphics/ASCII/manifest.json
 
 # Cleanup git files and other misc. cleanup ####################################
 cd $DEST_DIR
@@ -453,15 +422,20 @@ find ./LNP -name PyLNP.json -exec sed -i "s/\"dffdID\": \"\(.*\)\"/\"dffdID\": \
 find ./LNP -name PyLNP.json -exec sed -i "s/\"updateMethod\": \"\(.*\)\"/\"updateMethod\": \"dffd\"/g" {} \;
 find ./LNP -name PyLNP.json -exec sed -i 's/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],/\["Donate for Dwarf Fortress","http:\/\/www\.bay12games\.com\/support\.html"\],\n        \["This Packs homepage",'$PACK_HOMEPAGE'\],'/g {} \;
 
+# Create PyLNP.user to enable update check at every launch
+echo "{" > PyLNP.user
+echo "  \"updateDays\": 0" >> PyLNP.user
+echo "}" >> PyLNP.user
+
 # Create empty (but necessary) files/folders and create tarball ###############
 touch df_linux/gamelog.txt
 mkdir df_linux/data/save
 mkdir df_linux/sounds/packs -p
+mkdir LinuxLNP-$LNP_VER
 cp ../../README.md ./
+mv * LinuxLNP-$LNP_VER > /dev/null 2>&1
 echo Creating $LNP_VER.tar.gz
-tar cfz LinuxLNP-$LNP_VER.tar.gz --transform "s,^,LinuxLNP-$LNP_VER/," *
+tar cfz LinuxLNP-$LNP_VER.tar.gz *
 mv *.tar.gz ../../
 cd ../../
 echo Finished!
-
-
