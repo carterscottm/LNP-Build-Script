@@ -3,38 +3,38 @@
 #			* add additional documentation
 
 # Variable declarations ########################################################
-LNP_VER="0.43.05-r07"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.44.02-rc1"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
 ARMOK_VISION_VER="v0.18.0"                                  # part of the download URL
 ARMOK_VISION="Armok.Vision.v0.18.0.Linux.zip"               # file name to download
 
-DF_VER="0.43.05"                                            # part of the download URL, and used to allow graphics pack compatibility
-DF="df_43_05_linux.tar.bz2"                                 # file name to download
+DF_VER="0.44.02"                                            # part of the download URL, and used to allow graphics pack compatibility
+DF="df_44_02_linux.tar.bz2"                                 # file name to download
 
-DF_BASELINES_VER="df_43_05"                                 # part of the file path in LNP directory
-DF_BASELINES="df_43_05_win_s.zip"                           # file name to download
+DF_BASELINES_VER="df_44_02"                                 # part of the file path in LNP directory
+DF_BASELINES="df_44_02_win_s.zip"                           # file name to download
 
-DFHACK_VER="0.43.05-r2"                                     # part of the download URL
-DFHACK="dfhack-0.43.05-r2-Linux-64-gcc-4.8.tar.bz2"       # file name to download
+DFHACK_VER="0.44.02-r1"                                     # part of the download URL
+DFHACK="dfhack-0.44.02-r1-Linux-64-gcc-4.8.tar.bz2"       # file name to download
 
-LEGENDS_BROWSER_VER="1.13"                                  # part of the download URL
-LEGENDS_BROWSER="legendsbrowser-1.13.jar"                   # file name to download
+LEGENDS_BROWSER_VER="1.14"                                  # part of the download URL
+LEGENDS_BROWSER="legendsbrowser-1.14.jar"                   # file name to download
 
-PYLNP="PyLNP_0.12b-linux-x64.tar.xz"                        # part of the download URL
+PYLNP="PyLNP_0.13-linux-x64.tar.xz"                        # part of the download URL
 
 SOUNDCENSE="SoundCenSe.GTK.v1.4.2.Win32.zip"                # file name to download
 SOUNDCENSE_VER="1.4.2"
 
 SOUNDSENSE="soundSense_2016-1_196.zip"                      # file name to download
 
-TWBT_VER="v6.21"                                            # part of the download URL
-TWBT="twbt-6.21-linux.zip"                                  # file name to download
+TWBT_VER="v6.22"                                            # part of the download URL
+TWBT="twbt-6.22-linux.zip"                                  # file name to download
 
 DEST_DIR="dist"                                             # folder name where everything will be copied to
 
 GH="https://github.com"                                             # because why not?
 
-dffdID="12762"                                              # added for portability
+dffdID="13244"                                              # added for portability
 
 PACK_HOMEPAGE="\"http:\/\/www\.bay12forums\.com\/smf\/index\.php\?topic=163211\""   # used for inserting the link into PyLNP.json via sed
 
@@ -204,7 +204,7 @@ cp $DEST_DIR/df_linux/raw $DEST_DIR/LNP/baselines/$DF_BASELINES_VER -r
 # Get Dwarf Therapist ##########################################################
 if [ ! -d ./dwarf_therapist ]; then
   echo Downloading pre-compiled Dwarf Therapist
-  wget -qnc https://www.dropbox.com/s/jv2nsyozlj5dkft/dt.tar.gz
+  wget -qnc https://www.dropbox.com/s/tr1c0zg9kcicw3p/dt.tar.gz
   tar zxf dt.tar.gz
 fi
 echo Copying Dwarf Therapist to LNP/utilities directory

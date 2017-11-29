@@ -25,11 +25,11 @@ When first launching a new version of the LNP, you'll be asked if you want to im
 ## Included Mods
 * [Pidgeot's PyLNP 0.12b Lazy Newb Pack Python interface](http://www.bay12forums.com/smf/index.php?topic=140808.0)
  * Utilities:
-     * [DFHack Linux V0.43.05-r2 (gcc 5.4.0)](http://www.bay12forums.com/smf/index.php?topic=139553.0)
-     * [TWBT 6.21](http://www.bay12forums.com/smf/index.php?topic=138754.0)
-     * [Dwarf Therapist v38](https://github.com/Dwarf-Therapist/Dwarf-Therapist) (**compiled with qt5.5.1**)
+     * [DFHack Linux V0.43.05-r3.1 (gcc 5.4.0)](http://www.bay12forums.com/smf/index.php?topic=139553.0)
+     * [TWBT 6.22](http://www.bay12forums.com/smf/index.php?topic=138754.0)
+     * [Dwarf Therapist v38.1.0](https://github.com/Dwarf-Therapist/Dwarf-Therapist) (**compiled with qt5.5.1**)
      * [Soundsense r2016-1](http://df.zweistein.cz/soundsense/)
-     * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (**Requires Mono, go [HERE](http://www.mono-project.com/download/#download-lin) for install instructions**)
+     * [SoundCenSe GTK 1.4.4](http://www.bay12forums.com/smf/index.php?topic=159567.0) (**Requires Mono, go [HERE](http://www.mono-project.com/download/#download-lin) for install instructions**)
      * [qfconvert 2.04](http://www.joelpt.net/quickfort/) (**See ./LNP/about/qfconvert.md for usage instructions**)
      * [DF Announcement Filter 1.01](http://www.bay12forums.com/smf/index.php?topic=130030.0) (**Requires Java**)
      * [Legends Browser 1.13](http://www.bay12forums.com/smf/index.php?topic=155307.0) (**Requires Java 8**)
@@ -74,15 +74,16 @@ See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Commo
 ***
 ## Linux LNP Changelog
 ### Release notes for 0.43.05-r07 (Nov 21, 2017)
-Updating the pack in hopes that the new DF will drop this week!
+This is the final update for the 0.43.05 Linux LNP.  0.44 has alredy dropped for Windows and Mac.  Just waiting for Toady to get his Linux build uploaded and I'll start working on that!
 Other than updates to a few of the utilities, I have configured the LNP importer to be grab custom stock settings from previous versions.
 
 ##### Major changes over previous revision:
-* Updated DFHack to 0.43.05-r2
+* Updated DFHack to 0.43.05-r3.1
 * Updated Armok Vision to 0.18.0
 * Updated Dwarf Therapist to 38.1.0
-* Updated Legends Browser to 1.13
-* Updated TWBT to 6.21
+* Updated Legends Browser to 1.14
+* Updated TWBT to 6.22
+* Updated SoundCenSe GTK to 1.4.4
 
 ### Release notes for 0.43.05-r06 (July 20, 2017)
 
