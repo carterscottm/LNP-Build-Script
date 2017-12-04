@@ -110,6 +110,8 @@ if [ -f  $TWBT ]; then
   cp twbt/*.png $DEST_DIR/df_linux/data/art
   cp twbt/realcolors.lua $DEST_DIR/df_linux/hack/scripts/
   cp twbt/$DFHACK_VER/* $DEST_DIR/df_linux/hack/plugins/
+	cp twbt/transparent1px.png $DEST_DIR/df_linux/data/art
+	cp twbt/white1px.png $DEST_DIR/df_linux/data/art
 fi
 
 # Get Graphics Packs ###########################################################
