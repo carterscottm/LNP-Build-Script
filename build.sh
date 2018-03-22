@@ -3,36 +3,39 @@
 #			* add additional documentation
 
 # Variable declarations ########################################################
-LNP_VER="0.44.02-rc1"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.44.07-rc01"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
 ARMOK_VISION_VER="v0.18.0"                                  # part of the download URL
 ARMOK_VISION="Armok.Vision.v0.18.0.Linux.zip"               # file name to download
 
-DF_VER="0.44.02"                                            # part of the download URL, and used to allow graphics pack compatibility
-DF="df_44_02_linux.tar.bz2"                                 # file name to download
+DF_VER="0.44.07"                                            # part of the download URL, and used to allow graphics pack compatibility
+DF="df_44_07_linux.tar.bz2"                                 # file name to download
 
-DF_BASELINES_VER="df_44_02"                                 # part of the file path in LNP directory
-DF_BASELINES="df_44_02_win_s.zip"                           # file name to download
+DF_BASELINES_VER="df_44_07"                                 # part of the file path in LNP directory
+DF_BASELINES="df_44_07_win_s.zip"                           # file name to download
 
-DFHACK_VER="0.44.02-r1"                                     # part of the download URL
-DFHACK="dfhack-0.44.02-r1-Linux-64-gcc-4.8.tar.bz2"       # file name to download
+DFHACK_VER="0.44.07-alpha1"                                     # part of the download URL
+DFHACK="dfhack-0.44.07-alpha1-Linux-64-gcc-4.8.tar.bz2"         # file name to download
 
-LEGENDS_BROWSER_VER="1.14"                                  # part of the download URL
-LEGENDS_BROWSER="legendsbrowser-1.14.jar"                   # file name to download
+LEGENDS_BROWSER_VER="1.17.1"                                  # part of the download URL
+LEGENDS_BROWSER="legendsbrowser-1.17.1.jar"                   # file name to download
 
-PYLNP="PyLNP_0.13-linux-x64.tar.xz"                        # part of the download URL
+PYLNP="PyLNP_0.13-linux-x64.tar.xz"                         # part of the download URL
 
 SOUNDCENSE="SoundCenSe.GTK.v1.4.2.Win32.zip"                # file name to download
 SOUNDCENSE_VER="1.4.2"
 
 SOUNDSENSE="soundSense_2016-1_196.zip"                      # file name to download
 
-TWBT_VER="v6.22"                                            # part of the download URL
-TWBT="twbt-6.22-linux.zip"                                  # file name to download
+TWBT_VER="v6.39"                                            # part of the download URL
+TWBT="twbt-6.39-linux.zip"                                  # file name to download
+
+DT_VER="v39.3.0"
+DT="DwarfTherapist-v39.3.0-linux-x86_64.AppImage"
 
 DEST_DIR="dist"                                             # folder name where everything will be copied to
 
-GH="https://github.com"                                             # because why not?
+GH="https://github.com"                                     # because why not?
 
 dffdID="13244"                                              # added for portability
 
@@ -110,18 +113,19 @@ if [ -f  $TWBT ]; then
   cp twbt/*.png $DEST_DIR/df_linux/data/art
   cp twbt/realcolors.lua $DEST_DIR/df_linux/hack/scripts/
   cp twbt/$DFHACK_VER/* $DEST_DIR/df_linux/hack/plugins/
-	cp twbt/transparent1px.png $DEST_DIR/df_linux/data/art
-	cp twbt/white1px.png $DEST_DIR/df_linux/data/art
+  cp twbt/transparent1px.png $DEST_DIR/LNP/tilesets
+  cp twbt/white1px.png $DEST_DIR/LNP/tilesets
 fi
 
 # Get Graphics Packs ###########################################################
+echo Downloading/Updating graphics packs
 if [ ! -d $DEST_DIR/LNP/graphics ]; then
   mkdir $DEST_DIR/LNP/graphics
 fi
 if [ ! -d gfx ]; then
-  echo Downloading the graphics packs
   mkdir gfx
   cd gfx
+  git clone -q $GH/jecowa/Meph.git
   git clone -q $GH/DFgraphics/Afro-Graphics.git
   git clone -q $GH/DFgraphics/AutoReiv.git
   git clone -q $GH/DFgraphics/CLA.git
@@ -137,50 +141,99 @@ if [ ! -d gfx ]; then
   git clone -q $GH/DFgraphics/Tergel.git
   git clone -q $GH/DFgraphics/Wanderlust.git
   cd ..
-  # Roll back the graphics packs to a known-compatible commit with this version of DF
-  #cd gfx/Afro-Graphics
-  #git reset --hard fccafc3f5099f645e0e82b2eee46cb2da9f578a9
-  #cd ..
-  #cd AutoReiv
-  #git reset --hard 2d1c10467c41e2f4840e9d9bb1158f9da1535e2b
-  #cd ..
-  #cd CLA
-  #git reset --hard 8e043019e94cad6b43a75a28342c17d5ec2348bb
-  #cd ..
-  #cd GemSet
-  #git reset --hard 0889c4cb79aa2a12ce3142ded0f2be76242adbe6
-  #cd ..
-  #cd IronHand
-  #git reset --hard aaf68412999e62e79c7ee37edcaf0e1d3492b76
-  #cd ..
-  #cd Jolly-Bastion
-  #git reset --hard 82506d6ddc9588865d7c0c66a13f1c773acac11f
-  #cd ..
-  #cd Mayday
-  #git reset --hard 4a64918e6f6b116d7a72e4de48a08aa1c7f497dd
-  #cd ..
-  #cd Obsidian
-  #git reset --hard 9bfdd377c7c4ad9a81b6fe69516f42142296e637
-  #cd ..
-  #cd Phoebus
-  #git reset --hard a8a8e3daa2c66f10a2d98386afc2f594c51ae36e
-  #cd ..
-  #cd Rally-Ho
-  #git reset --hard b342666cb3f39309f39e7a61d6b2f440b37035fb
-  #cd ..
-  #cd Spacefox
-  #git reset --hard f840e53652764021c3edb290b6ecb09f809b9e4b
-  #cd ..
-  #cd Taffer
-  #git reset --hard 70b57c5595b97c33f674cc7c746a8d4640f76f99
-  #cd ..
-  #cd Tergel
-  #git reset --hard 6772c2aafa72cf2647cb5aa24ee55969df698b72
-  #cd ..
-  #cd Wanderlust
-  #git reset --hard a105813b95e57a9e468c56c681afab819504814d
-  #cd ../..
 fi
+# Update gfx packs with latest commits
+echo Afro...
+cd gfx/Afro-Graphics
+git reset HEAD --hard -q
+git pull -q
+cp -r ./data/twbt_art/* ./data/art
+cp -r ./data/twbt_init/*  ./data/init
+cp -r ./raw/twbt_objects/* ./raw/objects
+cp -r ./raw/twbt_graphics/* ./raw/graphics
+cd ..
+echo AutoReiv...
+cd AutoReiv
+git pull -q
+cd ..
+echo CLA...
+cd CLA
+git pull -q
+cd ..
+echo GemSet...
+cd GemSet
+git pull -q
+cd ..
+echo IronHand...
+cd IronHand
+git reset HEAD --hard -q
+git pull -q
+cp -r ./data/twbt_art/* ./data/art
+cp -r ./data/twbt_init/* ./data/init
+cp -r ./raw/twbt_objects/* ./raw/objects
+cp -r ./raw/twbt_graphics/* ./raw/graphics
+cd ..
+echo Jolly-Bastion...
+cd Jolly-Bastion
+git pull -q
+cd ..
+echo Mayday...
+cd Mayday
+git reset HEAD --hard -q
+git pull -q
+cp -r ./data/twbt_art/* ./data/art
+cp -r ./data/twbt_init/* ./data/init
+cp -r ./raw/twbt_objects/* ./raw/objects
+cp -r ./raw/twbt_graphics/* ./raw/graphics
+cd ..
+echo Meph...
+cd Meph
+git pull -q
+cd ..
+echo Obsidian...
+cd Obsidian
+git reset HEAD --hard -q
+git pull -q
+cp -r ./data/twbt_art/* ./data/art
+cp -r ./data/twbt_init/* ./data/init
+cp -r ./raw/twbt_objects/* ./raw/objects
+cp -r ./raw/twbt_graphics/* ./raw/graphics
+cd ..
+echo Phoebus...
+cd Phoebus
+git reset HEAD --hard -q
+git pull -q
+cp -r ./data/twbt_art/* ./data/art
+cp -r ./data/twbt_init/* ./data/init
+cp -r ./raw/twbt_objects/* ./raw/objects
+cp -r ./raw/twbt_graphics/* ./raw/graphics
+cd ..
+echo Rally-Ho...
+cd Rally-Ho
+git pull -q
+cd ..
+echo Spacefox...
+cd Spacefox
+git reset HEAD --hard -q
+git pull -q
+cp -r ./data/twbt_art/* ./data/art
+cp -r ./data/twbt_init/* ./data/init
+cp -r ./raw/twbt_objects/* ./raw/objects
+cp -r ./raw/twbt_graphics/* ./raw/graphics
+cd ..
+echo Taffer...
+cd Taffer
+git pull -q
+cd ..
+echo Tergel...
+cd Tergel
+git pull -q
+cd ..
+echo Wanderlust...
+cd Wanderlust
+git pull -q
+cd ..
+cd ..
 echo Copying graphics packs to LNP/graphics directory
 cp gfx/* $DEST_DIR/LNP/graphics/ -r
 
@@ -204,15 +257,21 @@ cp $DEST_DIR/df_linux/data $DEST_DIR/LNP/baselines/$DF_BASELINES_VER -r
 cp $DEST_DIR/df_linux/raw $DEST_DIR/LNP/baselines/$DF_BASELINES_VER -r
 
 # Get Dwarf Therapist ##########################################################
-if [ ! -d ./dwarf_therapist ]; then
+if [ ! -f $DT ]; then
   echo Downloading pre-compiled Dwarf Therapist
-  wget -qnc https://www.dropbox.com/s/tr1c0zg9kcicw3p/dt.tar.gz
-  tar zxf dt.tar.gz
+  wget -qnc https://github.com/Dwarf-Therapist/Dwarf-Therapist/releases/download/$DT_VER/$DT
+  chmod +x $DT
+  ./$DT --appimage-extract > /dev/null 2>&1
+  rm -rf squashfs-root/usr/share/dwarftherapist/memory_layouts/osx
+  rm -rf squashfs-root/usr/share/dwarftherapist/memory_layouts/windows
+  mkdir -p dwarf_therapist/share/dwarftherapist/log
+  echo Copying Dwarf Therapist to LNP/utilities directory
+  cp -r squashfs-root/usr/share/dwarftherapist ./dwarf_therapist/share
+  cp -r squashfs-root/usr/share/icons ./dwarf_therapist/share
+  cp -r squashfs-root/usr/bin/DwarfTherapist ./dwarf_therapist
+  cp ../launch.sh ./dwarf_therapist
 fi
-echo Copying Dwarf Therapist to LNP/utilities directory
-cp dwarf_therapist/ ./$DEST_DIR/LNP/utilities/ -r
-mv ./$DEST_DIR/LNP/utilities/dwarf_therapist/Dwarf\ Therapist.pdf ./$DEST_DIR/LNP/about
-
+cp -r ./dwarf_therapist $DEST_DIR/LNP/utilities
 # Get Armok Vision #############################################################
 if [ ! -f $ARMOK_VISION ]; then
   echo Downloading $ARMOK_VISION
@@ -289,6 +348,18 @@ if [ -f DFAnnouncementFilter.zip ]; then
   echo "    \"tooltip\": \"This utility gives you a live feed of announcements without having to pause the game to check the announcement page\"," >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
   echo "    \"linux_exe\": \"df_announcement_filter.sh\"" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
   echo "}" >> ./$DEST_DIR/LNP/utilities/df_announcement_filter/manifest.json
+
+
+  #Create manifest.json for Dwarf Therapist
+  echo "{" > ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+  echo "    \"author\": \"Splintermind, Dwarf-Therapist\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+  echo "    \"content_version\": \"$DT_VER\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+  echo "    \"title\": \"Dwarf Therapist\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+  echo "    \"tooltip\": \"Makes managing your dwarves' jobs and psychology easy! (NB - DFHack '"labormanager"' must be disabled).\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+  echo "    \"linux_exe\": \"launch.sh\"" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+  echo "}" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+
+
 
   #Create launch script for DF Announcement Filter (some distros won't launch .jar files directly)
   echo "#!/bin/bash" > ./$DEST_DIR/LNP/utilities/df_announcement_filter/df_announcement_filter.sh
@@ -397,8 +468,12 @@ fi
 # Set Phoebus as the default graphics pack #####################################
 echo Setting Phoebus as the default graphics pack
 cp $DEST_DIR/LNP/graphics/Phoebus/* $DEST_DIR/df_linux/ -R
+rm $DEST_DIR/df_linux/onLoad_gfx_Phoebus.init
 cp $DEST_DIR/LNP/graphics/Phoebus/data/init/colors.txt $DEST_DIR/LNP/colors/\ Current\ graphics\ pack.txt
 rm $DEST_DIR/df_linux/manifest.json
+
+# Preserve Meph tileset compatability
+cp gfx/Meph $DEST_DIR/LNP/graphics -rf
 
 # Manually create installed_raws.txt ###########################################
 echo '# List of raws merged by PyLNP:' > $DEST_DIR/df_linux/raw/installed_raws.txt
@@ -408,9 +483,11 @@ echo 'graphics/Phoebus' >> $DEST_DIR/df_linux/raw/installed_raws.txt
 # Cleanup git files and other misc. cleanup ####################################
 cd $DEST_DIR
 find . | grep .git | xargs rm -rf
-find . -type f -type f -name curses*.bmp -delete
+find . -type f -name curses*.bmp -delete
+find ./LNP/graphics -type f -name _VanillaDF* -print0 | xargs -0 -I {} mv {} ./LNP/tilesets
 find ./LNP/graphics -type f -name mouse.bmp -delete
-find ./LNP/graphics -type f -name onLoad.init -delete
+rm -rf LNP/graphics/**/**/twbt_*/
+# find ./LNP/graphics -type f -name onLoad.init -delete
 find ./LNP -type f -name README.* -delete
 find ./LNP -type f -name readme.* -delete
 find ./LNP -type f -name .travis* -delete
