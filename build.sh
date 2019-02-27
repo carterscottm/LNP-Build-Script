@@ -3,35 +3,35 @@
 #			* add additional documentation
 
 # Variable declarations ########################################################
-LNP_VER="0.44.07-rc01"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
+LNP_VER="0.44.12-r03"                                       # used to set the version in PyLNP.json (for automatic update checks when launching LNP)
 
-ARMOK_VISION_VER="v0.18.0"                                  # part of the download URL
-ARMOK_VISION="Armok.Vision.v0.18.0.Linux.zip"               # file name to download
+ARMOK_VISION_VER="v0.19.1"                                  # part of the download URL
+ARMOK_VISION="Armok.Vision.0.19.1.Linux.zip"                # file name to download
 
-DF_VER="0.44.07"                                            # part of the download URL, and used to allow graphics pack compatibility
-DF="df_44_07_linux.tar.bz2"                                 # file name to download
+DF_VER="0.44.12"                                            # part of the download URL, and used to allow graphics pack compatibility
+DF="df_44_12_linux.tar.bz2"                                 # file name to download
 
-DF_BASELINES_VER="df_44_07"                                 # part of the file path in LNP directory
-DF_BASELINES="df_44_07_win_s.zip"                           # file name to download
+DF_BASELINES_VER="df_44_12"                                 # part of the file path in LNP directory
+DF_BASELINES="df_44_12_win_s.zip"                           # file name to download
 
-DFHACK_VER="0.44.07-alpha1"                                     # part of the download URL
-DFHACK="dfhack-0.44.07-alpha1-Linux-64-gcc-4.8.tar.bz2"         # file name to download
+DFHACK_VER="0.44.12-r2"                                     # part of the download URL
+DFHACK="dfhack-0.44.12-r2-Linux-64-gcc-4.8.tar.bz2"         # file name to download
 
-LEGENDS_BROWSER_VER="1.17.1"                                  # part of the download URL
-LEGENDS_BROWSER="legendsbrowser-1.17.1.jar"                   # file name to download
+LEGENDS_BROWSER_VER="1.17.1"                                # part of the download URL
+LEGENDS_BROWSER="legendsbrowser-1.17.1.jar"                 # file name to download
 
-PYLNP="PyLNP_0.13-linux-x64.tar.xz"                         # part of the download URL
+PYLNP="PyLNP_0.13b-linux-x64.tar.xz"                        # part of the download URL
 
 SOUNDCENSE="SoundCenSe.GTK.v1.4.2.Win32.zip"                # file name to download
 SOUNDCENSE_VER="1.4.2"
 
 SOUNDSENSE="soundSense_2016-1_196.zip"                      # file name to download
 
-TWBT_VER="v6.39"                                            # part of the download URL
-TWBT="twbt-6.39-linux.zip"                                  # file name to download
+TWBT_VER="v6.57"                                            # part of the download URL
+TWBT="twbt-6.57-linux.zip"                                  # file name to download
 
-DT_VER="v39.3.0"
-DT="DwarfTherapist-v39.3.0-linux-x86_64.AppImage"
+DT_VER="v41.0.3"
+DT="DwarfTherapist-v41.0.3-linux-x86_64.AppImage"
 
 DEST_DIR="dist"                                             # folder name where everything will be copied to
 
@@ -233,6 +233,7 @@ echo Wanderlust...
 cd Wanderlust
 git pull -q
 cd ..
+find ./ -type f -iname 'manifest.json' -exec sed -i 's/"df_max_version": "0.44.[[:digit:]]*",/"df_max_version": "0.44.12",/' "{}" +;
 cd ..
 echo Copying graphics packs to LNP/graphics directory
 cp gfx/* $DEST_DIR/LNP/graphics/ -r
@@ -261,17 +262,11 @@ if [ ! -f $DT ]; then
   echo Downloading pre-compiled Dwarf Therapist
   wget -qnc https://github.com/Dwarf-Therapist/Dwarf-Therapist/releases/download/$DT_VER/$DT
   chmod +x $DT
-  ./$DT --appimage-extract > /dev/null 2>&1
-  rm -rf squashfs-root/usr/share/dwarftherapist/memory_layouts/osx
-  rm -rf squashfs-root/usr/share/dwarftherapist/memory_layouts/windows
-  mkdir -p dwarf_therapist/share/dwarftherapist/log
-  echo Copying Dwarf Therapist to LNP/utilities directory
-  cp -r squashfs-root/usr/share/dwarftherapist ./dwarf_therapist/share
-  cp -r squashfs-root/usr/share/icons ./dwarf_therapist/share
-  cp -r squashfs-root/usr/bin/DwarfTherapist ./dwarf_therapist
-  cp ../launch.sh ./dwarf_therapist
 fi
-cp -r ./dwarf_therapist $DEST_DIR/LNP/utilities
+mkdir $DEST_DIR/LNP/utilities/dwarf_therapist
+echo Copying Dwarf Therapist to LNP/utilities directory
+cp $DT $DEST_DIR/LNP/utilities/dwarf_therapist/dwarftherapist
+
 # Get Armok Vision #############################################################
 if [ ! -f $ARMOK_VISION ]; then
   echo Downloading $ARMOK_VISION
@@ -296,6 +291,8 @@ if [ -f $SOUNDCENSE ]; then
   echo Copying $SOUNDCENSE to LNP/utilities directory
   mkdir ./$DEST_DIR/LNP/utilities/soundcense
   unzip -qq -o $SOUNDCENSE  -d ./$DEST_DIR/LNP/utilities/soundcense
+  #cp -r ../SoundCenSe\ GTK/SoundCenSeGTK/bin/Release/* ./$DEST_DIR/LNP/utilities/soundcense
+  #unzip -qq -o $SOUNDCENSE  -d ./$DEST_DIR/LNP/utilities/soundcense
   mv ./$DEST_DIR/LNP/utilities/soundcense/README.md ./$DEST_DIR/LNP/about/SoundCenSe.md
   echo '#!/bin/bash' > ./$DEST_DIR/LNP/utilities/soundcense/soundcense.sh
   echo 'mono SoundCenSeGTK.exe' >> ./$DEST_DIR/LNP/utilities/soundcense/soundcense.sh
@@ -356,7 +353,7 @@ if [ -f DFAnnouncementFilter.zip ]; then
   echo "    \"content_version\": \"$DT_VER\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
   echo "    \"title\": \"Dwarf Therapist\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
   echo "    \"tooltip\": \"Makes managing your dwarves' jobs and psychology easy! (NB - DFHack '"labormanager"' must be disabled).\"," >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
-  echo "    \"linux_exe\": \"launch.sh\"" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
+  echo "    \"linux_exe\": \"dwarftherapist\"" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
   echo "}" >> ./$DEST_DIR/LNP/utilities/dwarf_therapist/manifest.json
 
 

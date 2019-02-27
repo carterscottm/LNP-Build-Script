@@ -1,4 +1,4 @@
-# Lazy-Newb-Pack-Linux v0.43.05 x64
+* Lazy-Newb-Pack-Linux v0.44.12-r02 x64
 A small package to get people started with Dwarf Fortress on linux. Please take time to check out the [Official thread](http://www.bay12forums.com/smf/index.php?topic=163211.0). There are a few help documents in the [Wiki](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki) if you should get stuck.
 
 If you like the work I've put into assembling this pack, please feel free to head over to my ** [Patreon](https://www.patreon.com/enay) ** page and buy me a coffee.  Or a beer.  Or a sammich.  I'm really not picky.
@@ -22,18 +22,18 @@ If you run into troubles with this, consult the PyLNP documentation **[HERE](htt
 ##### LNP Import Tips
 When first launching a new version of the LNP, you'll be asked if you want to import files from a previous installation. If you select yes, open the previous version's df_linux folder in the file chooser dialog, then click ok. Selecting the LNP folder or the root of the pack will cause the import to fail. The import process will grab your DF saves, SoundSense and/or SoundCense sounds, gamelog, and dfhack history from the previous version.
 
-## Included Mods
-* [Pidgeot's PyLNP 0.12b Lazy Newb Pack Python interface](http://www.bay12forums.com/smf/index.php?topic=140808.0)
+## Included With This Package:
+* [Pidgeot's PyLNP 0.13b Lazy Newb Pack Python interface](http://www.bay12forums.com/smf/index.php?topic=140808.0)
  * Utilities:
-     * [DFHack Linux V0.43.05-r3.1 (gcc 5.4.0)](http://www.bay12forums.com/smf/index.php?topic=139553.0)
-     * [TWBT 6.22](http://www.bay12forums.com/smf/index.php?topic=138754.0)
-     * [Dwarf Therapist v38.1.0](https://github.com/Dwarf-Therapist/Dwarf-Therapist) (**compiled with qt5.5.1**)
+     * [DFHack Linux V0.44.12-r2 (gcc 4.8)](http://www.bay12forums.com/smf/index.php?topic=139553.0)
+     * [TWBT 6.57](http://www.bay12forums.com/smf/index.php?topic=138754.0)
+     * [Dwarf Therapist v41.0.3](https://github.com/Dwarf-Therapist/Dwarf-Therapist) (**compiled with qt5.5.1**)
      * [Soundsense r2016-1](http://df.zweistein.cz/soundsense/)
-     * [SoundCenSe GTK 1.4.4](http://www.bay12forums.com/smf/index.php?topic=159567.0) (**Requires Mono, go [HERE](http://www.mono-project.com/download/#download-lin) for install instructions**)
+     * [SoundCenSe GTK 1.4.2](http://www.bay12forums.com/smf/index.php?topic=159567.0) (**Requires Mono, go [HERE](http://www.mono-project.com/download/#download-lin) for install instructions**)
      * [qfconvert 2.04](http://www.joelpt.net/quickfort/) (**See ./LNP/about/qfconvert.md for usage instructions**)
      * [DF Announcement Filter 1.01](http://www.bay12forums.com/smf/index.php?topic=130030.0) (**Requires Java**)
-     * [Legends Browser 1.13](http://www.bay12forums.com/smf/index.php?topic=155307.0) (**Requires Java 8**)
-     * [Armok Vision 0.18.0](http://www.bay12forums.com/smf/index.php?topic=146473.0)
+     * [Legends Browser 1.17.1](http://www.bay12forums.com/smf/index.php?topic=155307.0) (**Requires Java 8**)
+     * [Armok Vision 0.19.1](http://www.bay12forums.com/smf/index.php?topic=146473.0)
  * Graphics (Now using [fricy's Updated tilesets](http://www.bay12forums.com/smf/index.php?topic=155882)!)
      * [16x16] ASCII
      * [16x16] [Afro](https://github.com/DFgraphics/Afro-Graphics)
@@ -43,6 +43,7 @@ When first launching a new version of the LNP, you'll be asked if you want to im
      * [16x16] [Ironhand](https://github.com/DFgraphics/Ironhand)
      * [12x12] [Jolly Bastion](https://github.com/DFgraphics/Jolly-Bastion)
      * [16x16] [Mayday](https://github.com/DFgraphics/Mayday)
+     * [32x32] [Meph-lite](https://github.com/jecowa/Meph)
      * [16x16] [Obsidian](https://github.com/DFgraphics/Obsidian)
      * [16x16] [Phoebus](https://github.com/DFgraphics/Phoebus)
      * [16x16] [Rally Ho](https://github.com/DFgraphics/Rally-Ho)
@@ -69,10 +70,174 @@ yum install SDL SDL_image SDL_ttf mesa-libGLU gtk2 zlib openal-soft xterm python
 * Debian Stretch - With deps listed above installed.
 
 ## Common Issues
-See [the WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Common-Errors).
+See [the LNP Linux WIKI](https://github.com/Lazy-Newb-Pack/Lazy-Newb-Pack-Linux/wiki/Common-Errors).
+
+Also see [the DF Wiki](http://dwarffortresswiki.org/index.php/DF2014:Installation#Linux) for additional assistance.
 
 ***
 ## Linux LNP Changelog
+
+### Release notes for 0.44.12-r03 ( TBD )
+More DT compatability improvements
+
+#### Major changes over previous version
+* Updated TWBT to 6.57
+* Included new lib that eliminates the need to launch DT with sudo or grant the executable additional capabilities
+
+#### Minor changes over previous version
+* Phoebus graphics pack updated
+
+### Release notes for 0.44.12-r02 ( October 22, 2018 )
+Updates to the LNP launcher, TWBT and Dwarf Therapist.
+
+#### Major changes over previous version
+* Updated PyLNP to 0.13b
+* Updated Dwarf Therapist to 41.0.3
+* Updated TWBT to 6.54
+
+#### Minor changes over previous versions
+* Manually updated manifest.json on the gprachics packs to allow them to show up in PyLNP.  The graphics pack repo I pull from hasn't been updated in a while, so I can't guarantee that every pack will work without issue.
+* Dwarf Therapist is now provided as a single appImage file.  This should hopefully be more compatible on a wider range of systems.
+* Various bugfixes
+
+### Release notes for 0.44.12-r01 ( July 15, 2018 )
+Dwarf Fortress has been updated to 0.44.12, so here you go!
+
+#### Major changes over previous version
+* Updated Dwarf Fortress to 0.44.12
+* Updated DFHack to 0.44.12-r1
+* Updated TWBT to 6.53
+* Updated Dwarf Therapist to 40.1.2
+  * removed memory layouts for DF 0.42.05 and older
+  * fixed unit list during embark and fortress mode
+  * fixed "Armor (any)" and "Clothing (any)" preferences
+  * Custom roles or columns created since 40.0.0 using "Armor (any)" or "Clothing (any)" preferences are broken. Delete the preference from the role or grid view and re-add it again to fix them.
+
+### Release notes for 0.44.10-r1 ( May 20, 2018 )
+A new version has been pushed out, and now that all the utilities have been updated I'm able to create a pack for you!
+
+#### Major changes over previous version
+* Updated Dwarf Fortress to 0.44.10
+* Updated DFHack to 0.44.10-r1
+* Updated TWBT to 6.46
+* Updated Armok Vision to 0.19.01
+* Updated Dwarf Therapist to 40.0.0
+  * Config file location has changed.  To keep your old settings, move ``~/.config/UDP Software/Dwarf Therapist.ini`` to ``~/.config/dwarftherapist/dwarftherapist.ini``
+* Updated Legends Browser to 1.17.1
+
+#### Minor changes over previous version
+* Updated graphics packs
+  * At the time of this release, not all of the graphics packs have been officially updated for this version, but I've manually set manifest.json for those packs to allow them to be used.  I believe they should all be compatible with this version, but please let me know if this is not the case.  I'll keep an eye on the DFGraphics repo and release a new revision when they've all been brought up-to-date.
+
+### Release notes for 0.44.09-r1 ( Apr 8, 2018 )
+A few updates have been pushed out the last few weeks, and I'm now getting caught up.
+
+#### Major changes over previous version
+* Updated Dwarf Fortress to 0.44.09
+* Updated DFHack to 0.44.09-r1
+* Updated TWBT to 6.41
+* Updated Armok Vision to 0.19.01
+* Updated Dwarf Therapist to 39.3.1
+* Updated Legends Browser to 1.17.1
+
+#### Minor changes over previous revision
+* Updated graphics packs
+
+### Release notes for 0.44.05-r02 ( Mar 3, 2018 )
+DFHack 0.44.05-r2 has been released.
+
+#### Major changes over previous revision
+* Updated DFHack to 0.44.05-r2
+* Updated Dwarf Therapist to 39.2.1
+* Updated Legends Browser to 1.17
+* Updated TWBT to 6.35
+
+
+#### Minor changes over previous revision
+* Updated graphics packs
+
+
+### Release notes for 0.44.05-r01 ( Feb 06, 2018 )
+DFHack is now out of beta testing, so here's a new pack!
+
+#### Major changes over previous revision
+* Updated DFHack to 0.44.05-r1
+* Updated TWBT to 6.34
+
+
+### Release notes for 0.44.05-rc1 ( Jan 17, 2018 )
+I discovered after releasing the last revision that the graphics packs I've been including had undergone a change to the directory structure to seperate the TWBT portions from the rest.  I've accounted for that change in this revision and the packs should now be TWBT-ready out of the box (as long as you play with DFHack enabled)
+
+#### Major changes over previous revision
+* Updated Dwarf Fortress to 0.44.05
+* Updated DFHack to 0.44.05-alpha1
+* Updated TWBT to 6.33
+* Updated Meph-lite to 2.2
+* Updated Dwarf Therapist to 39.2.0
+
+
+### Release notes for 0.44.04-rc1 ( Jan 13, 2018 )
+A new Dwarf Fortress update calls for a new revision of the LNP!
+
+#### Major changes over previous revision
+* Dwarf Fortress updated to 0.44.04
+* Updated DFHack to 0.44.04-alpha1
+* Updated TWBT to 6.32
+* Updated Meph-lite tileset to 2.1
+
+#### Minor changes over previous revision
+* Included EXPERIMENTAL memory layout for Dwarf Therapist
+
+### Release notes for 0.44.03-rc2 ( Jan 3, 2018 )
+TWBT has been updated to work with the latest DFHack beta.  Also, the pack now includes the most up-to-date version of Meph's tileset.  I originally intended to put this in the rc1, but accidentally included an older version instead.
+
+#### Major changes over previous revision
+* Updated DFHack to 0.44.03-beta1
+* Updated TWBT to 6.31
+* Updated Meph's tileset to 1.7.5
+
+#### Minor changes over previous revision
+* Update graphics packs
+
+### Release notes for 0.44.03-rc1 ( Dec 31, 2017 )
+A new version of Dwarf Fortress has been released, and DFHack was quickly updated to support it.  Also Dwarf Therapist now comes in an AppImage package to improve cpmpatability (at the cost of a slightly larger download)
+
+#### Major changes over previous revision
+* Updated DF to 0.44.03
+* Updated DFHack to 0.44.03-alpha1
+* Updated TWBT to 6.28
+* Updated Dwarf Therapist to 39.1.2
+* Added an LNP-friendly version of Meph's tileset
+
+#### Minor changes over previous revision
+* Updated graphics packs
+* moved _VanillaDF*.png, white1px.png, and transparent1px.png to LNP/tilesets
+
+### Release notes for 0.44.02-rc4 ( Dec 10, 2017 )
+
+TWBT has been updated to work with the prerelease version of DFHack.  As a result, GemSet has also been added back into the pack.
+
+#### Major changes over previous revision
+* Updated TWBT to 6.23
+
+#### Minor changes over previous revision
+* Updated graphics packs to latest versions
+* Re-included GemSet graphics pack
+
+
+### Release notes for 0.44.02-rc3 (Dec 8, 2017)
+
+A prerelease build of DFHack has been released and is being included in this revision.  At the time of this writing, TWBT hasn't yet been updated and is therefore still excluded for the time being.
+
+#### Minor changes over previous revision
+* Updated graphics packs to include latest changes
+
+#### Major changes over previous revision
+* Updated DFHack to 0.44.02-alpha1
+* Dwarf Therapist updated to v39.0.0
+* Legends Browser updated to v1.15
+* Armok Vision updated to v0.18.0
+
 ### Release notes for 0.43.05-r07 (Nov 21, 2017)
 This is the final update for the 0.43.05 Linux LNP.  0.44 has alredy dropped for Windows and Mac.  Just waiting for Toady to get his Linux build uploaded and I'll start working on that!
 Other than updates to a few of the utilities, I have configured the LNP importer to be grab custom stock settings from previous versions.
@@ -362,6 +527,7 @@ Next up we'll be doing more bug fix releases to make sure we have a vaguely pres
  * [@beaubouchard](https://github.com/BeauBouchard) Previous maintainer of this package
  * [@Captain Duck](https://www.youtube.com/playlist?list=PL0sBhCMFBvPlF7wG7OH-NFQKMeCQiS8aM) Just all around great guy, watch his Dwarf Fortress Tutorial series and subscribe!
  * [@CarterScottM](https://www.github.com/CarterScottM) Current maintainer of the Linux Pack
+ * [@Clément](http://www.bay12forums.com/smf/index.php?topic=168411.0)Current Maintainer of Dwarf Therapist
  * [@DanFritz](https://github.com/DanFritz/) His fork of Dwarf Therapist was used to compile DT with Qt4
  * [@Daveralph](https://github.com/daveralph1234/LazyNewbPack/) continued working on LNP after Dricus
  * [@Dricus](https://github.com/Dricus)   Dirk Groot is the creator of the cross platform LNP port
@@ -369,10 +535,12 @@ Next up we'll be doing more bug fix releases to make sure we have a vaguely pres
  * [@fricy](https://github.com/fricy/) Maintains the MacNewbie pack Reborn as well as supporting essential gaphic repo
  * [@Hello71](https://github.com/Hello71) Hello71's fork of Dwarf Therapist was used to compile DT with Qt5
  * [@Japa](http://www.bay12forums.com/smf/index.php?topic=146473.0) Creator/maintainer of Armok Vision
+ * [@Jecowa](http://http://www.bay12forums.com/smf/index.php?action=profile;u=106607)Provided LNP-friendly version of Meph's tileset, and other contributions to the graphics packs
  * [@joelpt](http://www.joelpt.net/quickfort/) Joel Thornton Created Quickfort 2.x
  * [@lethosor](https://github.com/lethosor) Works on DFhack, DFwiki, and many other Dwarf Fortress related projects
  * [@LucasUP](https://github.com/LucasUP/) Lucas Paquette made the original Windows LNP
  * [@Mechanixm](https://www.reddit.com/r/MechGuides/) for writing an incredible set of guides for stockpiles, pressure plates and levers, among other things
+ * [@Meph](http://www.bay12forums.com/smf/index.php?topic=161047.0) Creator of Meph's tileset
  * [@miffedmap](https://github.com/miffedmap) Actively perfecting cross distro compatibility
  * [@mifki](https://github.com/mifki) Text Will Be Text dfmultiscroll and webfort
  * [@PeridexisErrant](http://www.bay12forums.com/smf/index.php?topic=126076.0) Maintains the Windows Pack
